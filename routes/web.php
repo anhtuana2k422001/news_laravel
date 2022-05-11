@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Models\Post;
+use App\Models\Category;
+use App\Models\User;
+use App\Models\Image;
+
+
+Route::get('/createuserimage', function(){
+
+    $image = Image::find(2);
+
+    return $image->imageable;
+
+});
+
+
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -20,7 +35,6 @@ Route::get('/', function () {
 Route::get('/post', function () {
     return view('post');
 })->name('post');
-
 
 Route::get('/about', function () {
     return view('about');
