@@ -32,7 +32,7 @@ class PostsController extends Controller
 
         $comment = $post->comments()->create($attributes);
 
-        return redirect('/posts/' . $post->slug . '#comment_' . $comment->id)->with('success', 'Comment created successfully');
+        return redirect('/posts/' . $post->slug . '#comment_' . $comment->id)->with('success', 'Bạn vừa bình luận thành công.');
 
     }
 }

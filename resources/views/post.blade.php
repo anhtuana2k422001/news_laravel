@@ -31,6 +31,7 @@
 						</div>
 						<div class="row row-pb-lg animate-box">
 							<div class="col-md-12">
+
 								<h2 class="colorlib-heading-2">{{ count($post->comments) }} Bình luận</h2>
 
 								@foreach($post->comments as $comment)
@@ -55,6 +56,9 @@
 				
 						<div class="row animate-box">
 							<div class="col-md-12">
+
+								<x-blog.message :status="'success'"/>
+
 								<h2 class="colorlib-heading-2">Hãy viết gì đó</h2>
 
 								@auth	

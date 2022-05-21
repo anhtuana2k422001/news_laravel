@@ -32,43 +32,45 @@
 					<div class="col-md-12">
 						<h2>Liên hệ với chúng tôi</h2>
 					</div>
+
+					<x-blog.message :status="'success'" />
+
 					<div class="col-md-6">
-						<form action="#">
+						<form autocomplete="off" method="POST" action="{{ route('contact.store')}}">
+							@csrf
 							<div class="row form-group">
 								<div class="col-md-6">
-									<!-- <label for="fname">First Name</label> -->
-									<input type="text" id="fname" class="form-control" placeholder="Họ của bạn" require="" >
+									<x-blog.form.input value='{{ old("first_name")}}' placeholder="Họ của bạn" name="first_name"/>
 								</div>
 								<div class="col-md-6">
-									<!-- <label for="lname">Last Name</label> -->
-									<input type="text" id="lname" class="form-control" placeholder="Tên của bạn" require="">
+									<x-blog.form.input value='{{ old("last_name")}}'  placeholder="Tên của bạn"  name="last_name"/>
 								</div>
 							</div>
 
 							<div class="row form-group">
 								<div class="col-md-12">
-									<!-- <label for="email">Email</label> -->
-									<input type="text" id="email" class="form-control" placeholder="Địa chỉ Email" require="">
+									<x-blog.form.input value='{{ old("email")}}'  type="email" placeholder="Địa chỉ Email" name="email"/>
 								</div>
 							</div>
 
 							<div class="row form-group">
 								<div class="col-md-12">
-									<!-- <label for="subject">Subject</label> -->
-									<input type="text" id="subject" class="form-control" placeholder="Tiêu đề" require="">
+									<x-blog.form.input value='{{ old("subject")}}'  required='false' placeholder="Tiêu đề"  name="subject"/>
 								</div>
 							</div>
 
 							<div class="row form-group">
 								<div class="col-md-12">
-									<!-- <label for="message">Message</label> -->
-									<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Nội dung"></textarea>
+									<x-blog.form.textarea value='{{ old("message")}}'  placeholder="Nội dung bạn muốn nói về chúng tôi"  name="message"/>
 								</div>
 							</div>
 							<div class="form-group">
 								<input type="submit" value="Gửi đi" class="btn btn-primary">
 							</div>
 						</form>		
+
+						<!-- <x-blog.message :status="'success'" /> -->
+
 					</div>
 					<div class="col-md-6">
 						<div id="map" class="colorlib-map"></div>

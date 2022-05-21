@@ -79,7 +79,7 @@
 									</ul>
 								</li>
 								<li><a href="{{ route('about') }}">Giới thiệu</a></li>
-								<li><a href="{{ route('contact') }}">Liên hệ</a></li>
+								<li><a href="{{ route('contact.create') }}">Liên hệ</a></li>
 								
 								@guest
 								<li class="btn-cta"><a href="{{ route('login') }}"><span>Đăng Nhập
