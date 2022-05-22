@@ -55,7 +55,7 @@
 
 							<div class="row form-group">
 								<div class="col-md-12">
-									<x-blog.form.input value='{{ old("subject")}}'  required='false' placeholder="Tiêu đề"  name="subject"/>
+									<x-blog.form.input value='{{ old("subject")}}'  required='true' placeholder="Tiêu đề"  name="subject"/>
 								</div>
 							</div>
 
