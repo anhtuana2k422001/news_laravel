@@ -15,3 +15,8 @@
 .global-message.error{
     background-color: #d81d1d;
 }
+
+/* Danh mục tin tức style  */
+.categories_col .block-21 .text{
+    width: 100%;
+}

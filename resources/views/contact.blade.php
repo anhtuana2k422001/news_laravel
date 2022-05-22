@@ -44,27 +44,32 @@
 							<div class="row form-group">
 								<div class="col-md-6">
 									<x-blog.form.input value='{{ old("first_name")}}' placeholder="Họ của bạn" name="first_name"/>
+									<small class="error text-danger first_name"></small>
 								</div>
 								<div class="col-md-6">
 									<x-blog.form.input value='{{ old("last_name")}}'  placeholder="Tên của bạn"  name="last_name"/>
+									<small class="error text-danger last_name"></small>
 								</div>
 							</div>
 
 							<div class="row form-group">
 								<div class="col-md-12">
 									<x-blog.form.input value='{{ old("email")}}'  type="email" placeholder="Địa chỉ Email" name="email"/>
+									<small class="error text-danger email"></small>
 								</div>
 							</div>
 
 							<div class="row form-group">
 								<div class="col-md-12">
-									<x-blog.form.input value='{{ old("subject")}}'  required='true' placeholder="Tiêu đề"  name="subject"/>
+									<x-blog.form.input value='{{ old("subject")}}' placeholder="Tiêu đề"  name="subject"/>
+									<small class="error text-danger subject"></small>
 								</div>
 							</div>
 
 							<div class="row form-group">
 								<div class="col-md-12">
 									<x-blog.form.textarea value='{{ old("message")}}'  placeholder="Nội dung bạn muốn nói về chúng tôi"  name="message"/>
+									<small class="error text-danger message"></small>
 								</div>
 							</div>
 							<div class="form-group">
@@ -130,15 +135,9 @@
 						$(".global-message").fadeOut();
 					}, 7000)
 				}else{
-					$('.global-message').removeClass('info');
-					$('.global-message').addClass('alert alert-info error');
-					
-					$('.global-message').fadeIn();
-					$('.global-message').text(data.message);
-
-					setTimeout(() => {
-						$(".global-message").fadeOut();
-					}, 7000)
+					for ( const error in data.errors ){
+						$("small."+error).text(data.errors[error]);
+					}
 				}
 			}
 		})

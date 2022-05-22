@@ -1,6 +1,6 @@
 @extends('main_layouts.master')
 
-@section('title','HUTECH NEWS | Tin Tức')
+@section('title','HUTECH NEWS | Bài viết')
 
 @section('content')
 
@@ -71,6 +71,7 @@
 											<textarea name="the_comment" id="message" cols="30" rows="10" class="form-control" placeholder="Đánh giá bài viết này"></textarea>
 										</div>
 									</div>
+
 									<div class="form-group">
 										<input type="submit" value="Bình luận" class="btn btn-primary">
 									</div>

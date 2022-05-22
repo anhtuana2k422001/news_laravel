@@ -25,7 +25,8 @@ class ContactController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required',
-            'subject' => 'nullable|min:5|max:50',
+            // 'subject' => 'nullable|min:5|max:50',
+            'subject' => 'required|min:5|max:50',
             'message' => 'required|min:5|max:500' ,
         ];
 
