@@ -1,6 +1,6 @@
 @props(['recent_posts'])
 <div class="side">
-<h3 class="sidebar-heading">Tin nổi bật</h3>
+<h3 class="sidebar-heading">Bài viết mới nhất</h3>
     @foreach($recent_posts as $recent_posts)
         <div class="f-blog">
             <a href="{{ route('posts.show', $recent_posts) }}" class="blog-img" style="background-image: url({{ asset('storage/' .$recent_posts->image->path.'')}});">
