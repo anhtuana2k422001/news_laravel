@@ -4,6 +4,7 @@
 	<link href="{{ asset('admin_dashboard_assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
 	<link href="{{ asset('admin_dashboard_assets/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
 
+	<link href="{{ asset('admin_dashboard_assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 	<style>
 		.imageuploadify{
 			margin: 0;
@@ -95,6 +96,11 @@
 												</div>
 										</div>
 
+										<div class="mb-3">
+                                            <label class="form-label">Từ khóa</label>
+                                            <input type="text" class="form-control" value="{{ $tags }}" name="tags" data-role="tagsinput">
+                                        </div>
+
 										<!-- <input id="image-uploadify" name="thumbnail" type="file" id="file" accept="image/*" multiple> -->								
 										<div class="mb-3">
                                             <div class="row">
@@ -120,7 +126,7 @@
 										
 										<div class="mb-3">
 											<label for="inputProductDescription" class="form-label">Nội dung bài viết</label>
-											<textarea name="body" id="post_content" class="form-control" id="inputProductDescription" rows="3">{{ old("body", str_replace('../../../','/', $post->body )) }}</textarea>
+											<textarea name="body" id="post_content" class="form-control" id="inputProductDescription" rows="3">{{ old("body", str_replace('../../', '../../../', $post->body )) }}</textarea>
 										
 											@error('body')
 												<p class="text-danger">{{ $message }}</p>
@@ -157,6 +163,7 @@
 @section("script")
 	<script src="{{ asset('admin_dashboard_assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js') }}"></script>
 	<script src="{{ asset('admin_dashboard_assets/plugins/select2/js/select2.min.js') }}"></script>
+	<script src="{{ asset('admin_dashboard_assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 	<script>
 		$(document).ready(function () {
 			// $('#image-uploadify').imageuploadify();

@@ -5,6 +5,8 @@
 	<link href="{{ asset('admin_dashboard_assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet" />
 	<link href="{{ asset('admin_dashboard_assets/plugins/select2/css/select2-bootstrap4.css') }}" rel="stylesheet" />
 
+	<link href="{{ asset('admin_dashboard_assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
+
 	<!-- <style>
 		.imageuploadify{
 			margin: 0;
@@ -96,6 +98,11 @@
 												</div>
 										</div>
 
+										<div class="mb-3">
+                                            <label class="form-label">Từ khóa</label>
+                                            <input type="text" class="form-control" name="tags" data-role="tagsinput">
+                                        </div>
+
 										<!-- <input id="image-uploadify" name="thumbnail" type="file" id="file" accept="image/*" multiple> -->								
 										<div class="mb-3">
 											<label for="inputProductDescription" class="form-label">Hình ảnh bài viết</label>
@@ -137,6 +144,7 @@
 @section("script")
 	<!-- <script src="{{ asset('admin_dashboard_assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js') }}"></script> -->
 	<script src="{{ asset('admin_dashboard_assets/plugins/select2/js/select2.min.js') }}"></script>
+	<script src="{{ asset('admin_dashboard_assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 	<script>
 		$(document).ready(function () {
 			// $('#image-uploadify').imageuploadify();

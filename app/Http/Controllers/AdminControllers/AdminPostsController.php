@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 
 class AdminPostsController extends Controller
 {
@@ -54,6 +55,32 @@ class AdminPostsController extends Controller
                 'path' => $path
             ]);
         }
+
+        // $tags = explode(',', $request->input('tags'));
+        // $tags_ids = [];
+        // foreach ($tags as $tag) {
+        //     $tag_ob = Tag::create(['name'=> trim($tag)]);
+        //     $tags_ids[]  = $tag_ob->id;
+        // }
+
+        // if (count($tags_ids) > 0)
+        //     $post->tags()->sync( $tags_ids ); 
+        
+        $tags = explode(',', $request->input('tags'));
+        $tags_ids = [];
+        foreach ($tags as $tag) {
+
+            $tag_exits = $post->tags()->where('name', trim($tag))->count();
+            if( $tag_exits == 0){
+                $tag_ob = Tag::create(['name'=> $tag]);
+                $tags_ids[]  = $tag_ob->id;
+            }
+            
+        }
+
+        if (count($tags_ids) > 0)
+            $post->tags()->syncWithoutDetaching( $tags_ids );
+
         return redirect()->route('admin.posts.create')->with('success', 'Thêm bài viết thành công.');
     }
 
@@ -64,8 +91,16 @@ class AdminPostsController extends Controller
 
 
     public function edit(Post $post){
+        $tags = '';
+        foreach($post->tags as $key => $tag){
+            $tags .= $tag->name;
+            if($key !== count($post->tags) - 1)
+                $tags .= ', ';
+        }
+        
         return view('admin_dashboard.posts.edit',[
             'post' => $post,
+            'tags' => $tags,
             'categories' => Category::pluck('name', 'id')
         ]);
     }
@@ -73,7 +108,7 @@ class AdminPostsController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        $this->rules['thumbnail'] = 'nullable|file||mimes:jpg,png,webp,svg,jpeg|dimensions:max-width:300,max-height:227';
+        $this->rules['thumbnail'] = 'nullable|file||mimes:jpg,png,webp,svg,jpeg|dimensions:max-width:800,max-height:300';
         $validated = $request->validate($this->rules);
         $post->update($validated);
 
@@ -90,11 +125,28 @@ class AdminPostsController extends Controller
                 'path' => $path
             ]);
         }
+
+        $tags = explode(',', $request->input('tags'));
+        $tags_ids = [];
+        foreach ($tags as $tag) {
+
+            $tag_exits = $post->tags()->where('name', trim($tag))->count();
+            if( $tag_exits == 0){
+                $tag_ob = Tag::create(['name'=> $tag]);
+                $tags_ids[]  = $tag_ob->id;
+            }
+            
+        }
+
+        if (count($tags_ids) > 0)
+            $post->tags()->syncWithoutDetaching( $tags_ids ); 
+
         return redirect()->route('admin.posts.edit', $post)->with('success', 'Sửa viết thành công.');
     }
 
     public function destroy(Post $post)
     {
+        $post->tags()->delete();
         $post->delete();
         return redirect()->route('admin.posts.index')->with('success','Xóa bài viết thành công.');
     }

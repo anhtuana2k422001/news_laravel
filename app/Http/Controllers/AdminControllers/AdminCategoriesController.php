@@ -40,7 +40,6 @@ class AdminCategoriesController extends Controller
 
     public function show(Category $category)
     {
-        // dd($category);
         return view('admin_dashboard.categories.show',[
             'category' => $category
         ]);
