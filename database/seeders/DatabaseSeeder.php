@@ -30,11 +30,28 @@ class DatabaseSeeder extends Seeder
         \App\Models\Role::factory(1)->create(['name' => 'admin']);
 
         $users = \App\Models\User::factory(10)->create();
+        \App\Models\User::Factory()->create([
+            'name' => 'Hồ Anh Tuấn',
+            'email' => 'anhtuana2k422001@gmail.com',
+            'role_id' => 2
+        ]);
+        \App\Models\User::Factory()->create([
+            'name' => 'Nguyễn Hải Dương',
+            'email' => 'nguyenhaiduong@gmail.com',
+            'role_id' => 2
+        ]);
+        \App\Models\User::Factory()->create([
+            'name' => 'Võ Anh Quân',
+            'email' => 'voanhquan@gmail.com',
+            'role_id' => 2
+        ]);
+  
         foreach($users as $user){
             $user -> image()->save( \App\Models\Image::factory()->make() );
         }
 
         \App\Models\Category::factory(10)->create();
+        \App\Models\Category::factory()->create(['name' => 'Chưa phân loại']);
 
         $posts = \App\Models\Post::factory(30)->create();
 

@@ -23,7 +23,8 @@ class AdminPostsController extends Controller
     public function index()
     {
         return view('admin_dashboard.posts.index', [
-            'posts' => Post::with('category')->get(),
+            // 'posts' => Post::with('category')->get(),
+            'posts' => Post::with('category')->orderBy('id','ASC')->paginate(20),
         ]);
     }
 

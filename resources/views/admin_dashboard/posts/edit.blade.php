@@ -24,7 +24,7 @@
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								<li class="breadcrumb-item"><a href="{{ route('admin.index') }}"><i class="bx bx-home-alt"></i></a>
 								</li>
 								<li class="breadcrumb-item active" aria-current="page">Bài viết</li>
 							</ol>
@@ -130,11 +130,8 @@
 
 										<button class="btn btn-primary" type="submit">Sửa bài viết</button>
 
-										<!-- <form action="{{ route('admin.posts.destroy', $post) }}">
-											@csrf
-											@method('DELETE')
-											<button class="btn btn-danger" type="submit">Xóa bài viết</button>
-										</form> -->
+										<a class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete_post_{{ $post->id }}').submit();" 
+										href="#">Xóa bài viết</a>
 
 									</div>
 								</div>
@@ -142,6 +139,12 @@
 						</div>
 
 					</form>
+
+					<form id="delete_post_{{ $post->id }}" action="{{ route('admin.posts.destroy', $post) }}"  method="post">
+						@csrf
+						@method('DELETE')
+					</form>
+
 				  </div>
 			  </div>
 
