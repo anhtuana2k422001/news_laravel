@@ -56,30 +56,30 @@ class AdminPostsController extends Controller
             ]);
         }
 
-        // $tags = explode(',', $request->input('tags'));
-        // $tags_ids = [];
-        // foreach ($tags as $tag) {
-        //     $tag_ob = Tag::create(['name'=> trim($tag)]);
-        //     $tags_ids[]  = $tag_ob->id;
-        // }
-
-        // if (count($tags_ids) > 0)
-        //     $post->tags()->sync( $tags_ids ); 
-        
         $tags = explode(',', $request->input('tags'));
         $tags_ids = [];
         foreach ($tags as $tag) {
-
-            $tag_exits = $post->tags()->where('name', trim($tag))->count();
-            if( $tag_exits == 0){
-                $tag_ob = Tag::create(['name'=> $tag]);
-                $tags_ids[]  = $tag_ob->id;
-            }
-            
+            $tag_ob = Tag::create(['name'=> trim($tag)]);
+            $tags_ids[]  = $tag_ob->id;
         }
 
         if (count($tags_ids) > 0)
-            $post->tags()->syncWithoutDetaching( $tags_ids );
+            $post->tags()->sync( $tags_ids ); 
+        
+        // $tags = explode(',', $request->input('tags'));
+        // $tags_ids = [];
+        // foreach ($tags as $tag) {
+
+        //     $tag_exits = $post->tags()->where('name', trim($tag))->count();
+        //     if( $tag_exits == 0){
+        //         $tag_ob = Tag::create(['name'=> $tag]);
+        //         $tags_ids[]  = $tag_ob->id;
+        //     }
+            
+        // }
+
+        // if (count($tags_ids) > 0)
+        //     $post->tags()->syncWithoutDetaching( $tags_ids );
 
         return redirect()->route('admin.posts.create')->with('success', 'Thêm bài viết thành công.');
     }
