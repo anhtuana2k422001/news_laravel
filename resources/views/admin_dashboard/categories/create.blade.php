@@ -12,7 +12,7 @@
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="{{ route('admin.index') }}"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Tất cả danh mục</li>
+								<li class="breadcrumb-item active" aria-current="page">Thêm mới danh mục</li>
 							</ol>
 						</nav>
 					</div>
