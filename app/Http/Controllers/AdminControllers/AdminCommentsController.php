@@ -16,7 +16,9 @@ class AdminCommentsController extends Controller
 
     public function index()
     {
-        //
+        return view('admin_dashboard.comments.index', [
+            'comments' => Comment::latest()->paginate(20),
+        ]);
     }
 
 
@@ -39,17 +41,6 @@ class AdminCommentsController extends Controller
         return redirect()->route('admin.comments.create')->with('success', 'Thêm bình luận mới thành công.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
  
     public function edit(Comment $comment)
     {
@@ -65,7 +56,7 @@ class AdminCommentsController extends Controller
         $validated = $request->validate($this->rules);
  
         $comment->update($validated);
-        return redirect()->route('admin.comments.update',$comment)->with('success', 'Sửa bình luận mới thành công.');
+        return redirect()->route('admin.comments.edit',$comment)->with('success', 'Sửa bình luận mới thành công.');
     }
 
 
