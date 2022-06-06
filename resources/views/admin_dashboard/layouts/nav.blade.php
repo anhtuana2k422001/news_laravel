@@ -13,7 +13,7 @@
             <!--navigation-->
             <ul class="metismenu" id="menu">
                 <li>
-                    <a href="#" target="_blank">
+                    <a href="{{ route('admin.index') }}" >
                     <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
                         <div class="menu-title">Bảng điều khiển</div>
                     </a>
@@ -69,6 +69,24 @@
                         <li> <a href="{{ route('admin.comments.index') }}"><i class="bx bx-right-arrow-alt"></i>Tất cả bình luận</a>
                         </li>
                         <li> <a href="{{ route('admin.comments.create') }}"><i class="bx bx-right-arrow-alt"></i>Thêm bình luận mới</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+
+                <hr>
+
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class='bx bx-key'></i>
+                        </div>
+                        <div class="menu-title">Phân Quyền</div>
+                    </a>
+
+                    <ul>
+                        <li> <a href="{{ route('admin.roles.index') }}"><i class="bx bx-right-arrow-alt"></i>Tất cả quyền</a>
+                        </li>
+                        <li> <a href="{{ route('admin.roles.create') }}"><i class="bx bx-right-arrow-alt"></i>Thêm quyền mới</a>
                         </li>
                         
                     </ul>
