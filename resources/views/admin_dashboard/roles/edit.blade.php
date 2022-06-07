@@ -25,7 +25,7 @@
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="{{ route('admin.index') }}"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Thêm mới quyền</li>
+								<li class="breadcrumb-item active" aria-current="page">Sửa quyền</li>
 							</ol>
 						</nav>
 					</div>
@@ -34,10 +34,11 @@
 			  
 				<div class="card">
 				  <div class="card-body p-4">
-					  <h5 class="card-title">Thêm quyền mới</h5>
+					  <h5 class="card-title">Sửa quyền: {{ $role->name }}</h5>
 					  <hr/>
-					<form action="{{ route('admin.roles.store') }}" method="POST">
+					<form action="{{ route('admin.roles.update', $role) }}" method="POST">
 						@csrf
+						@method('PATCH')
 
                        <div class="form-body mt-4">
 							<div class="row">
@@ -45,7 +46,7 @@
 									<div class="border border-3 p-4 rounded">
 										<div class="mb-3">
 											<label for="inputProductTitle" class="form-label">Tên quyền</label>
-											<input type="text" value=' {{ old("name" ) }}' name="name" required  class="form-control" id="inputProductTitle" placeholder="Nhập tiêu đề bài viết">
+											<input type="text" value=' {{ old("name", $role->name ) }}' name="name" required  class="form-control" id="inputProductTitle" placeholder="Nhập tiêu đề bài viết">
 										
 											@error('name')
 												<p class="text-danger">{{ $message }}</p>
@@ -70,7 +71,7 @@
 													<div class="col-md-4">
 														@for($i = $start ; $i < $end ; $i++)
 															<label class="permission">
-																<input type="checkbox" name="permissions[]" value="{{ $permissions[$i]->id }}"></input>
+																<input {{ $role->permissions->contains($permissions[$i]->id) ? 'checked' : '' }}  type="checkbox" name="permissions[]" value="{{ $permissions[$i]->id }}"></input>
 																{{ $permissions[$i]->name}}
 															</label>	
 														@endfor
@@ -86,7 +87,11 @@
 										
 										</div>
 
-										<button class="btn btn-primary" type="submit">Thêm quyền mới</button>
+										<button class="btn btn-primary" type="submit">Sửa quyền</button>
+										
+										<a class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete_role_{{ $role->id }}').submit();" 
+										href="#">Xóa quyền</a>
+
 
 									</div>
 								</div>
@@ -94,6 +99,12 @@
 						</div>
 
 					</form>
+
+					<form id="delete_role_{{ $role->id }}" action="{{ route('admin.roles.destroy', $role) }}"  method="post">
+						@csrf
+						@method('DELETE')
+					</form>
+					
 				  </div>
 			  </div>
 

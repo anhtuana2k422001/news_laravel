@@ -20,6 +20,8 @@ use App\Http\Controllers\AdminControllers\AdminCategoriesController;
 use App\Http\Controllers\AdminControllers\AdminTagsController;
 use App\Http\Controllers\AdminControllers\AdminCommentsController;
 use App\Http\Controllers\AdminControllers\AdminRolesController;
+use App\Http\Controllers\AdminControllers\AdminUsersController;
+
 
 
 
@@ -49,7 +51,7 @@ Route::get('/tags/{tag:name}', [TagController::class, 'show'])->name('tags.show'
 require __DIR__.'/auth.php';
 
 
-// Điều hướng cho trang quản trị admin
+// Điều hướng cho trang quản trị admin -
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin', 'check_permissions'])->group(function(){
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::post('upload_tinymce_image', [TinyMCEController::class, 'upload_tinymce_image'])->name('upload_tinymce_image');
@@ -61,5 +63,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'isAdmin', 'check_pe
     Route::resource('comments', AdminCommentsController::class)->except('show');
 
     Route::resource('roles', AdminRolesController::class)->except('show');
+    Route::resource('users', AdminUsersController::class)->except('show');
 });
 

@@ -92,6 +92,21 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon"><i class='bx bx-user'></i>
+                        </div>
+                        <div class="menu-title">Tài khoản</div>
+                    </a>
+
+                    <ul>
+                        <li> <a href="{{ route('admin.users.index') }}"><i class="bx bx-right-arrow-alt"></i>Tất cả tài khoản</a>
+                        </li>
+                        <li> <a href="{{ route('admin.users.create') }}"><i class="bx bx-right-arrow-alt"></i>Thêm tài khoản mới</a>
+                        </li>
+                        
+                    </ul>
+                </li>
            
             </ul>
             <!--end navigation-->
