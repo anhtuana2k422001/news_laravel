@@ -18,7 +18,7 @@
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="{{ route('admin.index') }}"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Thêm mới tài khoản</li>
+								<li class="breadcrumb-item active" aria-current="page">Sửa tài khoản</li>
 							</ol>
 						</nav>
 					</div>
@@ -27,10 +27,11 @@
 			  
 				<div class="card">
 				  <div class="card-body p-4">
-					  <h5 class="card-title">Thêm tài khoản mới</h5>
+					  <h5 class="card-title">Sửa tài khoản: {{ $user->name }}</h5>
 					  <hr/>
-					<form action="{{ route('admin.users.store') }}" method="POST"  enctype="multipart/form-data" >
+					<form action="{{ route('admin.users.update', $user) }}" method="POST"  enctype="multipart/form-data" >
 						@csrf
+						@method('PATCH')
 
                        <div class="form-body mt-4">
 							<div class="row">
@@ -39,7 +40,7 @@
 
 										<div class="mb-3">
 											<label for="input_name" class="form-label">Họ Tên</label>
-											<input name="name" type="text"  class="form-control" id="input_name" value='{{ old("name") }}'>
+											<input name="name" type="text"  class="form-control" id="input_name" value='{{ old("name", $user->name ) }}'>
 										
 											@error('name')
 												<p class="text-danger">{{ $message }}</p>
@@ -48,7 +49,7 @@
 
 										<div class="mb-3">
 											<label for="input_email" class="form-label">Email</label>
-											<input name="email" type="email" class="form-control" id="input_email" value='{{ old("email") }}'>
+											<input name="email" type="email" class="form-control" id="input_email" value='{{ old("email", $user->email) }}'>
 										
 											@error('email')
 												<p class="text-danger">{{ $message }}</p>
@@ -56,21 +57,30 @@
 										</div>
 
 										<div class="mb-3">
-											<label for="input_password" class="form-label">Mật khẩu</label>
-											<input name="password" type="password"  class="form-control" id="input_password" >
-										
-											@error('password')
-												<p class="text-danger">{{ $message }}</p>
-											@enderror
-										</div>
+													<label for="input_password" class="form-label">Mật khẩu</label>
+													<input name="password" type="password"  class="form-control" id="input_password">
+												
+													@error('password')
+														<p class="text-danger">{{ $message }}</p>
+													@enderror
+												</div>
 
-										<div class="mb-3">
-											<label for="input_image" class="form-label">Ảnh đai diện</label>
-											<input name="image" type="file" class="form-control" id="input_image" >
-										
-											@error('image')
-												<p class="text-danger">{{ $message }}</p>
-											@enderror
+										<div class="row">
+											<div class="col-md-8">
+												<div class="mb-3">
+													<label for="input_image" class="form-label">Ảnh đai diện</label>
+													<input name="image" type="file" class="form-control" id="input_image" >
+												
+													@error('image')
+														<p class="text-danger">{{ $message }}</p>
+													@enderror
+												</div>
+											</div>
+											<div class="col-md-4">
+												<div class="user_image">
+													<img src="{{ $user->image ?  asset('storage/' . $user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" alt="">
+												</div>
+											</div>
 										</div>
 
 										<div class="mb-3">
@@ -81,7 +91,7 @@
 															<div class="mb-3">
 																<select name="role_id" required class="single-select">
 																	@foreach( $roles as $key => $role )
-																	<option value="{{ $key }}">{{ $role }}</option>
+																	<option {{ $user->role_id === $key ? "selected" : '' }} value="{{ $key }}">{{ $role }}</option>
 																	@endforeach
 																</select>
 

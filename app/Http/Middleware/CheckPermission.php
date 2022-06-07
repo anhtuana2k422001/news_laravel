@@ -9,7 +9,10 @@ class CheckPermission
 {
     public function handle(Request $request, Closure $next)
     {
-        
+     
+        // Nếu là quản trị viện thì được cho phép tất cả mọi quyền
+        if(auth()->user()->role->name === 'admin')
+            return $next($request);
         // 1. Lấy tên điều hướng 
         $route_name = $request->route()->getName();
 
