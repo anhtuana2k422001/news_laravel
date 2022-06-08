@@ -105,15 +105,22 @@
 												</div>
 										</div>
 
+										<button class="btn btn-primary" type="submit">Sửa tài khoản</button>
 
-										<button class="btn btn-primary" type="submit">Thêm tài khoản mới</button>
+										<a class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('delete_user_{{ $user->id }}').submit();" 
+										href="#">Xóa tài khoản</a>
 
 									</div>
 								</div>
 							</div>
 						</div>
-
 					</form>
+
+					<form id="delete_user_{{ $user->id }}" action="{{ route('admin.users.destroy', $user) }}"  method="post">
+						@csrf
+						@method('DELETE')
+					</form>
+
 				  </div>
 			  </div>
 

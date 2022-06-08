@@ -22,7 +22,9 @@ class AdminUsersController extends Controller
 
     public function index()
     {
-        //
+        return view('admin_dashboard.users.index', [
+            'users' => User::with('role')->paginate(20),
+        ]);
     }
 
   
@@ -66,7 +68,13 @@ class AdminUsersController extends Controller
         ]);
     }
 
- 
+    public function show(User $user)
+    {
+        return view('admin_dashboard.users.show', [
+            'user' => $user,
+        ]);
+    }
+
     public function update(Request $request, User $user)
     {
         $this->rules['password'] = 'nullable|min:3|max:20';
@@ -74,7 +82,7 @@ class AdminUsersController extends Controller
 
         $validated = $request->validate($this->rules);
 
-        if($validated['password'] === '')
+        if($validated['password'] === null )
             unset($validated['password']);
         else
             $validated['password'] = Hash::make($request->input('password'));
@@ -99,8 +107,11 @@ class AdminUsersController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        if($user->id === auth()->id())
+            return redirect()->back()->with('error', 'Bạn không thể xóa tài khoản bạn ( quản trị viên) ');
+        $user->delete();
+        return redirect()->route('admin.users.index')->with('success', 'Xóa tài khoản thành công.');
     }
 }
