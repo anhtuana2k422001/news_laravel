@@ -107,6 +107,31 @@
                         
                     </ul>
                 </li>
+
+                <li>
+                    <a href="{{ route('admin.contacts') }}" >
+                    <div class="parent-icon"><i class='bx bx-mail-send'></i></div>
+                        <div class="menu-title">Liên hệ</div>
+                    </a>
+                </li>
+
+                
+                <li>
+                    <a href="{{ route('admin.setting.edit') }}" >
+                    <div class="parent-icon"><i class='bx bx-info-square'></i></div>
+                        <div class="menu-title">Cài đặt</div>
+                    </a>
+                </li>
+
+                <hr>
+ 
+                <li>
+                    <a href="{{ route('home') }}" >
+                    <div class="parent-icon"><i class='bx bx-pointer'></i></div>
+                        <div class="menu-title">Trang chủ</div>
+                    </a>
+                </li>
+
            
             </ul>
             <!--end navigation-->

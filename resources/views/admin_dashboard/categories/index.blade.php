@@ -88,3 +88,16 @@
 </div>
 <!--end page wrapper -->
 @endsection
+
+
+@section("script")
+	<script>
+		$(document).ready(function () {
+		setTimeout(()=>{
+				$(".general-message").fadeOut();
+		},5000);
+
+		});
+	</script>
+
+@endsection

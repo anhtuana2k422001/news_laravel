@@ -111,6 +111,11 @@ class AdminUsersController extends Controller
     {
         if($user->id === auth()->id())
             return redirect()->back()->with('error', 'Bạn không thể xóa tài khoản bạn ( quản trị viên) ');
+
+        User::whereHas('role', function($query){
+            $query->where('name','admin');
+        })->first()->posts()->saveMany($user->posts);
+
         $user->delete();
         return redirect()->route('admin.users.index')->with('success', 'Xóa tài khoản thành công.');
     }
