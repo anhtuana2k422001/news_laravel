@@ -11,9 +11,13 @@ class HomeController extends Controller
 {
     public function index(){
         
-        $posts = Post::withCount('comments')->paginate(8); // phân trang 8 bài
+        $posts = Post::latest()
+        ->approved()
+        // where('approved',1)
+        ->withCount('comments')->paginate(8); // phân trang 8 bài
         
         $recent_posts = Post::latest()->take(5)->get();
+
         $categories = Category::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
         $tags = Tag::latest()->take(50)->get();
 

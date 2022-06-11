@@ -28,21 +28,24 @@ class AdminSettingController  extends Controller
             'about_second_image' => 'nullable|image',
         ]);
 
+
         if(request()->has('about_first_image'))
         {
             $about_first_image = request()->file('about_first_image');
-            $path1   = $about_first_image->store('setting', 'public');
-            $validated['about_first_image'] = $path1;
+            $path   = $about_first_image->store('setting', 'public');
+            $validated['about_first_image'] = $path;
         }
 
         if(request()->has('about_second_image'))
         {
             $about_second_image = request()->file('about_second_image');
-            $path2   = $about_second_image->store('setting', 'public');
-            $validated['about_second_image'] = $path2;
+            $path   = $about_second_image->store('setting', 'public');
+            $validated['about_second_image'] = $path;
+          
         }
 
         Setting::find(1)->update($validated);
+
         return redirect()->route('admin.setting.edit')->with('success','Cập nhật thành công trang giới thiệu');
     }
 }

@@ -61,8 +61,8 @@
                                 <td>{{ $post->category->name }}</td>
                                 <td>{{ $post->created_at->format('d/m/Y') }}</td>
                                 <td>
-                                    <div class="badge rounded-pill @if($post->status === 'published')  {{'text-success bg-light-success' }} @elseif($post->status === 'draft') {{'text-warning bg-light-warning'}} @else {{'text-danger bg-light-danger' }} @endif p-2 text-uppercase px-3">
-                                        <i class='bx bxs-circle me-1'></i>{{ $post->status }}
+                                    <div class="badge rounded-pill @if($post->approved === 1)  {{'text-success bg-light-success' }} @else {{'text-danger bg-light-danger' }} @endif p-2 text-uppercase px-3">
+                                        <i class='bx bxs-circle me-1'></i>{{ $post->approved  === 1 ? 'Đã phê duyệt' : 'Chưa phê duyệt'  }}
                                     </div>
                                 </td>
                                 <td>{{ $post->views }}</td>
