@@ -15,6 +15,10 @@ class PostsController extends Controller
         $categories = Category::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
         $tags = Tag::latest()->take(50)->get();
 
+        // Tăng lượt xem khi xem bài viết
+        $post->views =  ($post->views) + 1;
+        $post->save();
+
         return view('post', [ 
             'post' => $post,
             'recent_posts' => $recent_posts,
