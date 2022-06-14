@@ -85,152 +85,150 @@
 
     @yield('custom_css')
 
-	</head>
-	<body>
+</head>
+<body class="boxed" data-bg-img="{{ asset('kcnew/frontend/img/bg_website.png') }}">
 		
+	<header class="header--section header--style-3">
+		<!-- Header Topbar Start -->
+		<div class="header--topbar  bg--color-1">
 
-	<div id="page">
-
+			<div class="container">
+				<div class="float--left float--xs-none text-xs-center">
+					<!-- Header Topbar Info Start -->
+					<ul class="header--topbar-info nav">
+						<li>
+							<a href="{{ route('home') }}">
+								<img style="border-radius: 12px; height: 40px;" src="{{ asset('kcnew/frontend/img/image_logo.png') }}" alt="logo">
+							</a>
+						</li>
+						<li><i class="fa fm fa-map-marker"></i>Hồ Chí Minh</li>
+						<li><i class="fa fm fa-mixcloud"></i>28<sup>0</sup> C</li>
+						<li><i class="fa fm fa-calendar"></i>To day(2022-06-13)</li>
+					</ul>
+					<!-- Header Topbar Info End -->
+				</div>
 	
-		<header class="header--section header--style-3">
-			<!-- Header Topbar Start -->
-			<div class="header--topbar  bg--color-1">
+				<div class="float--right float--xs-none text-xs-center">
+					<!-- Header Topbar Action Start -->
+					<ul class="header--topbar-action nav">
+							@guest
+							<li class="btn-cta">
+								<a href="{{ route('login') }}">
+									<i class="fa fm fa-user-o"></i>
+									<span>Đăng Nhập</span>
+								</a></li>
+							@endguest
 
-				<div class="container">
-					<div class="float--left float--xs-none text-xs-center">
-						<!-- Header Topbar Info Start -->
-						<ul class="header--topbar-info nav">
-							<li>
-								<a href="{{ route('home') }}">
-									<img style="border-radius: 12px; height: 40px;" src="{{ asset('kcnew/frontend/img/image_logo.png') }}" alt="logo">
-								</a>
-							</li>
-							<li><i class="fa fm fa-map-marker"></i>Hồ Chí Minh</li>
-							<li><i class="fa fm fa-mixcloud"></i>28<sup>0</sup> C</li>
-							<li><i class="fa fm fa-calendar"></i>To day(2022-06-13)</li>
-						</ul>
-						<!-- Header Topbar Info End -->
-					</div>
-		
-					<div class="float--right float--xs-none text-xs-center">
-						<!-- Header Topbar Action Start -->
-						<ul class="header--topbar-action nav">
-								@guest
-								<li class="btn-cta">
-									<a href="{{ route('login') }}">
+							@auth
+								</span></a></li>
+								<li class="has-dropdown">
+									<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 										<i class="fa fm fa-user-o"></i>
-										<span>Đăng Nhập</span>
-									</a></li>
-								@endguest
+										{{ auth()->user()->name }} 
+										<span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="#">Tài khoản của tôi</a>
+										</li>
+										<li>
+											<a href="#">Quản lý đơn hàng</a>
+										</li>
+										<li>
+											<a onclick="event.preventDefault(); document.getElementById('nav-logout-form').submit();"
+											href="">Đăng xuất
+											<i class="fa fm fa-arrow-circle-right"></i>
+											</a>
 
-								@auth
-									</span></a></li>
-									<li class="has-dropdown">
-										<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-											<i class="fa fm fa-user-o"></i>
-											{{ auth()->user()->name }} 
-											<span class="caret"></span>
-										</a>
-										<ul class="dropdown-menu">
-											<li>
-												<a href="#">Tài khoản của tôi</a>
-											</li>
-											<li>
-												<a href="#">Quản lý đơn hàng</a>
-											</li>
-											<li>
-												<a onclick="event.preventDefault(); document.getElementById('nav-logout-form').submit();"
-												href="">Đăng xuất
-												<i class="fa fm fa-arrow-circle-right"></i>
-												</a>
+											<form id="nav-logout-form" action="{{ route('logout') }}" method="POST">
+												@csrf
+											</form>
+										</li>
+									</ul>
+								</li>
+							@endauth
 
-												<form id="nav-logout-form" action="{{ route('logout') }}" method="POST">
-													@csrf
-												</form>
-											</li>
-										</ul>
-									</li>
-								@endauth
-
-						</ul>
-						<!-- Header Topbar Action End -->
-		
-		
-						<!-- Header Topbar Social Start -->
-						<ul class="header--topbar-social nav hidden-sm hidden-xxs">
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fa fa-rss"></i></a></li>
-							<li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-						</ul>
-						<!-- Header Topbar Social End -->
-					</div>
+					</ul>
+					<!-- Header Topbar Action End -->
+	
+	
+					<!-- Header Topbar Social Start -->
+					<ul class="header--topbar-social nav hidden-sm hidden-xxs">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="#"><i class="fa fa-rss"></i></a></li>
+						<li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+					</ul>
+					<!-- Header Topbar Social End -->
 				</div>
 			</div>
-			<!-- Header Topbar End -->
-		
-			<!-- Header Navbar Start -->
-			<div class="header--navbar navbar bd--color-1 bg--color-0" data-trigger="sticky">
-				<div class="container">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#headerNav"
-							aria-expanded="false" aria-controls="headerNav">
-							<span class="sr-only">Toggle Navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-					</div>
-		
-					<div id="headerNav" class="navbar-collapse collapse float--left">
-						<!-- Header Menu Links Start -->
-						<ul class="header--menu-links nav navbar-nav" data-trigger="hoverIntent">
-							<li>
-								<a href="{{ route('home') }}">
-									<i class="icon_home fa fa-home"></i>
-								</a>
-							</li>
-							@foreach($nabbar_categories as $category)
-								<li><a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></li>
-							@endforeach
-
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Trang<i
-										class="fa flm fa-angle-down"></i></a>
-								<ul class="dropdown-menu">
-									<li><a href="{{ route('about') }}">Giới thiệu</a></li>
-									<li><a href="{{ route('contact.create') }}">Liên hệ</a></li>
-									<li><a href="#">404</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="{{ route('categories.index') }}">
-									<span style="color: #ccc; margin-right: 10px;">Tất cả</span>
-									<img  width="17" class="icon-menu" src="https://static.vnncdn.net/v1/icon/menu-center.svg">
-								</a>
-							</li>
-						</ul>
-						<!-- Header Menu Links End -->
-					</div>
-		
-					<!-- Header Search Form Start -->
-					<form method="POST" action=".public/search" class="header--search-form float--right" data-form="validate">
-						<input type="hidden" name="_token" value="LAQJ9PKPIncFdCFDYYhLHB5QRQZyFZNQNqF4FhET">                <input type="search" name="search" placeholder="Search..." class="header--search-control form-control"
-							required>
-		
-						<button type="submit" class="header--search-btn btn"><i
-								class="header--search-icon fa fa-search"></i></button>
-					</form>
-					<!-- Header Search Form End -->
+		</div>
+		<!-- Header Topbar End -->
+	
+		<!-- Header Navbar Start -->
+		<div class="header--navbar navbar bd--color-1 bg--color-0" data-trigger="sticky">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#headerNav"
+						aria-expanded="false" aria-controls="headerNav">
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
 				</div>
-			</div>
-			<!-- Header Navbar End -->
-		</header>
-		<!-- Header Section End -->
+	
+				<div id="headerNav" class="navbar-collapse collapse float--left">
+					<!-- Header Menu Links Start -->
+					<ul class="header--menu-links nav navbar-nav" data-trigger="hoverIntent">
+						<li>
+							<a href="{{ route('home') }}">
+								<i class="icon_home fa fa-home"></i>
+							</a>
+						</li>
+						@foreach($categories as $category)
+							<li><a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></li>
+						@endforeach
 
-		 <!-- Posts Filter Bar Start -->
-		 <div class="posts--filter-bar style--3 hidden-xs">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Trang<i
+									class="fa flm fa-angle-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ route('about') }}">Giới thiệu</a></li>
+								<li><a href="{{ route('contact.create') }}">Liên hệ</a></li>
+								<li><a href="#">404</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="{{ route('categories.index') }}">
+								<span style="color: #ccc; margin-right: 10px;">Tất cả</span>
+								<img  width="17" class="icon-menu" src="https://static.vnncdn.net/v1/icon/menu-center.svg">
+							</a>
+						</li>
+					</ul>
+					<!-- Header Menu Links End -->
+				</div>
+	
+				<!-- Header Search Form Start -->
+				<form method="POST" action=".public/search" class="header--search-form float--right" data-form="validate">
+					<input type="hidden" name="_token" value="LAQJ9PKPIncFdCFDYYhLHB5QRQZyFZNQNqF4FhET">                <input type="search" name="search" placeholder="Search..." class="header--search-control form-control"
+						required>
+	
+					<button type="submit" class="header--search-btn btn"><i
+							class="header--search-icon fa fa-search"></i></button>
+				</form>
+				<!-- Header Search Form End -->
+			</div>
+		</div>
+		<!-- Header Navbar End -->
+	</header>
+
+	<!-- Header Section End -->
+	<div id="page" class="wrapper">
+	
+		<!-- Posts Filter Bar Start -->
+		<div class="posts--filter-bar style--3 hidden-xs">
 			<div class="container">
 				<ul class="nav">
 					<li>
@@ -254,7 +252,7 @@
 					</li>
 				</ul>
 			</div>
-    	</div>
+		</div>
 
 		<!-- News Ticker Start -->
 		<div class="news--ticker">
@@ -265,155 +263,149 @@
 
 				<div class="news-updates--list" data-marquee="true">
 					<ul class="nav">
-										<li>
-							<h3 class="h3"><a href=".public/bai-viet-droptop-phien-ban-tien-linh">Droptop phiên bản Tiến Linh.</a></h3>
-						</li>
-										<li>
-							<h3 class="h3"><a href=".public/bai-viet-tphcm-ra-mat-dich-vu-xe-dap-cong-cong">TPHCM ra mắt dịch vụ xe đạp công cộng.</a></h3>
-						</li>
-										<li>
-							<h3 class="h3"><a href=".public/bai-viet-nhieu-dau-hieu-la-tu-lo-den-trung-tam-ngan-ha-quai-vat-troi-day">Nhiều dấu hiệu lạ từ lỗ đen trung tâm Ngân Hà: Quái vật trỗi dậy?.</a></h3>
-						</li>
-										<li>
-							<h3 class="h3"><a href=".public/bai-viet-vong-tron-lua-tu-vu-tru-khac-hien-ra-gan-chung-ta-khoa-hoc-boi-roi">Vòng tròn lửa &quot;từ vũ trụ khác&quot; hiện ra gần chúng ta, khoa học bối rối.</a></h3>
-						</li>
-										<li>
-							<h3 class="h3"><a href=".public/bai-viet-5-phat-minh-vi-dai-nhat-cua-nhan-loai-lam-thay-doi-ca-the-gioi">5 phát minh vĩ đại nhất của nhân loại làm thay đổi cả thế giới.</a></h3>
-						</li>
-									</ul>
+						@foreach($recent_posts as $recent_post)
+							<li>
+								<h3 class="h3"><a href="{{ route('posts.show', $recent_post) }}">{{ $recent_post->title }}</a></h3>
+							</li>
+						@endforeach
+					</ul>
 				</div>
 			</div>
 		</div>
-	
-        @yield('content')
 
-		<div id="colorlib-subscribe" class="subs-img" style="background-image: url( {{ asset('blog_template/images/img_bg_2.jpg')}} );" data-stellar-background-ratio="0.5">
-			<div class="overlay"></div>
+		@yield('content')
+
+	</div>
+	
+	<div id="colorlib-subscribe" class="subs-img" style="background-image: url( {{ asset('blog_template/images/img_bg_2.jpg')}} );" data-stellar-background-ratio="0.5">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
+					<h2>Theo dõi chúng tôi</h2>
+					<p>Đăng ký theo dõi chúng tôi để cập nhật bản tin mới nhất mỗi ngày</p>
+				</div>
+			</div>
+			<div class="row animate-box">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="row">
+						<div class="col-md-12">
+						<form class="form-inline qbstp-header-subscribe">
+							<div class="col-three-forth">
+								<div class="form-group">
+									<input type="text" class="form-control" id="email" placeholder="Nhập email của bản">
+								</div>
+							</div>
+							<div class="col-one-third">
+								<div class="form-group">
+									<button type="submit" class="btn btn-primary">Đăng ký ngay</button>
+								</div>
+							</div>
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<footer id="colorlib-footer">
+		<div class="container">
+			<div class="row row-pb-md">
+				<div class="col-md-3 colorlib-widget">
+					<h4>Thông tin liên hệ</h4>
+					<ul class="colorlib-footer-links">
+						<li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
+						<li><a href="tel://1234567920"><i class="icon-phone"></i> + 0392 776 630</a></li>
+						<li><a href="mailto:info@yoursite.com"><i class="icon-envelope"></i> hutechnews.com</a></li>
+						<li><a href="http://luxehotel.com"><i class="icon-location4"></i> hutech.com</a></li>
+					</ul>
+				</div>
+				<div class="col-md-2 colorlib-widget">
+					<h4>Programs</h4>
+					<p>
+						<ul class="colorlib-footer-links">
+							<li><a href="#"><i class="icon-check"></i> Diploma Degree</a></li>
+							<li><a href="#"><i class="icon-check"></i> BS Degree</a></li>
+							<li><a href="#"><i class="icon-check"></i> Beginner</a></li>
+							<li><a href="#"><i class="icon-check"></i> Intermediate</a></li>
+							<li><a href="#"><i class="icon-check"></i> Advance</a></li>
+							<li><a href="#"><i class="icon-check"></i> Difficulty</a></li>
+						</ul>
+					</p>
+				</div>
+				<div class="col-md-2 colorlib-widget">
+					<h4>Useful Links</h4>
+					<p>
+						<ul class="colorlib-footer-links">
+							<li><a href="#"><i class="icon-check"></i> About Us</a></li>
+							<li><a href="#"><i class="icon-check"></i> Testimonials</a></li>
+							<li><a href="#"><i class="icon-check"></i> Courses</a></li>
+							<li><a href="#"><i class="icon-check"></i> Event</a></li>
+							<li><a href="#"><i class="icon-check"></i> News</a></li>
+							<li><a href="#"><i class="icon-check"></i> Contact</a></li>
+						</ul>
+					</p>
+				</div>
+
+				<div class="col-md-2 colorlib-widget">
+					<h4>Support</h4>
+					<p>
+						<ul class="colorlib-footer-links">
+							<li><a href="#"><i class="icon-check"></i> Documentation</a></li>
+							<li><a href="#"><i class="icon-check"></i> Forums</a></li>
+							<li><a href="#"><i class="icon-check"></i> Help &amp; Support</a></li>
+							<li><a href="#"><i class="icon-check"></i> Scholarship</a></li>
+							<li><a href="#"><i class="icon-check"></i> Student Transport</a></li>
+							<li><a href="#"><i class="icon-check"></i> Release Status</a></li>
+						</ul>
+					</p>
+				</div>
+
+				<div class="col-md-3 colorlib-widget">
+					<h4>Recent Post</h4>
+					<div class="f-blog">
+						<a href="blog.html" class="blog-img" style="background-image: url( {{ asset('blog_template/images/blog-1.jpg') }} );">
+						</a>
+						<div class="desc">
+							<h2><a href="blog.html">Creating Mobile Apps</a></h2>
+							<p class="admin"><span>18 April 2018</span></p>
+						</div>
+					</div>
+					<div class="f-blog">
+						<a href="blog.html" class="blog-img" style="background-image: url( {{  asset('blog_template/images/blog-2.jpg')}} );">
+						</a>
+						<div class="desc">
+							<h2><a href="blog.html">Creating Mobile Apps</a></h2>
+							<p class="admin"><span>18 April 2018</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="copy">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
-						<h2>Theo dõi chúng tôi</h2>
-						<p>Đăng ký theo dõi chúng tôi để cập nhật bản tin mới nhất mỗi ngày</p>
-					</div>
-				</div>
-				<div class="row animate-box">
-					<div class="col-md-6 col-md-offset-3">
-						<div class="row">
-							<div class="col-md-12">
-							<form class="form-inline qbstp-header-subscribe">
-								<div class="col-three-forth">
-									<div class="form-group">
-										<input type="text" class="form-control" id="email" placeholder="Nhập email của bản">
-									</div>
-								</div>
-								<div class="col-one-third">
-									<div class="form-group">
-										<button type="submit" class="btn btn-primary">Đăng ký ngay</button>
-									</div>
-								</div>
-							</form>
-							</div>
-						</div>
+					<div class="col-md-12 text-center">
+						<p>
+							<small class="block">&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+		Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+		<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></small><br> 
+							<small class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a>, <a href="http://pexels.com/" target="_blank">Pexels</a></small>
+						</p>
 					</div>
 				</div>
 			</div>
 		</div>
-		<footer id="colorlib-footer">
-			<div class="container">
-				<div class="row row-pb-md">
-					<div class="col-md-3 colorlib-widget">
-						<h4>Thông tin liên hệ</h4>
-						<ul class="colorlib-footer-links">
-							<li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
-							<li><a href="tel://1234567920"><i class="icon-phone"></i> + 0392 776 630</a></li>
-							<li><a href="mailto:info@yoursite.com"><i class="icon-envelope"></i> hutechnews.com</a></li>
-							<li><a href="http://luxehotel.com"><i class="icon-location4"></i> hutech.com</a></li>
-						</ul>
-					</div>
-					<div class="col-md-2 colorlib-widget">
-						<h4>Programs</h4>
-						<p>
-							<ul class="colorlib-footer-links">
-								<li><a href="#"><i class="icon-check"></i> Diploma Degree</a></li>
-								<li><a href="#"><i class="icon-check"></i> BS Degree</a></li>
-								<li><a href="#"><i class="icon-check"></i> Beginner</a></li>
-								<li><a href="#"><i class="icon-check"></i> Intermediate</a></li>
-								<li><a href="#"><i class="icon-check"></i> Advance</a></li>
-								<li><a href="#"><i class="icon-check"></i> Difficulty</a></li>
-							</ul>
-						</p>
-					</div>
-					<div class="col-md-2 colorlib-widget">
-						<h4>Useful Links</h4>
-						<p>
-							<ul class="colorlib-footer-links">
-								<li><a href="#"><i class="icon-check"></i> About Us</a></li>
-								<li><a href="#"><i class="icon-check"></i> Testimonials</a></li>
-								<li><a href="#"><i class="icon-check"></i> Courses</a></li>
-								<li><a href="#"><i class="icon-check"></i> Event</a></li>
-								<li><a href="#"><i class="icon-check"></i> News</a></li>
-								<li><a href="#"><i class="icon-check"></i> Contact</a></li>
-							</ul>
-						</p>
-					</div>
+	</footer>
 
-					<div class="col-md-2 colorlib-widget">
-						<h4>Support</h4>
-						<p>
-							<ul class="colorlib-footer-links">
-								<li><a href="#"><i class="icon-check"></i> Documentation</a></li>
-								<li><a href="#"><i class="icon-check"></i> Forums</a></li>
-								<li><a href="#"><i class="icon-check"></i> Help &amp; Support</a></li>
-								<li><a href="#"><i class="icon-check"></i> Scholarship</a></li>
-								<li><a href="#"><i class="icon-check"></i> Student Transport</a></li>
-								<li><a href="#"><i class="icon-check"></i> Release Status</a></li>
-							</ul>
-						</p>
-					</div>
-
-					<div class="col-md-3 colorlib-widget">
-						<h4>Recent Post</h4>
-						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url( {{ asset('blog_template/images/blog-1.jpg') }} );">
-							</a>
-							<div class="desc">
-								<h2><a href="blog.html">Creating Mobile Apps</a></h2>
-								<p class="admin"><span>18 April 2018</span></p>
-							</div>
-						</div>
-						<div class="f-blog">
-							<a href="blog.html" class="blog-img" style="background-image: url( {{  asset('blog_template/images/blog-2.jpg')}} );">
-							</a>
-							<div class="desc">
-								<h2><a href="blog.html">Creating Mobile Apps</a></h2>
-								<p class="admin"><span>18 April 2018</span></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="copy">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<p>
-								<small class="block">&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></small><br> 
-								<small class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a>, <a href="http://pexels.com/" target="_blank">Pexels</a></small>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-	</div>
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	</div>
 	
-	<!-- jQuery -->
+	
+		<!-- jQuery -->
 	<script src="{{ asset('blog_template/js/jquery.min.js') }}"></script>
 	<!-- jQuery Easing -->
 	<script src="{{ asset('blog_template/js/jquery.easing.1.3.js') }}"></script>
@@ -481,8 +473,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="{{ asset('kcnew/frontend/js/main.js') }}"></script>
 	
 
-    @yield('custom_js')
+	@yield('custom_js')
 
-	</body>
+</body>
 </html>
 

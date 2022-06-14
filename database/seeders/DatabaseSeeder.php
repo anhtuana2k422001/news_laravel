@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Category::factory(10)->create();
         \App\Models\Category::factory()->create(['name' => 'Chưa phân loại']);
 
-        $posts = \App\Models\Post::factory(30)->create();
+        $posts = \App\Models\Post::factory(100)->create();
 
         \App\Models\Comment::factory(100)->create();
 
