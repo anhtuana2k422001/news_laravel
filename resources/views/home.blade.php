@@ -16,135 +16,121 @@
 					<div class="row gutter--15">
 						<div class="col-md-6">
 							<div class="row gutter--15">
+							
+								@foreach ($postnew1 as $postnew1)
 								<div class="col-xs-6 col-xss-12">
 									<!-- Post Item Start -->
 									<div class="post--item post--layout-1 post--title-large">
 										<div class="post--img">
-											<a href="http://127.0.0.1:8000/bai-viet-droptop-phien-ban-tien-linh"
+											<a href="{{ route('posts.show', $postnew1) }}"
 												class="thumb"><img
-													src="{{ asset('kcnew/uploads/tintuc/Screenshot 2022-05-20 0804264.png') }}"
+													src="{{ asset($postnew1->image ? 'storage/' .$postnew1->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 													alt=""></a>
-
-											<a href="http://127.0.0.1:8000/category/the-thao" class="cat">Thể
-												thao</a>
-
+											<a href="{{ route('categories.show', $category_new[0]) }}" class="cat">{{ $category_new[0]->name }}</a>
 
 											<a href="#" class="icon"><i class="fa fa-flash"></i></a>
-
 											<div class="post--info">
 												<ul class="nav meta">
-													<li><a href="#">2022-05-20</a></li>
+													<li><a href="#">{{ $postnew1->author->name }}</a></li>
+													<li><a href="#">{{ $postnew1->created_at->diffForHumans() }}</a></li>
 												</ul>
-
 												<div class="title">
-													<h2 class="h4"><a
-															href="http://127.0.0.1:8000/bai-viet-droptop-phien-ban-tien-linh"
-															class="btn-link">Droptop phiên bản Tiến Linh</a></h2>
+													<h2 class="h4"><a href="{{ route('posts.show', $postnew1) }}" class="btn-link">{{ $postnew1->title }}</a>
+													</h2>
 												</div>
 											</div>
 										</div>
 									</div>
 									<!-- Post Item End -->
 								</div>
+								@endforeach
+								
 
+								@foreach ($postnew2 as $postnew2)
 								<div class="col-xs-6 col-xss-12">
 									<!-- Post Item Start -->
 									<div class="post--item post--layout-1 post--title-large">
 										<div class="post--img">
-											<a href="http://127.0.0.1:8000/bai-viet-tphcm-ra-mat-dich-vu-xe-dap-cong-cong"
-												class="thumb"><img src="{{ asset('kcnew/uploads/tintuc/xe03_caqb99.jpg') }}"
+											<a href="{{ route('posts.show', $postnew2) }}"
+												class="thumb"><img
+													src="{{ asset($postnew2->image ? 'storage/' .$postnew2->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 													alt=""></a>
-
-											<a href="http://127.0.0.1:8000/category/xe-co" class="cat">Xe cộ</a>
-
+											<a href="{{ route('categories.show', $category_new[1]) }}" class="cat">{{ $category_new[1]->name }}</a>
 
 											<a href="#" class="icon"><i class="fa fa-flash"></i></a>
-
 											<div class="post--info">
 												<ul class="nav meta">
-													<li><a href="#">Lâm Thùy Linh</a></li>
-
-													<li><a href="#">2022-05-19</a></li>
+													<li><a href="#">{{ $postnew2->author->name }}</a></li>
+													<li><a href="#">{{ $postnew2->created_at->diffForHumans() }}</a></li>
 												</ul>
-
 												<div class="title">
-													<h2 class="h4"><a
-															href="http://127.0.0.1:8000/bai-viet-tphcm-ra-mat-dich-vu-xe-dap-cong-cong"
-															class="btn-link">TPHCM ra mắt dịch vụ xe đạp công
-															cộng</a></h2>
+													<h2 class="h4"><a href="{{ route('posts.show', $postnew2) }}" class="btn-link">{{ $postnew2->title }}</a>
+													</h2>
 												</div>
 											</div>
 										</div>
 									</div>
 									<!-- Post Item End -->
 								</div>
+								@endforeach
 
-
+								@foreach ($postnew3 as $postnew3)
 								<div class="col-sm-12 hidden-sm hidden-xs">
 									<!-- Post Item Start -->
 									<div class="post--item post--layout-1 post--title-larger">
 										<div class="post--img">
-											<a href="http://127.0.0.1:8000/bai-viet-nha-5-tang-o-ha-noi-boc-chay-ngun-ngut"
+											<a href="{{ route('posts.show', $postnew3) }}"
 												class="thumb"><img
-													src="{{ asset('kcnew/uploads/tintuc/6-1652318675113_e7de2184_7787a802.jpg') }}"
+													src="{{ asset($postnew3->image ? 'storage/' .$postnew3->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 													style="height:200px" alt=""></a>
 
-											<a href="http://127.0.0.1:8000/category/xe-co" class="cat">Xã hội</a>
+											<a href="{{ route('categories.show', $category_new[2]) }}" class="cat">{{ $category_new[2]->name }}</a>
 
 											<a href="#" class="icon"><i class="fa fa-fire"></i></a>
 
 											<div class="post--info">
 												<ul class="nav meta">
-													<li><a href="#">Lâm Thùy Linh</a></li>
-													<li><a href="#">2022-05-13</a></li>
+													<li><a href="#">{{ $postnew3->author->name }}</a></li>
+													<li><a href="#">{{ $postnew3->created_at->diffForHumans() }}</a></li>
 												</ul>
 
 												<div class="title">
 													<h2 class="h4"><a
-															href="http://127.0.0.1:8000/bai-viet-nha-5-tang-o-ha-noi-boc-chay-ngun-ngut"
-															class="btn-link">Nhà 5 tầng ở Hà Nội bốc cháy ngùn
-															ngụt</a></h2>
+															href="{{ route('posts.show', $postnew3) }}"
+															class="btn-link">{{ $postnew3->title }}</a></h2>
 												</div>
 											</div>
 										</div>
 									</div>
 									<!-- Post Item End -->
 								</div>
+								@endforeach
+
 							</div>
 						</div>
 
+						@foreach ($postnew4 as $postnew4)
 						<div class="col-md-6">
 							<!-- Post Item Start -->
 							<div class="post--item post--layout-1 post--title-larger">
 								<div class="post--img">
-									<a href="http://127.0.0.1:8000/bai-viet-luu-duc-hoa-luong-trieu-vy-bieu-tuong-dien-anh-hong-kong-cung-hai-cuoc-doi-doi-lap"
-										class="thumb"><img src="{{ asset('kcnew/uploads/tintuc/2 (1).jpg') }}" alt=""></a>
+									<a href="{{ route('posts.show', $postnew4) }}"
+										class="thumb"><img src="{{ asset($postnew4->image ? 'storage/' .$postnew4->image->path : 'storage/placeholders/placeholder-image.png'  )}}" alt=""></a>
 
-									<a href="http://127.0.0.1:8000/category/van-hoa" class="cat">Văn hóa</a>
+									<a href="{{ route('categories.show', $category_new[3]) }}" class="cat">{{ $category_new[3]->name }}</a>
 
 									<a href="#" class="icon"><i class="fa fa-flash"></i></a>
 
-									<div class="post--map">
-										<p class="btn-link"><i class="fa fa-map-o"></i>Location in Google Map
-										</p>
-
-										<div class="map--wrapper">
-											<div data-map-latitude="23.790546" data-map-longitude="90.375583"
-												data-map-zoom="6" data-map-marker="[[23.790546, 90.375583]]"></div>
-										</div>
-									</div>
-
 									<div class="post--info">
 										<ul class="nav meta">
-											<li><a href="#">Huỳnh Thị Tuyết Nhi</a></li>
-											<li><a href="#">2022-05-13</a></li>
+											<li><a href="#">{{ $postnew4->author->name }}</a></li>
+											<li><a href="#">{{ $postnew4->created_at->diffForHumans() }}</a></li>
 										</ul>
 
 										<div class="title">
 											<h2 class="h4"><a
-													href="http://127.0.0.1:8000/bai-viet-luu-duc-hoa-luong-trieu-vy-bieu-tuong-dien-anh-hong-kong-cung-hai-cuoc-doi-doi-lap"
-													class="btn-link">Lưu Đức Hoa - Lương Triều Vỹ: Biểu tượng điện
-													ảnh Hong Kong cùng hai cuộc đời đối lập</a>
+													href="{{ route('posts.show', $postnew4) }}"
+													class="btn-link">{{ $postnew4->title }}</a>
 											</h2>
 										</div>
 									</div>
@@ -152,6 +138,8 @@
 							</div>
 							<!-- Post Item End -->
 						</div>
+						@endforeach
+
 					</div>
 				</div>
 				<!-- Post Items End -->
@@ -1116,53 +1104,27 @@
 								<!-- Post Items Start -->
 								<div class="post--items post--items-3" data-ajax-content="outer">
 									<ul class="nav" data-ajax-content="inner">
+										
+										@foreach($outstanding_posts as $outstanding_post)
 										<li>
 											<!-- Post Item Start -->
 											<div class="post--item post--layout-3">
 												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-loat-chinh-sach-ve-nguoi-lao-dong-tien-luong-co-hieu-luc-tu-thang-112021"
+													<a href="{{ route('posts.show', $outstanding_post) }}"
 														class="thumb"><img
-															src="public/uploads/tintuc/chinh-sach-co-hieu-luc-tu-thang-11-2021-dspl.jpg"
+															src="{{ asset($outstanding_post->image ? 'storage/' .$outstanding_post->image->path : 'storage/placeholders/placeholder-image.png')}}"
 															alt=""></a>
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">Huỳnh Thị Tuyết Nhi</a>
+															<li><a href="#">{{ $outstanding_post->author->name }}</a>
 															</li>
-															<li><a href="#">2022-05-13</a></li>
+															<li><a href="#">{{ $outstanding_post->created_at->diffForHumans()}}</a></li>
 														</ul>
 
 														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/loat-chinh-sach-ve-nguoi-lao-dong-tien-luong-co-hieu-luc-tu-thang-112021"
-																	class="btn-link">Loạt chính sách về người lao
-																	động, tiền lương có hiệu lực từ tháng
-																	11/2021</a></h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-hoa-loa-ken-tu-vuon-ra-pho"
-														class="thumb"><img src="public/uploads/tintuc/img_5055.jpg"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Huỳnh Thị Tuyết Nhi</a>
-															</li>
-															<li><a href="#">2022-05-13</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/hoa-loa-ken-tu-vuon-ra-pho"
-																	class="btn-link">Hoa loa kèn, từ vườn ra phố</a>
+															<h3 class="h4">
+																<a href="{{ route('posts.show', $outstanding_post) }}" class="btn-link">{{ $outstanding_post->title }} </a>
 															</h3>
 														</div>
 													</div>
@@ -1170,59 +1132,8 @@
 											</div>
 											<!-- Post Item End -->
 										</li>
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-kham-pha-nhung-tuyen-duong-sat-dep-nhat-chau-au"
-														class="thumb"><img src="public/uploads/tintuc/s.jpg"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Huỳnh Thị Tuyết Nhi</a>
-															</li>
-															<li><a href="#">2022-05-13</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/kham-pha-nhung-tuyen-duong-sat-dep-nhat-chau-au"
-																	class="btn-link">Khám phá những tuyến đường sắt
-																	đẹp nhất châu Âu</a></h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-luong-thap-nguoi-lao-dong-tung-quan-khong-dam-lap-gia-dinh-thuong-xuyen-di-vay"
-														class="thumb"><img src="public/uploads/tintuc/img_0203.jpg"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Huỳnh Thị Tuyết Nhi</a>
-															</li>
-															<li><a href="#">2022-05-13</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/luong-thap-nguoi-lao-dong-tung-quan-khong-dam-lap-gia-dinh-thuong-xuyen-di-vay"
-																	class="btn-link">Lương thấp người lao động túng
-																	quẫn: Không dám lập gia đình, thường xuyên đi
-																	vay</a></h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
+										@endforeach
+									
 									</ul>
 
 
