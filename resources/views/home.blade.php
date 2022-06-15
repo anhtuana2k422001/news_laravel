@@ -16,7 +16,7 @@
 					<div class="row gutter--15">
 						<div class="col-md-6">
 							<div class="row gutter--15">
-							
+
 								@foreach ($postnew1 as $postnew1)
 								<div class="col-xs-6 col-xss-12">
 									<!-- Post Item Start -->
@@ -45,7 +45,6 @@
 								</div>
 								@endforeach
 								
-
 								@foreach ($postnew2 as $postnew2)
 								<div class="col-xs-6 col-xss-12">
 									<!-- Post Item Start -->
@@ -155,38 +154,35 @@
 							<div class="col-md-6 ptop--30 pbottom--30">
 								<!-- Post Items Title Start -->
 								<div class="post--items-title" data-ajax="tab">
-									<h2 class="h4">Tin thế giới</h2>
+									<h2 class="h4">{{ $category_home[0]->name }}</h2>
 								</div>
 								<!-- Post Items Title End -->
 
 								<!-- Post Items Start -->
 								<div class="post--items post--items-2" data-ajax-content="outer">
 									<ul class="nav row gutter--15" data-ajax-content="inner">
+								
+									
 										<li class="col-xs-12">
 											<!-- Post Item Start -->
 											<div class="post--item post--layout-1">
 												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-kham-pha-nhung-tuyen-duong-sat-dep-nhat-chau-au"
-														class="thumb"><img src="./public/uploads/tintuc/s.jpg"
+													<a href="{{ route('posts.show', $post_category_home1[0]) }}"
+														class="thumb"><img src="{{ asset($post_category_home1[0]->image ? 'storage/' . $post_category_home1[0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 															alt=""></a>
-
-													<a href="http://127.0.0.1:8000/category/the-gioi"
-														class="cat">Thế giới</a>
-
 
 													<a href="#" class="icon"><i class="fa fa-flash"></i></a>
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">Huỳnh Thị Tuyết Nhi</a></li>
-															<li><a href="#">2022-05-13</a></li>
+															<li><a href="#">{{ $post_category_home1[0]->author->name }}</a></li>
+															<li><a href="#">{{ $post_category_home1[0]->created_at->diffForHumans() }}</a></li>
 														</ul>
 
 														<div class="title">
 															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-kham-pha-nhung-tuyen-duong-sat-dep-nhat-chau-au"
-																	class="btn-link">Khám phá những tuyến đường sắt
-																	đẹp nhất châu Âu</a>
+																	href="{{ route('posts.show', $post_category_home1[0]) }}"
+																	class="btn-link">{{ $post_category_home1[0]->title }}</a>
 															</h3>
 														</div>
 													</div>
@@ -195,130 +191,42 @@
 											<!-- Post Item End -->
 										</li>
 
-										<li class="col-xs-12">
-											<!-- Divider Start -->
-											<hr class="divider">
-											<!-- Divider End -->
-										</li>
-										<li class="col-xs-6">
-											<!-- Post Item Start -->
+										@for ($i = 1; $i <= 4; $i++)
+											@if($i==1 || $i == 3 )
+											<li class="col-xs-12">
+												<!-- Divider Start -->
+												<hr class="divider">
+												<!-- Divider End -->
+											</li>
+											@endif 
+											<li class="col-xs-6">
+												<!-- Post Item Start -->
 
-											<div class="post--item post--layout-2">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-eu-chua-thong-qua-duoc-goi-trung-phat-thu-6-nham-vao-nga"
-														class="thumb"><img
-															src="./public/uploads/tintuc/goi_trung_phat_thu_6_cua_eu_len_nga_khong_duoc_thong_qua86.jpg"
-															alt=""></a>
+												<div class="post--item post--layout-2">
+													<div class="post--img">
+														<a href="{{ route('posts.show', $post_category_home1[$i]) }}"
+															class="thumb"><img
+																src="{{ asset($post_category_home1[$i]->image ? 'storage/' . $post_category_home1[$i]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
+																alt=""></a>
 
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Lâm Thùy Linh</a></li>
-															<li><a href="#">2022-05-19</a></li>
-														</ul>
+														<div class="post--info">
+															<ul class="nav meta">
+																<li><a href="#">{{ $post_category_home1[$i]->author->name }}</a></li>
+																<li><a href="#">{{ $post_category_home1[$i]->created_at->diffForHumans() }}</a></li>
+															</ul>
 
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-eu-chua-thong-qua-duoc-goi-trung-phat-thu-6-nham-vao-nga"
-																	class="btn-link">EU chưa thông qua được gói
-																	trừng phạt thứ 6 nhằm vào Nga</a>
-															</h3>
+															<div class="title">
+																<h3 class="h4"><a
+																		href="{{ route('posts.show', $post_category_home1[$i]) }}"
+																		class="btn-link">{{ $post_category_home1[$i]->title }}</a>
+																</h3>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
-
-											<!-- Post Item End -->
-										</li>
-										<li class="col-xs-6">
-											<!-- Post Item Start -->
-
-											<div class="post--item post--layout-2">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-kosovo-tuyen-bo-muon-gia-nhap-nato-va-eu"
-														class="thumb"><img src="./public/uploads/tintuc/kosovo6.jpg"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Lâm Thùy Linh</a></li>
-															<li><a href="#">2022-05-19</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-kosovo-tuyen-bo-muon-gia-nhap-nato-va-eu"
-																	class="btn-link">Kosovo tuyên bố muốn gia nhập
-																	NATO và EU</a>
-															</h3>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<!-- Post Item End -->
-										</li>
-										<li class="col-xs-12">
-											<!-- Divider Start -->
-											<hr class="divider">
-											<!-- Divider End -->
-										</li>
-										<li class="col-xs-6">
-											<!-- Post Item Start -->
-
-											<div class="post--item post--layout-2">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-lich-su-san-francisco-thanh-pho-vang-cua-xu-so-co-hoa"
-														class="thumb"><img src="./public/uploads/tintuc/1.jpg"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Huỳnh Thị Tuyết Nhi</a></li>
-															<li><a href="#">2022-05-13</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-lich-su-san-francisco-thanh-pho-vang-cua-xu-so-co-hoa"
-																	class="btn-link">Lịch sử San Francisco - thành
-																	phố vàng của xứ sở cờ hoa</a>
-															</h3>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<!-- Post Item End -->
-										</li>
-										<li class="col-xs-6">
-											<!-- Post Item Start -->
-
-											<div class="post--item post--layout-2">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-kham-pha-nhung-tuyen-duong-sat-dep-nhat-chau-au"
-														class="thumb"><img src="./public/uploads/tintuc/s.jpg"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Huỳnh Thị Tuyết Nhi</a></li>
-															<li><a href="#">2022-05-13</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-kham-pha-nhung-tuyen-duong-sat-dep-nhat-chau-au"
-																	class="btn-link">Khám phá những tuyến đường sắt
-																	đẹp nhất châu Âu</a>
-															</h3>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<!-- Post Item End -->
-										</li>
-
+												<!-- Post Item End -->
+											</li>
+										@endfor
 									</ul>
 
 								</div>
@@ -330,8 +238,7 @@
 							<div class="col-md-6 ptop--30 pbottom--30">
 								<!-- Post Items Title Start -->
 								<div class="post--items-title" data-ajax="tab">
-									<h2 class="h4">Công nghệ</h2>
-
+									<h2 class="h4">{{ $category_home[1]->name }}</h2>
 
 								</div>
 								<!-- Post Items Title End -->
@@ -339,31 +246,28 @@
 								<!-- Post Items Start -->
 								<div class="post--items post--items-3" data-ajax-content="outer">
 									<ul class="nav" data-ajax-content="inner">
-
+								
 										<li>
 											<!-- Post Item Start -->
 											<div class="post--item post--layout-1">
 												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-apple-se-cho-phep-cac-ung-dung-dang-ky-thue-bao-tinh-them-tien-ma-khong-can-hoi-y-kien-nguoi-dung"
+													<a href="{{ route('posts.show', $post_category_home2[0]) }}"
 														class="thumb"><img
-															src="./public/uploads/tintuc/1971253_1971250_32d4789d174286b2a7529a5127443bb5_084135196.jpg"
+															src="{{ asset($post_category_home2[0]->image ? 'storage/' . $post_category_home2[0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 															alt=""></a>
-													<a href="http://127.0.0.1:8000/category/cong-nghe"
-														class="cat">Công nghệ</a>
+												
 													<a href="#" class="icon"><i class="fa fa-flash"></i></a>
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">Lâm Thùy Linh</a></li>
-															<li><a href="#">2022-05-19</a></li>
+															<li><a href="#">{{ $post_category_home2[0]->author->name }}</a></li>
+															<li><a href="#">{{ $post_category_home2[0]->created_at->diffForHumans() }}</a></li>
 														</ul>
 
 														<div class="title">
 															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-apple-se-cho-phep-cac-ung-dung-dang-ky-thue-bao-tinh-them-tien-ma-khong-can-hoi-y-kien-nguoi-dung"
-																	class="btn-link">Apple sẽ cho phép các ứng dụng
-																	đăng ký thuê bao tính thêm tiền mà không cần hỏi
-																	ý kiến người dùng</a>
+																	href="{{ route('posts.show', $post_category_home2[0]) }}"
+																	class="btn-link">{{ $post_category_home2[0]->title }}</a>
 															</h3>
 														</div>
 													</div>
@@ -371,27 +275,26 @@
 											</div>
 											<!-- Post Item End -->
 										</li>
-
+										@for ($i = 1; $i <= 4; $i++)
 										<li>
 											<!-- Post Item Start -->
 											<div class="post--item post--layout-3">
 												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-5-phat-minh-vi-dai-nhat-cua-nhan-loai-lam-thay-doi-ca-the-gioi"
+													<a href="{{ route('posts.show', $post_category_home2[$i]) }}"
 														class="thumb"><img
-															src="./public/uploads/tintuc/Screenshot 2022-05-19 12414264.png"
+															src="{{ asset($post_category_home2[$i]->image ? 'storage/' . $post_category_home2[$i]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 															alt=""></a>
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">Lâm Thùy Linh</a></li>
-															<li><a href="#">2022-05-19</a></li>
+															<li><a href="#">{{ $post_category_home2[$i]->author->name }}</a></li>
+															<li><a href="#">{{ $post_category_home2[$i]->created_at->diffForHumans() }}</a></li>
 														</ul>
 
 														<div class="title">
 															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-5-phat-minh-vi-dai-nhat-cua-nhan-loai-lam-thay-doi-ca-the-gioi"
-																	class="btn-link">5 phát minh vĩ đại nhất của
-																	nhân loại làm thay đổi cả thế giới</a>
+																	href="{{ route('posts.show', $post_category_home2[$i]) }}"
+																	class="btn-link">{{ $post_category_home2[$i]->title }}</a>
 															</h3>
 														</div>
 													</div>
@@ -399,119 +302,7 @@
 											</div>
 											<!-- Post Item End -->
 										</li>
-
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-apple-se-cho-phep-cac-ung-dung-dang-ky-thue-bao-tinh-them-tien-ma-khong-can-hoi-y-kien-nguoi-dung"
-														class="thumb"><img
-															src="./public/uploads/tintuc/1971253_1971250_32d4789d174286b2a7529a5127443bb5_084135196.jpg"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Lâm Thùy Linh</a></li>
-															<li><a href="#">2022-05-19</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-apple-se-cho-phep-cac-ung-dung-dang-ky-thue-bao-tinh-them-tien-ma-khong-can-hoi-y-kien-nguoi-dung"
-																	class="btn-link">Apple sẽ cho phép các ứng dụng
-																	đăng ký thuê bao tính thêm tiền mà không cần hỏi
-																	ý kiến người dùng</a>
-															</h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
-
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-thiet-bi-bien-nuoc-bien-thanh-nuoc-uong-vuot-chuan-who"
-														class="thumb"><img
-															src="./public/uploads/tintuc/screenshot_165162813514.png"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Lâm Thùy Linh</a></li>
-															<li><a href="#">2022-05-04</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-thiet-bi-bien-nuoc-bien-thanh-nuoc-uong-vuot-chuan-who"
-																	class="btn-link">Thiết bị biến nước biển thành
-																	nước uống vượt chuẩn WHO</a>
-															</h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
-
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-ioniq-5-khong-chi-than-thien-moi-truong-ma-con-thoi-trang"
-														class="thumb"><img
-															src="./public/uploads/tintuc/ioniq26-4-av.jpg"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Huỳnh Thị Tuyết Nhi</a></li>
-															<li><a href="#">2022-05-13</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-ioniq-5-khong-chi-than-thien-moi-truong-ma-con-thoi-trang"
-																	class="btn-link">IONIQ 5 - Không chỉ thân thiện
-																	môi trường mà còn thời trang</a>
-															</h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
-
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-ioniq-5-khong-chi-than-thien-moi-truong-ma-con-thoi-trang"
-														class="thumb"><img
-															src="./public/uploads/tintuc/ioniq26-4-av.jpg"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Huỳnh Thị Tuyết Nhi</a></li>
-															<li><a href="#">2022-05-13</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-ioniq-5-khong-chi-than-thien-moi-truong-ma-con-thoi-trang"
-																	class="btn-link">IONIQ 5 - Không chỉ thân thiện
-																	môi trường mà còn thời trang</a>
-															</h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
+										@endfor
 
 									</ul>
 

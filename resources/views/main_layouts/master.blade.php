@@ -263,9 +263,9 @@
 
 				<div class="news-updates--list" data-marquee="true">
 					<ul class="nav">
-						@foreach($recent_posts as $recent_post)
+						@foreach ($recent_posts as $recent_posts)
 							<li>
-								<h3 class="h3"><a href="{{ route('posts.show', $recent_post) }}">{{ $recent_post->title }}</a></h3>
+								<h3 class="h3"><a href="{{ route('posts.show', $recent_posts) }}">{{ $recent_posts->title }}</a></h3>
 							</li>
 						@endforeach
 					</ul>
