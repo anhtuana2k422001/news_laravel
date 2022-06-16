@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -53,13 +54,32 @@ class HomeController extends Controller
             // Tạo tin tức mới nhất cho layout master
             $stt_home = $stt_home + 1;    
             if($stt_home === 1)
-                $post_category_home1 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(5)->get();
+                $post_category_home0 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(5)->get();
             if($stt_home === 2)
-                $post_category_home2 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(5)->get();
+                $post_category_home1 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(6)->get();
+            if($stt_home === 3)
+                $post_category_home2 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(8)->get();
+            if($stt_home === 4)
+                $post_category_home3 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(5)->get();
+            if($stt_home === 5)
+                $post_category_home4 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(6)->get();
+            if($stt_home === 6)
+                $post_category_home5 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(5)->get();
+            if($stt_home === 7)
+                $post_category_home6 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(5)->get();
+            if($stt_home === 8)
+                $post_category_home7 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(5)->get();
+            if($stt_home === 9)
+                $post_category_home8 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(8)->get();
+            if($stt_home === 10)
+                $post_category_home9 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(4)->get();
          }
 
         // Lấy ra tất cả bài viết
         $posts_all = Post::latest()->approved()->withCount('comments')->get(); 
+
+        // Ý kiến người đọc, comments
+        $top_commnents = Comment::latest()->take(4)->get();
 
         return view('home', [ 
             'posts' => $posts,
@@ -68,13 +88,23 @@ class HomeController extends Controller
             'postnew3' => $post_new_3,
             'postnew4' =>  $post_new_4,
             'recent_posts' => $recent_posts,
+            'post_category_home0' => $post_category_home0, // Bài viết danh mục 5
             'post_category_home1' => $post_category_home1, // Bài viết danh mục 1
-            'post_category_home2' => $post_category_home2, // Bài viết danh mục 1
+            'post_category_home2' => $post_category_home2, // Bài viết danh mục 2
+            'post_category_home3' => $post_category_home3, // Bài viết danh mục 3
+            'post_category_home4' => $post_category_home4, // Bài viết danh mục 4
+            'post_category_home5' => $post_category_home5, // Bài viết danh mục 10
+            'post_category_home6' => $post_category_home6, // Bài viết danh mục 6
+            'post_category_home7' => $post_category_home7, // Bài viết danh mục 7
+            'post_category_home8' => $post_category_home8, // Bài viết danh mục 8
+            'post_category_home9' => $post_category_home9, // Bài viết danh mục 9
             'outstanding_posts' => $outstanding_posts, // Bài viết nỗi bật
             'categories' => $categories, 
             'category_new' => $category_new, // danh mục có bài viết mới
             'category_home' => $category_home, 
             'tags' => $tags,
+            'top_commnents' => $top_commnents, // Lấy ý kiến người đọc mới nhất
+
         ]);
     }
 }

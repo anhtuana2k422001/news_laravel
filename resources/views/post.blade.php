@@ -46,8 +46,7 @@
 
 								@foreach($post->comments as $comment)
 								<div id="comment_{{ $comment->id }}" class="review">
-									<!-- <div class="user-img" style="background-image: url(/blog_template/images/person1.jpg)"></div> -->
-									<div class="user-img" style="background-image: url({{ $comment->user->image ? asset('storage/' .$comment->user->image->path.'') : 'https://bloganchoi.com/wp-content/uploads/2022/02/avatar-trang-y-nghia.jpeg' }});"></div>
+									<div class="user-img" style="background-image: url({{ $comment->user->image ?  asset('storage/' . $comment->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }});"></div>
 									<div class="desc">
 										<h4>
 											<span class="text-left">{{ $comment->user->name }}</span>

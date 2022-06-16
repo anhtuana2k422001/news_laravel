@@ -61,10 +61,16 @@ class DatabaseSeeder extends Seeder
             $user -> image()->save( \App\Models\Image::factory()->make() );
         }
 
-        \App\Models\Category::factory(10)->create();
-        \App\Models\Category::factory()->create(['name' => 'Chưa phân loại']);
+        // \App\Models\Category::factory(10)->create();
+        //\App\Models\Category::factory()->create(['name' => 'Chưa phân loại']);
+        $Category_defaules = ['Chưa phân loại','Thế giới','Xã hội','Kinh tế','Văn hóa','Giáo dục','Thể thao',
+        'Giải trí','Pháp luật','Công nghệ','Khoa học','Đời sống','Xe cộ','Nhà đất']; 
+        foreach($Category_defaules as $Category_defaule){
+                \App\Models\Category::factory()->create(['name' => $Category_defaule]);
+        }
+        
 
-        $posts = \App\Models\Post::factory(100)->create();
+        $posts = \App\Models\Post::factory(200)->create();
 
         \App\Models\Comment::factory(100)->create();
 

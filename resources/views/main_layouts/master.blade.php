@@ -449,22 +449,22 @@
 	<script src="{{ asset('kcnew/frontend/js/jquery.validate.min.js') }}"></script>
 
 	<!-- ==== Isotope Plugin ==== -->
-	<!-- <script src="{{ asset('kcnew/frontend/js/isotope.min.js') }}"></script> -->
+	<script src="{{ asset('kcnew/frontend/js/isotope.min.js') }}"></script>
 
 	<!-- ==== Resize Sensor Plugin ==== -->
-	<!-- <script src="{{ asset('kcnew/frontend/js/resizesensor.min.js') }}"></script> -->
+	<script src="{{ asset('kcnew/frontend/js/resizesensor.min.js') }}"></script>
 
 	<!-- ==== Sticky Sidebar Plugin ==== -->
-	<!-- <script src="{{ asset('kcnew/frontend/js/theia-sticky-sidebar.min.js') }}"></script> -->
+	<script src="{{ asset('kcnew/frontend/js/theia-sticky-sidebar.min.js') }}"></script>
 
 	<!-- ==== Zoom Plugin ==== -->
-	<!-- <script src="{{ asset('kcnew/frontend/js/jquery.zoom.min.js') }}"></script> -->
+	<script src="{{ asset('kcnew/frontend/js/jquery.zoom.min.js') }}"></script>
 
 	<!-- ==== Bar Rating Plugin ==== -->
-	<!-- <script src="{{ asset('kcnew/frontend/js/jquery.barrating.min.js') }}"></script> -->
+	<script src="{{ asset('kcnew/frontend/js/jquery.barrating.min.js') }}"></script>
 
 	<!-- ==== Countdown Plugin ==== -->
-	<!-- <script src="{{ asset('kcnew/frontend/js/jquery.countdown.min.js') }}"></script> -->
+	<script src="{{ asset('kcnew/frontend/js/jquery.countdown.min.js') }}"></script>
 
 	<!-- ==== RetinaJS Plugin ==== -->
 	<script src="{{ asset('kcnew/frontend/js/retina.min.js') }}"></script>
