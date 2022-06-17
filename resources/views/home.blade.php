@@ -647,6 +647,22 @@
 						</div>
 						<!-- Widget End -->
 
+						<!-- Bắt đầu Từ khóa -->
+						<div class="widget">
+							<div class="widget--title  " data-ajax="tab">
+								<h2 class="h4">Từ khóa</h2>
+							</div>
+							<div class="list--widget list--widget-1" data-ajax-content="outer">
+								<!-- Post Items Start -->
+								<div class="post--items post--items-3">
+									<ul style="padding:20px" class="nav sidebar" data-ajax-content="inner">
+										<x-blog.side-tags :tags="$tags"/>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- Kết thúc từ khóa -->
+
 						<!-- Widget Start -->
 						<div class="widget">
 							<!-- Ad Widget Start -->
@@ -1579,6 +1595,9 @@
 							<!-- List Widgets End -->
 						</div>
 						<!-- Widget End -->
+
+			
+
 					</div>
 				</div> <!-- Main Sidebar End -->
 			</div>

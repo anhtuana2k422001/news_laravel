@@ -19,7 +19,8 @@ class CategoryController extends Controller
     public function show(Category $category){
 
         $recent_posts = Post::latest()->take(5)->get();
-        $categories = Category::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
+        $categories  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();
+        // $categories = Category::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
         $tags = Tag::latest()->take(50)->get();
         
         return view('categories.show', [

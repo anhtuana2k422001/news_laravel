@@ -17,8 +17,6 @@ class HomeController extends Controller
         // where('approved',1)
         ->withCount('comments')->paginate(8); 
         // phân trang 8 bài
-
-   
         
         $recent_posts = Post::latest()->take(5)->get();
 
@@ -29,7 +27,7 @@ class HomeController extends Controller
         $tags = Tag::latest()->take(50)->get();
 
         
-        $category_new = Category::orderBy('created_at','ASC')->take(4)->get();
+        $category_new = Category::where('name','!=','Chưa phân loại')->orderBy('id','DESC')->take(4)->get();
         $stt = 0;
         foreach($category_new as $category_new_item ){
             // Tạo tin tức mới nhất cho layout master

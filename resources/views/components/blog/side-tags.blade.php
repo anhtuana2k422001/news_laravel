@@ -1,6 +1,6 @@
 @props(['tags'])
 <div class="side">
-    <h3 class="sidbar-heading">Từ khóa</h3>
+    <!-- <h3 class="sidbar-heading">Từ khóa</h3> -->
     <div class="block-26">
         <ul>
         @foreach($tags as $tag)
