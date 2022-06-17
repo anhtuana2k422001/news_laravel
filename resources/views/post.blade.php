@@ -68,7 +68,7 @@
 
 								<x-blog.message :status="'success'"/>
 
-								<h2 class="colorlib-heading-2">Hãy viết gì đó</h2>
+								<h2 class="colorlib-heading-2">Bình luận ý kiến</h2>
 
 								@auth	
 								<form method="POST" action="{{ route('posts.add_comment', $post )}}">

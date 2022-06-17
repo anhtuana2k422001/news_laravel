@@ -9,11 +9,11 @@
 				<div class="row">
 					<div class="col-md-12 categories_col">
                         <div class="row">
-                            @if(! count($categories))
+                            @if(! count($category_all))
                                 <p class="lead">Không có danh mục tin tức nào.</p>
                             @else
 
-                            @forelse($categories as $category)
+                            @forelse($category_all as $category)
                             <div class="col-md-3">
                                 <div class="block-21 d-flex animate-box post">
                                     <div class="text">
@@ -29,7 +29,7 @@
                             @endforeach
                             @endif
                         </div>
-                        {{ $categories->links() }}
+                        {{ $category_all->links() }}
 					</div>
 				</div>
 			</div>

@@ -30,6 +30,7 @@ class HomeController extends Controller
         $category_new = Category::where('name','!=','Chưa phân loại')->orderBy('id','DESC')->take(4)->get();
         $stt = 0;
         foreach($category_new as $category_new_item ){
+            $posts_new_category[] = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
             // Tạo tin tức mới nhất cho layout master
             $stt = $stt + 1;
             if($stt === 1)
@@ -41,6 +42,8 @@ class HomeController extends Controller
             if($stt === 4)
                 $post_new_4 = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
         }
+
+       
 
         // Lấy ra tin nổi bật
         $outstanding_posts = Post::latest()->take(5)->get();
@@ -86,6 +89,7 @@ class HomeController extends Controller
             'postnew3' => $post_new_3,
             'postnew4' =>  $post_new_4,
             'recent_posts' => $recent_posts,
+            'posts_new_category' => $posts_new_category, // Bài viết mới nhất theo mục
             'post_category_home0' => $post_category_home0, // Bài viết danh mục 5
             'post_category_home1' => $post_category_home1, // Bài viết danh mục 1
             'post_category_home2' => $post_category_home2, // Bài viết danh mục 2
@@ -105,5 +109,31 @@ class HomeController extends Controller
 
         ]);
     }
+
+    public function search(Request $request){
+        
+        $recent_posts = Post::latest()->take(5)->get();
+        $categories  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();
+       
+        $category_new = Category::where('name','!=','Chưa phân loại')->orderBy('id','DESC')->take(4)->get();
+        foreach($category_new as $category_new_item ){
+            $posts_new_category[] = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
+        }
+
+        $key = $request->search;
+        // tìm kiếm kết quả danh mục
+        $cat = Category::where('name','like' , '%'.$key.'%')->first();
+        $pro = Category::where('name','like' , '%'.$key.'%')->first();
+
+        $posts = Post::latest()->withCount('comments')->approved()->where('title','like' , '%'.$key.'%')->paginate(30);
+        
+        $title = 'Kết quả tìm kiếm';
+        $title_t = 'Kết quả tìm kiếm theo';
+        $time = '(0,36 giây) ';
+
+        return view('search',compact('posts','title','time','recent_posts','categories','posts_new_category', 'key'));
+    }
+
+
 }
  

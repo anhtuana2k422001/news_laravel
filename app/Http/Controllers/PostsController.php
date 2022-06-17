@@ -13,8 +13,12 @@ class PostsController extends Controller
         
         $recent_posts = Post::latest()->take(5)->get();
         $categories  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();
-        // $categories = Category::withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
         $tags = Tag::latest()->take(50)->get();
+
+        $category_new = Category::where('name','!=','Chưa phân loại')->orderBy('id','DESC')->take(4)->get();
+        foreach($category_new as $category_new_item ){
+            $posts_new_category[] = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
+        }
 
         // Tăng lượt xem khi xem bài viết
         $post->views =  ($post->views) + 1;
@@ -25,6 +29,7 @@ class PostsController extends Controller
             'recent_posts' => $recent_posts,
             'categories' => $categories, 
             'tags' => $tags,
+            'posts_new_category' => $posts_new_category,
         ]);
     }
 
@@ -40,4 +45,6 @@ class PostsController extends Controller
         return redirect('/posts/' . $post->slug . '#comment_' . $comment->id)->with('success', 'Bạn vừa bình luận thành công.');
 
     }
+
+   
 }

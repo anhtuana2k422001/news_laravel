@@ -211,9 +211,10 @@
 				</div>
 	
 				<!-- Header Search Form Start -->
-				<form method="POST" action=".public/search" class="header--search-form float--right" data-form="validate">
-					<input type="hidden" name="_token" value="LAQJ9PKPIncFdCFDYYhLHB5QRQZyFZNQNqF4FhET">                <input type="search" name="search" placeholder="Search..." class="header--search-control form-control"
-						required>
+				<form method="POST" action="{{ route('search') }}" class="header--search-form float--right" data-form="validate">
+					@csrf	
+					<input type="search" name="search" placeholder="Search..." class="header--search-control form-control"
+                    required>
 	
 					<button type="submit" class="header--search-btn btn"><i
 							class="header--search-icon fa fa-search"></i></button>
@@ -263,9 +264,9 @@
 
 				<div class="news-updates--list" data-marquee="true">
 					<ul class="nav">
-						@foreach ($recent_posts as $recent_posts)
+						@foreach ($posts_new_category as $posts_new_category)
 							<li>
-								<h3 class="h3"><a href="{{ route('posts.show', $recent_posts) }}">{{ $recent_posts->title }}</a></h3>
+								<h3 class="h3"><a href="{{ route('posts.show', $posts_new_category[0]) }}">{{ $posts_new_category[0]->title }}</a></h3>
 							</li>
 						@endforeach
 					</ul>
