@@ -1,5 +1,5 @@
 @extends('main_layouts.master')
-@section('title', $title. ' | HUTECH NEWS ')
+@section('title', $title. ' - TDQ ')
 
 @section('content')
   <!-- Main Breadcrumb Start -->
@@ -55,7 +55,7 @@
                                                             <div class="post--info">
                                                                 <ul class="nav meta">
 																	<li><span>{{ $posts[$i]->author->name }}</a></li>
-																	<li><span>{{ $posts[$i]->created_at->diffForHumans() }}</span></li>
+																	<li><span>{{ $posts[$i]->created_at->locale('vi')->diffForHumans()  }}</span></li>
                                                                     <li><a href="#"><i class="fa fm fa-eye"></i>{{ $posts[$i]->views }}</span></li>
                                                                     <li><a href="{{ route('posts.show', $posts[$i] ) }}"><i class="fa fm fa-comments"></i>{{ count($posts[$i]->comments) }}</a></li>
                                                                 </ul>

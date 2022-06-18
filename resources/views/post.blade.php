@@ -1,6 +1,6 @@
 @extends('main_layouts.master')
 
-@section('title', $post->title. ' | HUTECH NEWS ')
+@section('title', $post->title. ' - TDQ ')
 
 @section('custom_css')
 	<style>
@@ -34,7 +34,7 @@
 										<!-- <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. But nothing the copy said could convince her and so it didn’t take long until a few insidious Copy Writers ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they abused her for their.</p> -->
 										<!-- <p><a href="#" class="btn btn-primary btn-outline btn-lg">Live Preview</a> or <a href="#" class="btn btn-primary btn-lg">Download File</a></p> -->
 										<p class="author-info">Người viết: {{ $post->author->name }}</p>
-										<p class="post-time">Thời gian: {{ $post->created_at->diffForHumans() }}</p>
+										<p class="post-time">Thời gian: {{ $post->created_at->locale('vi')->diffForHumans() }}</p>
 									</div>
 								</div>
 							</div>
@@ -50,7 +50,7 @@
 									<div class="desc">
 										<h4>
 											<span class="text-left">{{ $comment->user->name }}</span>
-											<span class="text-right">{{ $comment->created_at->diffForHumans() }}</span>
+											<span class="text-right">{{ $comment->created_at->locale('vi')->diffForHumans() }}</span>
 										</h4>
 										<p>{{ $comment->the_comment }}</p>
 										<p class="star">

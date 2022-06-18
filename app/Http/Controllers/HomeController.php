@@ -17,33 +17,18 @@ class HomeController extends Controller
         // where('approved',1)
         ->withCount('comments')->paginate(8); 
         // phân trang 8 bài
-        
         $recent_posts = Post::latest()->take(5)->get();
-
-
         $categories = Category::where('name','!=','Chưa phân loại')->orderBy('created_at','DESC')->take(10)->get();
         // $categories = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
-        
         $tags = Tag::latest()->take(50)->get();
 
         
+        
         $category_new = Category::where('name','!=','Chưa phân loại')->orderBy('id','DESC')->take(4)->get();
-        $stt = 0;
         foreach($category_new as $category_new_item ){
             $posts_new_category[] = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
             // Tạo tin tức mới nhất cho layout master
-            $stt = $stt + 1;
-            if($stt === 1)
-                $post_new_1 = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
-            if($stt === 2)
-                $post_new_2 = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
-            if($stt === 3)
-                $post_new_3 = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
-            if($stt === 4)
-                $post_new_4 = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
         }
-
-       
 
         // Lấy ra tin nổi bật
         $outstanding_posts = Post::latest()->take(5)->get();
@@ -84,10 +69,6 @@ class HomeController extends Controller
 
         return view('home', [ 
             'posts' => $posts,
-            'postnew1' => $post_new_1,
-            'postnew2' =>  $post_new_2,
-            'postnew3' => $post_new_3,
-            'postnew4' =>  $post_new_4,
             'recent_posts' => $recent_posts,
             'posts_new_category' => $posts_new_category, // Bài viết mới nhất theo mục
             'post_category_home0' => $post_category_home0, // Bài viết danh mục 5

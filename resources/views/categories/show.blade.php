@@ -1,6 +1,6 @@
 @extends('main_layouts.master')
 
-@section('title', $category->name . ' HUTECH NEWS | Danh mục')
+@section('title', $category->name . ' - TDQ')
 
 @section('content')
 

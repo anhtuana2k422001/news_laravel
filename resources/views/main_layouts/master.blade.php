@@ -1,3 +1,8 @@
+<?php
+use Carbon\Carbon;
+$now = Carbon::now('Asia/Ho_Chi_Minh')->locale('vi');
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -103,7 +108,7 @@
 						</li>
 						<li><i class="fa fm fa-map-marker"></i>Hồ Chí Minh</li>
 						<li><i class="fa fm fa-mixcloud"></i>28<sup>0</sup> C</li>
-						<li><i class="fa fm fa-calendar"></i>To day(2022-06-13)</li>
+						<li style="text-transform: capitalize" ><i class="fa fm fa-calendar"></i>To day ( {{ $now->translatedFormat('l') }}, Ngày {{ $now->translatedFormat('jS F')}} Năm {{ $now->translatedFormat('Y')}} )</li>
 					</ul>
 					<!-- Header Topbar Info End -->
 				</div>

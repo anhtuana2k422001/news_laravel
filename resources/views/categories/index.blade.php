@@ -1,6 +1,6 @@
 @extends('main_layouts.master')
 
-@section('title','HUTECH NEWS | Danh mục tin tức')
+@section('title',' TDQ - Danh mục tin tức')
 
 @section('content')
 

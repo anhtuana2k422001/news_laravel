@@ -1,6 +1,6 @@
 @extends('main_layouts.master')
 
-@section('title','HUTECH NEWS | Trang chủ')
+@section('title','TDQ - Tin Tức mới')
 
 @section('content')
 
@@ -17,25 +17,25 @@
 						<div class="col-md-6">
 							<div class="row gutter--15">
 
-								@foreach ($postnew1 as $postnew1)
+							@for ( $i = 0; $i <= 1; $i++)
 								<div class="col-xs-6 col-xss-12">
 									<!-- Post Item Start -->
 									<div class="post--item post--layout-1 post--title-large">
 										<div class="post--img">
-											<a href="{{ route('posts.show', $postnew1) }}"
+											<a href="{{ route('posts.show', $posts_new_category[$i][0]) }}"
 												class="thumb"><img
-													src="{{ asset($postnew1->image ? 'storage/' .$postnew1->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
+													src="{{ asset($posts_new_category[$i][0]->image ? 'storage/' .$posts_new_category[$i][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 													alt=""></a>
-											<a href="{{ route('categories.show', $category_new[0]) }}" class="cat">{{ $category_new[0]->name }}</a>
+											<a href="{{ route('categories.show', $posts_new_category[$i][0]->category) }}" class="cat">{{ $posts_new_category[$i][0]->category->name }}</a>
 
 											<a href="#" class="icon"><i class="fa fa-flash"></i></a>
 											<div class="post--info">
 												<ul class="nav meta">
-													<li><a href="#">{{ $postnew1->author->name }}</a></li>
-													<li><a href="#">{{ $postnew1->created_at->diffForHumans() }}</a></li>
+													<li><a href="#">{{ $posts_new_category[$i][0]->author->name }}</a></li>
+													<li><a href="#">{{ $posts_new_category[$i][0]->created_at->locale('vi')->diffForHumans() }}</a></li>
 												</ul>
 												<div class="title">
-													<h2 class="h4"><a href="{{ route('posts.show', $postnew1) }}" class="btn-link">{{ $postnew1->title }}</a>
+													<h2 class="h4"><a href="{{ route('posts.show', $posts_new_category[$i][0]) }}" class="btn-link">{{ $posts_new_category[$i][0]->title }}</a>
 													</h2>
 												</div>
 											</div>
@@ -43,44 +43,16 @@
 									</div>
 									<!-- Post Item End -->
 								</div>
-								@endforeach
-								
-								@foreach ($postnew2 as $postnew2)
-								<div class="col-xs-6 col-xss-12">
-									<!-- Post Item Start -->
-									<div class="post--item post--layout-1 post--title-large">
-										<div class="post--img">
-											<a href="{{ route('posts.show', $postnew2) }}"
-												class="thumb"><img
-													src="{{ asset($postnew2->image ? 'storage/' .$postnew2->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
-													alt=""></a>
-											<a href="{{ route('categories.show', $category_new[1]) }}" class="cat">{{ $category_new[1]->name }}</a>
+								@endfor
+						
 
-											<a href="#" class="icon"><i class="fa fa-flash"></i></a>
-											<div class="post--info">
-												<ul class="nav meta">
-													<li><a href="#">{{ $postnew2->author->name }}</a></li>
-													<li><a href="#">{{ $postnew2->created_at->diffForHumans() }}</a></li>
-												</ul>
-												<div class="title">
-													<h2 class="h4"><a href="{{ route('posts.show', $postnew2) }}" class="btn-link">{{ $postnew2->title }}</a>
-													</h2>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- Post Item End -->
-								</div>
-								@endforeach
-
-								@foreach ($postnew3 as $postnew3)
 								<div class="col-sm-12 hidden-sm hidden-xs">
 									<!-- Post Item Start -->
 									<div class="post--item post--layout-1 post--title-larger">
 										<div class="post--img">
-											<a href="{{ route('posts.show', $postnew3) }}"
+											<a href="{{ route('posts.show', $posts_new_category[2][0]) }}"
 												class="thumb"><img
-													src="{{ asset($postnew3->image ? 'storage/' .$postnew3->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
+													src="{{ asset($posts_new_category[2][0]->image ? 'storage/' .$posts_new_category[2][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 													style="height:200px" alt=""></a>
 
 											<a href="{{ route('categories.show', $category_new[2]) }}" class="cat">{{ $category_new[2]->name }}</a>
@@ -89,32 +61,30 @@
 
 											<div class="post--info">
 												<ul class="nav meta">
-													<li><a href="#">{{ $postnew3->author->name }}</a></li>
-													<li><a href="#">{{ $postnew3->created_at->diffForHumans() }}</a></li>
+													<li><a href="#">{{ $posts_new_category[2][0]->author->name }}</a></li>
+													<li><a href="#">{{ $posts_new_category[2][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 												</ul>
 
 												<div class="title">
 													<h2 class="h4"><a
-															href="{{ route('posts.show', $postnew3) }}"
-															class="btn-link">{{ $postnew3->title }}</a></h2>
+															href="{{ route('posts.show', $posts_new_category[2][0]) }}"
+															class="btn-link">{{ $posts_new_category[2][0]->title }}</a></h2>
 												</div>
 											</div>
 										</div>
 									</div>
 									<!-- Post Item End -->
 								</div>
-								@endforeach
 
 							</div>
 						</div>
 
-						@foreach ($postnew4 as $postnew4)
 						<div class="col-md-6">
 							<!-- Post Item Start -->
 							<div class="post--item post--layout-1 post--title-larger">
 								<div class="post--img">
-									<a href="{{ route('posts.show', $postnew4) }}"
-										class="thumb"><img src="{{ asset($postnew4->image ? 'storage/' .$postnew4->image->path : 'storage/placeholders/placeholder-image.png'  )}}" alt=""></a>
+									<a href="{{ route('posts.show', $posts_new_category[3][0]) }}"
+										class="thumb"><img src="{{ asset($posts_new_category[3][0]->image ? 'storage/' .$posts_new_category[3][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}" alt=""></a>
 
 									<a href="{{ route('categories.show', $category_new[3]) }}" class="cat">{{ $category_new[3]->name }}</a>
 
@@ -122,14 +92,14 @@
 
 									<div class="post--info">
 										<ul class="nav meta">
-											<li><a href="#">{{ $postnew4->author->name }}</a></li>
-											<li><a href="#">{{ $postnew4->created_at->diffForHumans() }}</a></li>
+											<li><a href="#">{{ $posts_new_category[3][0]->author->name }}</a></li>
+											<li><a href="#">{{ $posts_new_category[3][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 										</ul>
 
 										<div class="title">
 											<h2 class="h4"><a
-													href="{{ route('posts.show', $postnew4) }}"
-													class="btn-link">{{ $postnew4->title }}</a>
+													href="{{ route('posts.show', $posts_new_category[3][0]) }}"
+													class="btn-link">{{ $posts_new_category[3][0]->title }}</a>
 											</h2>
 										</div>
 									</div>
@@ -137,7 +107,6 @@
 							</div>
 							<!-- Post Item End -->
 						</div>
-						@endforeach
 
 					</div>
 				</div>
@@ -176,7 +145,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home0[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home0[0]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home0[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -212,7 +181,7 @@
 														<div class="post--info">
 															<ul class="nav meta">
 																<li><a href="#">{{ $post_category_home0[$i]->author->name }}</a></li>
-																<li><a href="#">{{ $post_category_home0[$i]->created_at->diffForHumans() }}</a></li>
+																<li><a href="#">{{ $post_category_home0[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 															</ul>
 
 															<div class="title">
@@ -261,7 +230,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home1[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home1[0]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home1[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -288,7 +257,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home1[$i]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home1[$i]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home1[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -338,7 +307,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home2[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home2[0]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home2[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -403,7 +372,7 @@
 																	<ul class="nav meta">
 																		
 																		<li><a href="#">{{ $post_category_home2[$i]->author->name }}</a></li>
-																		<li><a href="#">{{ $post_category_home2[$i]->created_at->diffForHumans() }}</a></li>
+																		<li><a href="#">{{ $post_category_home2[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 																	</ul>
 
 																	<div class="title">
@@ -456,7 +425,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home3[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home3[0]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home3[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -490,7 +459,7 @@
 														<div class="post--info">
 															<ul class="nav meta">
 																<li><a href="#">{{ $post_category_home3[$i]->author->name }}</a></li>
-																<li><a href="#">{{ $post_category_home3[$i]->created_at->diffForHumans() }}</a></li>
+																<li><a href="#">{{ $post_category_home3[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 															</ul>
 
 															<div class="title">
@@ -538,7 +507,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home4[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home4[0]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home4[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -566,7 +535,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home4[$i]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home4[$i]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home4[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -622,12 +591,14 @@
 														<ul class="nav meta">
 															<li><a href="#">{{ $outstanding_post->author->name }}</a>
 															</li>
-															<li><a href="#">{{ $outstanding_post->created_at->diffForHumans()}}</a></li>
+															<li><a href="#">{{ $outstanding_post->created_at->locale('vi')->diffForHumans() }}</a></li>
+			
 														</ul>
 
 														<div class="title">
-															<h3 class="h4">
-																<a href="{{ route('posts.show', $outstanding_post) }}" class="btn-link">{{ $outstanding_post->title }} </a>
+															<h3  class="h4">
+																<a href="{{ route('posts.show', $outstanding_post) }}" class="btn-link">{{ $outstanding_post->title }}</a>
+																<span><a  href="{{ route('posts.show', $posts[$i] ) }}"><i class="fa fm fa-comments"></i>{{ count($outstanding_post->comments) }}</a></span>
 															</h3>
 														</div>
 													</div>
@@ -819,7 +790,7 @@
 									<div class="post--info">
 										<ul class="nav meta">
 											<li><a href="#">{{ $post_category_home5[0]->author->name }}</a></li>
-											<li><a href="#">{{ $post_category_home5[0]->created_at->diffForHumans() }}</a></li>
+											<li><a href="#">{{ $post_category_home5[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 										</ul>
 
 										<div class="title">
@@ -852,7 +823,7 @@
 											<div class="post--info">
 												<ul class="nav meta">
 													<li><a href="#">{{ $post_category_home5[$i]->author->name }}</a></li>
-													<li><a href="#">{{ $post_category_home5[$i]->created_at->diffForHumans() }}</a></li>
+													<li><a href="#">{{ $post_category_home5[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 												</ul>
 
 												<div class="title">
@@ -917,7 +888,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home6[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home6[0]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home6[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -944,7 +915,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home6[$i]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home6[$i]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home6[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -996,7 +967,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home7[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home7[0]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home7[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -1031,7 +1002,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home7[$i]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home7[$i]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home7[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -1078,7 +1049,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home8[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home8[0]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home8[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -1139,7 +1110,7 @@
 																<div class="post--info">
 																	<ul class="nav meta">
 																		<li><a href="#">{{ $post_category_home8[$i]->author->name }}</a></li>
-																		<li><a href="#">{{ $post_category_home8[$i]->created_at->diffForHumans() }}</a></li>
+																		<li><a href="#">{{ $post_category_home8[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 																	</ul>
 
 																	<div class="title">
@@ -1191,7 +1162,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home9[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home9[0]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home9[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title text-xxs-ellipsis">
@@ -1217,7 +1188,7 @@
 													<div class="post--info">
 														<ul class="nav meta">
 															<li><a href="#">{{ $post_category_home9[$i]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home9[$i]->created_at->diffForHumans() }}</a></li>
+															<li><a href="#">{{ $post_category_home9[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -1625,7 +1596,7 @@
 					<h3 class="heading"><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h3>
 					<p class="excerpt">{{ $post->excerpt }}</p></p>
 					<div class="meta">
-						<div><a class="date" href="#"><span class="icon-calendar"></span>{{ $post->created_at->diffForHumans() }}</a></div>
+						<div><a class="date" href="#"><span class="icon-calendar"></span>{{ $post->created_at->locale('vi')->diffForHumans()  }}</a></div>
 						<div><a href="#"><span class="icon-user2"></span>{{ $post->author->name }} </a></div>
 						<div class="comments-count"><a href="{{ route('posts.show', $post) }}#post-comments"><span class="icon-chat"></span> {{$post->comments_count}}</a></div>
 					</div>

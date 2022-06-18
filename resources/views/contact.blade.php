@@ -1,6 +1,6 @@
 @extends('main_layouts.master')
 
-@section('title','HUTECH NEWS | Liên hệ')
+@section('title',' TDQ - Liên hệ')
 
 @section('content')
 <div class="global-message info d-none"></div>
