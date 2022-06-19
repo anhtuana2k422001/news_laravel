@@ -60,6 +60,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth','check_permissions'])
     Route::post('upload_tinymce_image', [TinyMCEController::class, 'upload_tinymce_image'])->name('upload_tinymce_image');
     
     Route::resource('posts', AdminPostsController::class);
+    Route::post('/poststitle', [AdminPostsController::class, 'to_slug'])->name('posts.to_slug');
     Route::resource('categories', AdminCategoriesController::class);
 
     Route::resource('tags', AdminTagsController::class)->only(['index','show','destroy']);

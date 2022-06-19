@@ -49,7 +49,7 @@
 									<div class="border border-3 p-4 rounded">
 										<div class="mb-3">
 											<label for="inputProductTitle" class="form-label">Tiêu đề bài viết</label>
-											<input type="text" value=' {{ old("title" ) }}' name="title" required  class="form-control" id="inputProductTitle" placeholder="Nhập tiêu đề bài viết">
+											<input type="text" value=' {{ old("title" ) }}' name="title" required  class="inputPostTitle form-control" id="inputProductTitle" placeholder="Nhập tiêu đề bài viết">
 										
 											@error('title')
 												<p class="text-danger">{{ $message }}</p>
@@ -58,7 +58,7 @@
 
 										<div class="mb-3">
 											<label for="inputProductTitle" class="form-label">Slug - liên kết</label>
-											<input type="text" value=' {{ old("slug" ) }}' name="slug" required  class="form-control" id="inputProductTitle" placeholder="Nhập slug">
+											<input type="text" value=' {{ old("slug" ) }}' name="slug" required  class="slugPost form-control" id="inputProductTitle" placeholder="Nhập slug">
 										
 											@error('slug')
 												<p class="text-danger">{{ $message }}</p>
@@ -210,5 +210,37 @@
 
 
 	</script>
+
+<script>
+	$(document).on('change', '.inputPostTitle', (e) => {
+		e.preventDefault();
+
+		let $this = e.target;
+
+		let csrf_token = $($this).parents("form").find("input[name='_token']").val();
+		let titlePost =  $($this).parents("form").find("input[name='title']").val();
+		
+		let formData = new FormData();
+		formData.append('_token', csrf_token);
+		formData.append('title', titlePost);
+		
+		$.ajax({
+			url: "{{ route('admin.posts.to_slug') }}",
+			data: formData,
+			type: 'POST',
+			dataType: 'JSON',
+			processData: false,
+			contentType: false,
+			success: function (data) {
+				if(data.success){
+					$('.slugPost').val(data.message);
+
+				}else{
+					alert("Bị lỗi khi nhập title !")
+				}
+			}
+		})
+	})
+</script>
 
 @endsection
