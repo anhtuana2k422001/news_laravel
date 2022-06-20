@@ -22,20 +22,20 @@
 									<!-- Post Item Start -->
 									<div class="post--item post--layout-1 post--title-large">
 										<div class="post--img">
-											<a href="{{ route('posts.show', $posts_new_category[$i][0]) }}"
+											<a href="{{ route('posts.show', $posts_new[$i][0]) }}"
 												class="thumb"><img
-													src="{{ asset($posts_new_category[$i][0]->image ? 'storage/' .$posts_new_category[$i][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
+													src="{{ asset($posts_new[$i][0]->image ? 'storage/' .$posts_new[$i][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 													alt=""></a>
-											<a href="{{ route('categories.show', $posts_new_category[$i][0]->category) }}" class="cat">{{ $posts_new_category[$i][0]->category->name }}</a>
+											<a href="{{ route('categories.show', $posts_new[$i][0]->category) }}" class="cat">{{ $posts_new[$i][0]->category->name }}</a>
 
 											<a href="#" class="icon"><i class="fa fa-flash"></i></a>
 											<div class="post--info">
 												<ul class="nav meta">
-													<li><a href="#">{{ $posts_new_category[$i][0]->author->name }}</a></li>
-													<li><a href="#">{{ $posts_new_category[$i][0]->created_at->locale('vi')->diffForHumans() }}</a></li>
+													<li><a href="#">{{ $posts_new[$i][0]->author->name }}</a></li>
+													<li><a href="#">{{ $posts_new[$i][0]->created_at->locale('vi')->diffForHumans() }}</a></li>
 												</ul>
 												<div class="title">
-													<h2 class="h4"><a href="{{ route('posts.show', $posts_new_category[$i][0]) }}" class="btn-link">{{ $posts_new_category[$i][0]->title }}</a>
+													<h2 class="h4"><a href="{{ route('posts.show', $posts_new[$i][0]) }}" class="btn-link">{{ $posts_new[$i][0]->title }}</a>
 													</h2>
 												</div>
 											</div>
@@ -50,25 +50,25 @@
 									<!-- Post Item Start -->
 									<div class="post--item post--layout-1 post--title-larger">
 										<div class="post--img">
-											<a href="{{ route('posts.show', $posts_new_category[2][0]) }}"
+											<a href="{{ route('posts.show', $posts_new[2][0]) }}"
 												class="thumb"><img
-													src="{{ asset($posts_new_category[2][0]->image ? 'storage/' .$posts_new_category[2][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
+													src="{{ asset($posts_new[2][0]->image ? 'storage/' .$posts_new[2][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 													style="height:200px" alt=""></a>
 
-											<a href="{{ route('categories.show', $category_new[2]) }}" class="cat">{{ $category_new[2]->name }}</a>
+											<a href="{{ route('categories.show', $posts_new[2][0]->category) }}" class="cat">{{ $posts_new[2][0]->category->name }}</a>
 
 											<a href="#" class="icon"><i class="fa fa-fire"></i></a>
 
 											<div class="post--info">
 												<ul class="nav meta">
-													<li><a href="#">{{ $posts_new_category[2][0]->author->name }}</a></li>
-													<li><a href="#">{{ $posts_new_category[2][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+													<li><a href="#">{{ $posts_new[2][0]->author->name }}</a></li>
+													<li><a href="#">{{ $posts_new[2][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 												</ul>
 
 												<div class="title">
 													<h2 class="h4"><a
-															href="{{ route('posts.show', $posts_new_category[2][0]) }}"
-															class="btn-link">{{ $posts_new_category[2][0]->title }}</a></h2>
+															href="{{ route('posts.show', $posts_new[2][0]) }}"
+															class="btn-link">{{ $posts_new[2][0]->title }}</a></h2>
 												</div>
 											</div>
 										</div>
@@ -83,23 +83,23 @@
 							<!-- Post Item Start -->
 							<div class="post--item post--layout-1 post--title-larger">
 								<div class="post--img">
-									<a href="{{ route('posts.show', $posts_new_category[3][0]) }}"
-										class="thumb"><img src="{{ asset($posts_new_category[3][0]->image ? 'storage/' .$posts_new_category[3][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}" alt=""></a>
+									<a href="{{ route('posts.show', $posts_new[3][0]) }}"
+										class="thumb"><img src="{{ asset($posts_new[3][0]->image ? 'storage/' .$posts_new[3][0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}" alt=""></a>
 
-									<a href="{{ route('categories.show', $category_new[3]) }}" class="cat">{{ $category_new[3]->name }}</a>
+									<a href="{{ route('categories.show', $posts_new[3][0]->category ) }}" class="cat">{{ $posts_new[3][0]->category->name }}</a>
 
 									<a href="#" class="icon"><i class="fa fa-flash"></i></a>
 
 									<div class="post--info">
 										<ul class="nav meta">
-											<li><a href="#">{{ $posts_new_category[3][0]->author->name }}</a></li>
-											<li><a href="#">{{ $posts_new_category[3][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+											<li><a href="#">{{ $posts_new[3][0]->author->name }}</a></li>
+											<li><a href="#">{{ $posts_new[3][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 										</ul>
 
 										<div class="title">
 											<h2 class="h4"><a
-													href="{{ route('posts.show', $posts_new_category[3][0]) }}"
-													class="btn-link">{{ $posts_new_category[3][0]->title }}</a>
+													href="{{ route('posts.show', $posts_new[3][0]) }}"
+													class="btn-link">{{ $posts_new[3][0]->title }}</a>
 											</h2>
 										</div>
 									</div>
@@ -1591,7 +1591,7 @@
 			@forelse($posts as $post)
 
 			<div class="block-21 d-flex animate-box post">
-				<a href="{{ route('posts.show', $post) }}" class="blog-img" style="background-image: url({{ asset('storage/' .$post->image->path.'')}});"></a>
+				<a href="{{ route('posts.show', $post) }}" class="blog-img" style="background-image: url({{ asset($post->image ? 'storage/' . $post->image->path : 'storage/placeholders/placeholder-image.png')}});"></a>
 				<div class="text">
 					<h3 class="heading"><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h3>
 					<p class="excerpt">{{ $post->excerpt }}</p></p>

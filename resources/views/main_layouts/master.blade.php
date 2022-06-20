@@ -133,11 +133,13 @@ $now = Carbon::now('Asia/Ho_Chi_Minh')->locale('vi');
 										<span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu">
+										@if(auth()->user()->role->name !== 'user')
+										<li>
+											<a href="{{ route('admin.index') }}">Admin - Dashbroad</a>
+										</li>
+										@endif
 										<li>
 											<a href="#">Tài khoản của tôi</a>
-										</li>
-										<li>
-											<a href="#">Quản lý đơn hàng</a>
 										</li>
 										<li>
 											<a onclick="event.preventDefault(); document.getElementById('nav-logout-form').submit();"
@@ -269,9 +271,9 @@ $now = Carbon::now('Asia/Ho_Chi_Minh')->locale('vi');
 
 				<div class="news-updates--list" data-marquee="true">
 					<ul class="nav">
-						@foreach ($posts_new_category as $posts_new_category)
+						@foreach ($posts_new as $posts_new)
 							<li>
-								<h3 class="h3"><a href="{{ route('posts.show', $posts_new_category[0]) }}">{{ $posts_new_category[0]->title }}</a></h3>
+								<h3 class="h3"><a href="{{ route('posts.show', $posts_new[0]) }}">{{ $posts_new[0]->title }}</a></h3>
 							</li>
 						@endforeach
 					</ul>

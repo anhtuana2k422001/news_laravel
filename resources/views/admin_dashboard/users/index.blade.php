@@ -1,4 +1,14 @@
 @extends("admin_dashboard.layouts.app")
+
+@section("style")
+
+<style>
+    .img_admn--user.img-avatar{
+        border-radius: 50%;
+    }
+</style>
+
+@endsection
 		
 @section("wrapper")
 <!--start page wrapper -->
@@ -52,7 +62,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <img width="50" src="{{ $user->image ?  asset('storage/' . $user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" alt="">
+                                    <img class="img_admn--user img-avatar" width="60" height="60" src="{{ $user->image ?  asset('storage/' . $user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" alt="">
                                 </td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>

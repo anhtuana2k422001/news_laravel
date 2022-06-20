@@ -12,9 +12,9 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <p class="mb-0 text-secondary">Tổng số bài viết</p>
-                                    <h4 class="my-1 text-info">4805</h4>
-                                    <p class="mb-0 font-13">+2.5% from last week</p>
+                                    <p class="mb-0 text-secondary">Tổng bài viết</p>
+                                    <h4 class="my-1 text-info">{{ $countPost }}</h4>
+                                    <!-- <p class="mb-0 font-13">+2.5% from last week</p> -->
                                 </div>
                                 <div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto"><i class='bx bx-message-square-edit'></i>
                                 </div>
@@ -28,8 +28,7 @@
                             <div class="d-flex align-items-center">
                                 <div>
                                     <p class="mb-0 text-secondary">Tổng danh mục</p>
-                                    <h4 class="my-1 text-danger">$84,245</h4>
-                                    <p class="mb-0 font-13">+5.4% from last week</p>
+                                    <h4 class="my-1 text-danger">{{ $countCategories }}</h4>
                                 </div>
                                 <div class="widgets-icons-2 rounded-circle bg-gradient-bloody text-white ms-auto"><i class='bx bx bx-menu'></i>
                                 </div>
@@ -42,9 +41,8 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <p class="mb-0 text-secondary">Tổng số người quản trị</p>
-                                    <h4 class="my-1 text-success">34.6%</h4>
-                                    <p class="mb-0 font-13">-4.5% from last week</p>
+                                    <p class="mb-0 text-secondary">Tổng người quản trị</p>
+                                    <h4 class="my-1 text-success">{{ $countAdmin }}</h4>
                                 </div>
                                 <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class='bx bx-user' ></i>
                                 </div>
@@ -57,9 +55,8 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center">
                                 <div>
-                                    <p class="mb-0 text-secondary">Tổng số khách hàng</p>
-                                    <h4 class="my-1 text-warning">8.4K</h4>
-                                    <p class="mb-0 font-13">+8.4% from last week</p>
+                                    <p class="mb-0 text-secondary">Tổng khách hàng</p>
+                                    <h4 class="my-1 text-warning">{{ $countUser }}</h4>
                                 </div>
                                 <div class="widgets-icons-2 rounded-circle bg-gradient-blooker text-white ms-auto"><i class='bx bxs-group'></i>
                                 </div>
@@ -132,8 +129,8 @@
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <p class="mb-0 text-secondary">Lượt Xem</p>
-                                            <h4 class="my-1">45.6M</h4>
-                                            <p class="mb-0 font-13">+6.2% from last week</p>
+                                            <h4 class="my-1">{{ $countView }}</h4>
+                                            <!-- <p class="mb-0 font-13">+6.2% from last week</p> -->
                                         </div>
                                         <div class="widgets-icons-2 bg-gradient-cosmic text-white ms-auto"><i class='bx bxs-eye'></i>
                                         </div>
@@ -145,27 +142,28 @@
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <p class="mb-0 text-secondary">Bình luận</p>
-                                            <h4 class="my-1">25.6K</h4>
-                                            <p class="mb-0 font-13">+3.7% from last week</p>
+                                            <h4 class="my-1">{{ $countComments }}</h4>
                                         </div>
                                         <div class="widgets-icons-2 bg-gradient-ibiza text-white ms-auto"><i class='bx bxs-comment-detail'></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="card radius-10 mb-0 border shadow-none">
                                 <div class="card-body">
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <p class="mb-0 text-secondary">Lượt thích</p>
-                                            <h4 class="my-1">85.4M</h4>
-                                            <p class="mb-0 font-13">+4.6% from last week</p>
+                                            <h4 class="my-1">...</h4>Chờ cập nhật 
                                         </div>
                                         <div class="widgets-icons-2 bg-gradient-moonlit text-white ms-auto"><i class='bx bxs-like'></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
+                            
                         </div>
 
                     </div>

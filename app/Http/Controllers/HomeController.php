@@ -22,16 +22,30 @@ class HomeController extends Controller
         // $categories = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('posts_count', 'desc')->take(10)->get();
         $tags = Tag::latest()->take(50)->get();
 
-        
-        
-        $category_new = Category::where('name','!=','Chưa phân loại')->orderBy('id','DESC')->take(4)->get();
-        foreach($category_new as $category_new_item ){
-            $posts_new_category[] = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
-            // Tạo tin tức mới nhất cho layout master
-        }
+       
+        /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
+        $category_unclassified = Category::where('name','Chưa phân loại')->first();
+        $posts_new[0]= Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                      ->take(1)->get();
+        $posts_new[1] = Post::latest()->approved()
+                    ->where('category_id','!=', $category_unclassified->id )
+                    ->where('category_id','!=', $posts_new[0][0]->category->id )
+                    ->take(1)->get();
+        $posts_new[2] = Post::latest()->approved()
+                    ->where('category_id','!=', $category_unclassified->id )
+                    ->where('category_id','!=', $posts_new[0][0]->category->id )
+                    ->where('category_id','!=', $posts_new[1][0]->category->id )
+                    ->take(1)->get();
+        $posts_new[3] = Post::latest()->approved()
+                    ->where('category_id','!=', $category_unclassified->id )
+                    ->where('category_id','!=', $posts_new[0][0]->category->id )
+                    ->where('category_id','!=', $posts_new[1][0]->category->id)
+                    ->where('category_id','!=', $posts_new[2][0]->category->id )
+                    ->take(1)->get();
 
-        // Lấy ra tin nổi bật
-        $outstanding_posts = Post::latest()->take(5)->get();
+        // Lấy ra tin nổi bật -- Lấy theo views
+        $outstanding_posts = Post::orderBy('views','DESC')->take(5)->get();
 
         // Lấy ra tất cả danh mục tin tức 
         $stt_home = 0;
@@ -61,8 +75,6 @@ class HomeController extends Controller
                 $post_category_home9 =  Post::latest()->approved()->withCount('comments')->where('category_id',$category_item->id)->take(4)->get();
          }
 
-        // Lấy ra tất cả bài viết
-        $posts_all = Post::latest()->approved()->withCount('comments')->get(); 
 
         // Ý kiến người đọc, comments
         $top_commnents = Comment::latest()->take(4)->get();
@@ -70,7 +82,7 @@ class HomeController extends Controller
         return view('home', [ 
             'posts' => $posts,
             'recent_posts' => $recent_posts,
-            'posts_new_category' => $posts_new_category, // Bài viết mới nhất theo mục
+            'posts_new' => $posts_new, // Bài viết mới nhất theo mục
             'post_category_home0' => $post_category_home0, // Bài viết danh mục 5
             'post_category_home1' => $post_category_home1, // Bài viết danh mục 1
             'post_category_home2' => $post_category_home2, // Bài viết danh mục 2
@@ -83,7 +95,6 @@ class HomeController extends Controller
             'post_category_home9' => $post_category_home9, // Bài viết danh mục 9
             'outstanding_posts' => $outstanding_posts, // Bài viết nỗi bật
             'categories' => $categories, 
-            'category_new' => $category_new, // danh mục có bài viết mới
             'category_home' => $category_home, 
             'tags' => $tags,
             'top_commnents' => $top_commnents, // Lấy ý kiến người đọc mới nhất
@@ -96,10 +107,27 @@ class HomeController extends Controller
         $recent_posts = Post::latest()->take(5)->get();
         $categories  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();
        
-        $category_new = Category::where('name','!=','Chưa phân loại')->orderBy('id','DESC')->take(4)->get();
-        foreach($category_new as $category_new_item ){
-            $posts_new_category[] = Post::where('category_id',$category_new_item->id)->orderBy('created_at','DESC')->take(1)->get();
-        }
+         /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
+         $category_unclassified = Category::where('name','Chưa phân loại')->first();
+         $posts_new[0]= Post::latest()->approved()
+                      ->where('category_id','!=', $category_unclassified->id )
+                       ->take(1)->get();
+         $posts_new[1] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->take(1)->get();
+         $posts_new[2] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->where('category_id','!=', $posts_new[1][0]->category->id )
+                     ->take(1)->get();
+         $posts_new[3] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->where('category_id','!=', $posts_new[1][0]->category->id)
+                     ->where('category_id','!=', $posts_new[2][0]->category->id )
+                     ->take(1)->get(); 
+
 
         $key = $request->search;
         // tìm kiếm kết quả danh mục
@@ -112,7 +140,7 @@ class HomeController extends Controller
         $title_t = 'Kết quả tìm kiếm theo';
         $time = '(0,36 giây) ';
 
-        return view('search',compact('posts','title','time','recent_posts','categories','posts_new_category', 'key'));
+        return view('search',compact('posts','title','time','recent_posts','categories', 'key','posts_new'));
     }
 
 

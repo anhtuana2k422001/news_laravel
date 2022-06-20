@@ -1,3 +1,15 @@
+<?php
+    use App\Models\Post;
+    use App\Models\Comment;
+    $newComment = Comment::latest()->take(10)->get();
+    foreach ($newComment as $comment) {
+        $posts_comments[] = Post::where('id', $comment->post_id)->get();
+    }
+    // Do xóa bài viết comment vẫn còn nên lấy comment bị sai --- sửa lại khi xóa rồi
+    // add lại tadabases sau đó làm tiếp chức năng này
+    
+?>
+
 <!--start header -->
         <header>
             <div class="topbar d-flex align-items-center">
@@ -172,152 +184,35 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown dropdown-large">
-                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">8</span>
+                                <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">10</span>
                                     <i class='bx bx-comment'></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a href="javascript:;">
                                         <div class="msg-header">
-                                            <p class="msg-header-title">Messages</p>
-                                            <p class="msg-header-clear ms-auto">Marks all as read</p>
+                                            <p class="msg-header-title">Tin nhắn bình luận</p>
+                                            <p class="msg-header-clear ms-auto">Đánh dấu tất cả đã đọc</p>
                                         </div>
                                     </a>
+
                                     <div class="header-message-list">
-                                        <a class="dropdown-item" href="javascript:;">
+                                        @for ($i = 0; $i < 2 ; $i++ )
+                                        <a class="dropdown-item" href="{{ route('posts.show', $posts_comments[$i][0] ) }}">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-1.png') }}" class="msg-avatar" alt="user avatar">
+                                                    <img src="{{ $posts_comments[$i][0]->comments()->orderBy('id','DESC')->take(1)->get()[0]->user->image ?  asset('storage/' . $posts_comments[$i][0]->comments()->orderBy('id','DESC')->take(1)->get()[0]->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" class="msg-avatar" alt="user avatar">
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <h6 class="msg-name">Daisy Anderson <span class="msg-time float-end">5 sec
-                                                ago</span></h6>
-                                                    <p class="msg-info">The standard chunk of lorem</p>
+                                                    <h6 class="msg-name">{{ $posts_comments[$i][0]->comments()->orderBy('id','DESC')->take(1)->get()[0]->user->name }}<span class="msg-time"> đã bình luận bài viết</span></h6>
+                                                    <h6 class="msg-name">{{ Str::limit($posts_comments[$i][0]->title,32) }}</h6>
                                                 </div>
                                             </div>
                                         </a>
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-2.png') }}" class="msg-avatar" alt="user avatar">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="msg-name">Althea Cabardo <span class="msg-time float-end">14
-                                                sec ago</span></h6>
-                                                    <p class="msg-info">Many desktop publishing packages</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-3.png') }}" class="msg-avatar" alt="user avatar">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="msg-name">Oscar Garner <span class="msg-time float-end">8 min
-                                                ago</span></h6>
-                                                    <p class="msg-info">Various versions have evolved over</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-4.png') }}" class="msg-avatar" alt="user avatar">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="msg-name">Katherine Pechon <span class="msg-time float-end">15
-                                                min ago</span></h6>
-                                                    <p class="msg-info">Making this the first true generator</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-5.png') }}" class="msg-avatar" alt="user avatar">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="msg-name">Amelia Doe <span class="msg-time float-end">22 min
-                                                ago</span></h6>
-                                                    <p class="msg-info">Duis aute irure dolor in reprehenderit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-6.png') }}" class="msg-avatar" alt="user avatar">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="msg-name">Cristina Jhons <span class="msg-time float-end">2 hrs
-                                                ago</span></h6>
-                                                    <p class="msg-info">The passage is attributed to an unknown</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-7.png') }}" class="msg-avatar" alt="user avatar">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="msg-name">James Caviness <span class="msg-time float-end">4 hrs
-                                                ago</span></h6>
-                                                    <p class="msg-info">The point of using Lorem</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-8.png') }}" class="msg-avatar" alt="user avatar">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="msg-name">Peter Costanzo <span class="msg-time float-end">6 hrs
-                                                ago</span></h6>
-                                                    <p class="msg-info">It was popularised in the 1960s</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-9.png') }}" class="msg-avatar" alt="user avatar">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="msg-name">David Buckley <span class="msg-time float-end">2 hrs
-                                                ago</span></h6>
-                                                    <p class="msg-info">Various versions have evolved over</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-10.png') }}" class="msg-avatar" alt="user avatar">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="msg-name">Thomas Wheeler <span class="msg-time float-end">2 days
-                                                ago</span></h6>
-                                                    <p class="msg-info">If you are going to use a passage</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a class="dropdown-item" href="javascript:;">
-                                            <div class="d-flex align-items-center">
-                                                <div class="user-online">
-                                                    <img src="{{ asset('admin_dashboard_assets/images/avatars/avatar-11.png') }}" class="msg-avatar" alt="user avatar">
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <h6 class="msg-name">Johnny Seitz <span class="msg-time float-end">5 days
-                                                ago</span></h6>
-                                                    <p class="msg-info">All the Lorem Ipsum generators</p>
-                                                </div>
-                                            </div>
-                                        </a>
+                                        @endfor
+                                     
                                     </div>
                                     <a href="javascript:;">
-                                        <div class="text-center msg-footer">View All Messages</div>
+                                        <div class="text-center msg-footer">Xem tất cả</div>
                                     </a>
                                 </div>
                             </li>
