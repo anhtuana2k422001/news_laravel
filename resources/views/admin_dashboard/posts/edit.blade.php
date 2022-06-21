@@ -108,7 +108,7 @@
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <label for="inputProductDescription" class="form-label">Hình ảnh bài viết</label>
-                                                            <input id="thumbnail" name="thumbnail" type="file" id="file">
+															<input id="thumbnail" name="thumbnail" type="file" id="file" value="">
                                                         
                                                             @error('thumbnail')
                                                                 <p class="text-danger">{{ $message }}</p>
@@ -118,7 +118,7 @@
                                                 </div>
 
                                                 <div class="col-md-7 text-center">                                                
-													<img style="width: 100%" src="/storage/{{ $post->image ? $post->image->path : 'placeholders/placeholder-image.jpg' }}" class="img-responsive" alt="All thumbnail">
+													<img style="width: 100%; border-radius: 16px;" src="/storage/{{ $post->image ? $post->image->path : 'placeholders/placeholder-image.jpg' }}" class="img-responsive" alt="All thumbnail">
 												</div>
                                             </div>
 										

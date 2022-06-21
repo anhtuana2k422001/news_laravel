@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="{{ asset('admin_dashboard_assets/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin_dashboard_assets/css/header-colors.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin_dashboard_assets/css/my-style.css') }}" />
-    <title>TDQ - Admin </title>
+    <title>TDQ - Trang quản trị </title>
 </head>
 
 <body>

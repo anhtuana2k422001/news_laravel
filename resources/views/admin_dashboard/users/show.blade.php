@@ -12,7 +12,7 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Thông bài viết của tài khoản:  {{ $user->name }}c</li>
+                        <li class="breadcrumb-item active" aria-current="page">Thông bài viết của tài khoản:  {{ $user->name }}</li>
                     </ol>
                 </nav>
             </div>
@@ -61,7 +61,7 @@
                                 <td>{{ $post->category->name }}</td>
                                 <td>{{ $post->created_at->format('d/m/Y') }}</td>
                                 <td>
-                                    <div class="badge rounded-pill @if($post->status === 'published')  {{'text-success bg-light-success' }} @elseif($post->status === 'draft') {{'text-warning bg-light-warning'}} @else {{'text-danger bg-light-danger' }} @endif p-2 text-uppercase px-3">
+                                    <div class="badge rounded-pill @if($post->approved === 1)  {{'text-success bg-light-success' }} @else {{'text-danger bg-light-danger' }} @endif p-2 text-uppercase px-3">
                                         <i class='bx bxs-circle me-1'></i>{{ $post->status }}
                                     </div>
                                 </td>

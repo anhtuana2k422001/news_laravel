@@ -148,6 +148,7 @@ class AdminPostsController extends Controller
     public function destroy(Post $post)
     {
         $post->tags()->delete();
+        $post->comments()->delete();
         $post->delete();
         return redirect()->route('admin.posts.index')->with('success','Xóa bài viết thành công.');
     }
@@ -170,6 +171,8 @@ class AdminPostsController extends Controller
         $data['message'] =  $str;
         return response()->json($data);
     }
+
+    
 
 
 }

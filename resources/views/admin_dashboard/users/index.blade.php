@@ -67,9 +67,15 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->role->name }}</td>
+                                @if($user->role->name != 'user')
                                 <td>
-                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.users.show', $user) }}">Chi tiết</a>
+                                    <a class="btn btn-primary btn-sm" href="{{ route('admin.users.show', $user) }}">Bài viết</a>
                                 </td>
+                                @else
+                                <td>
+                                </td>
+                                @endif
+                             
                                 <td>{{ $user->created_at->format('d/m/Y') }}</td>
                    
                                 <td>

@@ -1,13 +1,12 @@
 <?php
     use App\Models\Post;
     use App\Models\Comment;
+    use App\Models\Tag;
     $newComment = Comment::latest()->take(10)->get();
     foreach ($newComment as $comment) {
         $posts_comments[] = Post::where('id', $comment->post_id)->get();
     }
-    // Do xóa bài viết comment vẫn còn nên lấy comment bị sai --- sửa lại khi xóa rồi
-    // add lại tadabases sau đó làm tiếp chức năng này
-    
+
 ?>
 
 <!--start header -->
@@ -73,8 +72,8 @@
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <a href="javascript:;">
                                         <div class="msg-header">
-                                            <p class="msg-header-title">Notifications</p>
-                                            <p class="msg-header-clear ms-auto">Marks all as read</p>
+                                            <p class="msg-header-title">Thông báo</p>
+                                            <p class="msg-header-clear ms-auto">Đánh dấu tất cả đã đọc</p>
                                         </div>
                                     </a>
                                     <div class="header-notifications-list">
@@ -179,7 +178,7 @@
                                         </a>
                                     </div>
                                     <a href="javascript:;">
-                                        <div class="text-center msg-footer">View All Notifications</div>
+                                        <div class="text-center msg-footer">Xem tất cả thông báo</div>
                                     </a>
                                 </div>
                             </li>
@@ -196,7 +195,7 @@
                                     </a>
 
                                     <div class="header-message-list">
-                                        @for ($i = 0; $i < 2 ; $i++ )
+                                        @for ($i = 0; $i < 10 ; $i++ )
                                         <a class="dropdown-item" href="{{ route('posts.show', $posts_comments[$i][0] ) }}">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
@@ -227,20 +226,20 @@
                             </div>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Profile</span></a>
+                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-user"></i><span>Hồ sơ</span></a>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a>
+                            <li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Cài đặt</span></a>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a>
-                            </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a>
                             </li>
                             <li>
                                 <div class="dropdown-divider mb-0"></div>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:;"><i class='bx bx-log-out-circle'></i><span>Logout</span></a>
+                            
+                            <li><a onclick="event.preventDefault(); document.getElementById('nav-logout-form').submit();"
+							     class="dropdown-item" ><i class='bx bx-log-out-circle'></i><span>Đăng xuất</span></a>
+                                <form id="nav-logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                </form>
                             </li>
                         </ul>
                     </div>
