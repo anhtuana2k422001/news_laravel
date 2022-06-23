@@ -583,7 +583,7 @@
 											<div class="post--item post--layout-3">
 												<div class="post--img">
 													<a href="{{ route('posts.show', $outstanding_post) }}"
-														class="thumb"><img
+														class="thumb"><img width = "120"
 															src="{{ asset($outstanding_post->image ? 'storage/' .$outstanding_post->image->path : 'storage/placeholders/placeholder-image.png')}}"
 															alt=""></a>
 
@@ -598,7 +598,7 @@
 														<div class="title">
 															<h3  class="h4">
 																<a href="{{ route('posts.show', $outstanding_post) }}" class="btn-link">{{ $outstanding_post->title }}</a>
-																<span><a  href="{{ route('posts.show', $posts[$i] ) }}"><i class="fa fm fa-comments"></i>{{ count($outstanding_post->comments) }}</a></span>
+																<span><a  href="{{ route('posts.show', $outstanding_post ) }}"><i class="fa fm fa-comments"></i>{{ count($outstanding_post->comments) }}</a></span>
 															</h3>
 														</div>
 													</div>
@@ -1241,7 +1241,7 @@
 								<ul class="nav" data-ajax-content="inner">
 									<li class="title">
 										<h3 class="h4">
-											Theo bạn thì giải vô địch bóng đá nào hay nhất từ ​​trước đến nay?</h3>
+											Theo bạn thì giải đội bóng nào sẽ vô địch WoldCup 2022 ?</h3>
 									</li>
 
 									<li class="options">
@@ -1249,16 +1249,18 @@
 											<div class="checkbox">
 												<label>
 													<input type="checkbox" name="option-1">
-													<span>Brazil 2014</span>
+													<img src="{{ asset('kcnew/frontend/img/Flag_barzill.png') }}" alt="Brasil" srcset="">
+													<span>Brasil</span>
 												</label>
 
-												<p>65%<span style="width: 65%;"></span></p>
+												<p>55%<span style="width: 55%;"></span></p>
 											</div>
 
 											<div class="checkbox">
 												<label>
 													<input type="checkbox" name="option-2">
-													<span>South Africa 2010</span>
+													<img src="{{ asset('kcnew/frontend/img/Flag_Agrennal.png') }}" alt="Brasil" srcset="">
+													<span>Argentina</span>
 												</label>
 
 												<p>28%<span style="width: 28%;"></span></p>
@@ -1267,83 +1269,23 @@
 											<div class="checkbox">
 												<label>
 													<input type="checkbox" name="option-2">
-													<span>Germany 2006</span>
+													<img src="{{ asset('kcnew/frontend/img/Flag_tay_ban_nha.png') }}" alt="Brasil" srcset="">
+													<span>Tây Ban Nha</span>
 												</label>
 
-												<p>07%<span style="width: 07%;"></span></p>
+												<p>12%<span style="width: 12%;"></span></p>
 											</div>
-
-											<button type="submit" class="btn btn-primary">Vote Now</button>
-										</form>
-									</li>
-								</ul>
-
-								<!-- Preloader Start -->
-								<div class="preloader bg--color-0--b" data-preloader="1">
-									<div class="preloader--inner"></div>
-								</div>
-								<!-- Preloader End -->
-							</div>
-							<!-- Poll Widget End -->
-						</div>
-						<!-- Widget End -->
-
-						<!-- Widget Start -->
-						<div class="widget">
-							<div class="widget--title" data-ajax="tab">
-								<h2 class="h4">Bình chọn</h2>
-
-								<div class="nav">
-									<a href="#" class="prev btn-link" data-ajax-action="load_prev_poll_widget">
-										<i class="fa fa-long-arrow-left"></i>
-									</a>
-
-									<span class="divider">/</span>
-
-									<a href="#" class="next btn-link" data-ajax-action="load_next_poll_widget">
-										<i class="fa fa-long-arrow-right"></i>
-									</a>
-								</div>
-							</div>
-
-							<!-- Poll Widget Start -->
-							<div class="poll--widget" data-ajax-content="outer">
-								<ul class="nav" data-ajax-content="inner">
-									<li class="title">
-										<h3 class="h4">
-											Bạn có nghĩ rằng chi phí gửi tiền đến điện thoại di động nên giảm?</h3>
-									</li>
-
-									<li class="options">
-										<form action="#">
-											<div class="radio">
+											<div class="checkbox">
 												<label>
-													<input type="radio" name="option-1">
-													<span>Yes</span>
+													<input type="checkbox" name="option-2">
+													<img src="{{ asset('kcnew/frontend/img/Flag_bo-dao-nha.png') }}" alt="Brasil" srcset="">
+													<span>Bồ Đào Nha</span>
 												</label>
 
-												<p>65%<span style="width: 65%;"></span></p>
+												<p>05%<span style="width: 05%;"></span></p>
 											</div>
 
-											<div class="radio">
-												<label>
-													<input type="radio" name="option-1">
-													<span>No</span>
-												</label>
-
-												<p>28%<span style="width: 28%;"></span></p>
-											</div>
-
-											<div class="radio">
-												<label>
-													<input type="radio" name="option-1">
-													<span>Average</span>
-												</label>
-
-												<p>07%<span style="width: 07%;"></span></p>
-											</div>
-
-											<button type="submit" class="btn btn-primary">Vote Now</button>
+											<button type="submit" class="btn btn-primary">Vote Ngay</button>
 										</form>
 									</li>
 								</ul>
@@ -1398,8 +1340,7 @@
 											<!-- Post Item Start -->
 											<div class="post--item post--layout-3">
 												<div class="post--img">
-													<span class="thumb"><img
-															src="{{ $top_commnent->user->image ?  asset('storage/' . $top_commnent->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" alt=""></span>
+													<span class="thumb"><img style="margin: auto; background-size: cover ;  width: 60px; height: 60px;   background-image: url({{ $top_commnent->user->image ?  asset('storage/' . $top_commnent->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }})"  alt=""></span>
 
 													<div class="post--info">
 														<div class="title">
@@ -1427,147 +1368,6 @@
 							<!-- List Widgets End -->
 						</div>
 						<!-- Widget End -->
-
-						<!-- Widget Start -->
-						<div class="widget">
-							<div class="widget--title" data-ajax="tab">
-								<h2 class="h4">Lựa chọn của biên tập viên</h2>
-							</div>
-
-							<!-- List Widgets Start -->
-							<div class="list--widget list--widget-1" data-ajax-content="outer">
-								<!-- Post Items Start -->
-								<div class="post--items post--items-3">
-									<ul class="nav" data-ajax-content="inner">
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-an-giang-don-khoang-300000-luot-khach-tham-quan-trong-4-ngay-nghi-le"
-														class="thumb"><img
-															src="{{ asset('storage/placeholders/user_placeholder.jpg') }}"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Lâm Thùy Linh</a>
-															</li>
-															<li><a href="#">2022-05-04</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-an-giang-don-khoang-300000-luot-khach-tham-quan-trong-4-ngay-nghi-le"
-																	class="btn-link">An Giang đón khoảng 300.000
-																	lượt khách tham
-																	quan trong 4 ngày nghỉ lễ</a></h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-an-giang-bat-ke-doi-giet-me-roi-dam-anh-ruot-tu-vong"
-														class="thumb"><img
-															src="{{ asset('storage/placeholders/user_placeholder.jpg') }}"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Lâm Thùy Linh</a>
-															</li>
-															<li><a href="#">2022-05-04</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-an-giang-bat-ke-doi-giet-me-roi-dam-anh-ruot-tu-vong"
-																	class="btn-link">An Giang: Bắt kẻ đòi giết mẹ
-																	rồi đâm anh ruột
-																	tử vong</a></h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-tong-thong-nga-yeu-cau-phap-va-phuong-tay-gay-ap-luc-de-ukraine-cham-dut-hanh-dong-tan-bao"
-														class="thumb"><img
-															src="{{ asset('storage/placeholders/user_placeholder.jpg') }}"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Lâm Thùy Linh</a>
-															</li>
-															<li><a href="#">2022-05-04</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-tong-thong-nga-yeu-cau-phap-va-phuong-tay-gay-ap-luc-de-ukraine-cham-dut-hanh-dong-tan-bao"
-																	class="btn-link">Tổng thống Nga yêu cầu Pháp và
-																	phương Tây gây
-																	áp lực để Ukraine &#039;chấm dứt hành động tàn
-																	bạo&#039;</a>
-															</h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
-										<li>
-											<!-- Post Item Start -->
-											<div class="post--item post--layout-3">
-												<div class="post--img">
-													<a href="http://127.0.0.1:8000/bai-viet-thiet-bi-bien-nuoc-bien-thanh-nuoc-uong-vuot-chuan-who"
-														class="thumb"><img
-															src="{{ asset('storage/placeholders/user_placeholder.jpg') }}"
-															alt=""></a>
-
-													<div class="post--info">
-														<ul class="nav meta">
-															<li><a href="#">Lâm Thùy Linh</a>
-															</li>
-															<li><a href="#">2022-05-04</a></li>
-														</ul>
-
-														<div class="title">
-															<h3 class="h4"><a
-																	href="http://127.0.0.1:8000/bai-viet-thiet-bi-bien-nuoc-bien-thanh-nuoc-uong-vuot-chuan-who"
-																	class="btn-link">Thiết bị biến nước biển thành
-																	nước uống vượt
-																	chuẩn WHO</a></h3>
-														</div>
-													</div>
-												</div>
-											</div>
-											<!-- Post Item End -->
-										</li>
-									</ul>
-
-									<!-- Preloader Start -->
-									<div class="preloader bg--color-0--b" data-preloader="1">
-										<div class="preloader--inner"></div>
-									</div>
-									<!-- Preloader End -->
-								</div>
-								<!-- Post Items End -->
-							</div>
-							<!-- List Widgets End -->
-						</div>
-						<!-- Widget End -->
-
-			
 
 					</div>
 				</div> <!-- Main Sidebar End -->

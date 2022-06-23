@@ -1127,7 +1127,7 @@ h1, h2, h3, h4, h5, h6, figure {
         padding: 0 10px;
         border-radius: 4px;
         display: inline-block;
-        background: #4586ff; }
+        background: #00b249;; }
   .sidebar .f-blog {
     position: relative;
     padding: 0;
@@ -1388,7 +1388,7 @@ input[type="text"] {
   @media screen and (max-width: 768px) {
     #colorlib-footer .colorlib-widget {
       margin-bottom: 40px;
-      width: 100%;
+      width: 50%;
       float: left; } }
   #colorlib-footer .colorlib-footer-links {
     padding: 0;
@@ -1631,7 +1631,7 @@ input[type="text"] {
   border-bottom: none !important; }
   @media screen and (max-width: 768px) {
     .colorlib-nav-toggle {
-      display: block; } }
+      display: none; } }
 
 .btn {
   margin-right: 4px;

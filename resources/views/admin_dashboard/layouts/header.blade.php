@@ -199,9 +199,9 @@
                                         <a class="dropdown-item" href="{{ route('posts.show', $posts_comments[$i][0] ) }}">
                                             <div class="d-flex align-items-center">
                                                 <div class="user-online">
-                                                    <img src="{{ $posts_comments[$i][0]->comments()->orderBy('id','DESC')->take(1)->get()[0]->user->image ?  asset('storage/' . $posts_comments[$i][0]->comments()->orderBy('id','DESC')->take(1)->get()[0]->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" class="msg-avatar" alt="user avatar">
+                                                    <img class="img_admn--user img-avatar " width="50" height="50" style="border-radius: 50% ; margin: auto; background-size: cover ;  background-image: url({{ $posts_comments[$i][0]->comments()->orderBy('id','DESC')->take(1)->get()[0]->user->image ?  asset('storage/' . $posts_comments[$i][0]->comments()->orderBy('id','DESC')->take(1)->get()[0]->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }})" alt="">
                                                 </div>
-                                                <div class="flex-grow-1">
+                                                <div style="margin-left: 10px;" class="flex-grow-1">
                                                     <h6 class="msg-name">{{ $posts_comments[$i][0]->comments()->orderBy('id','DESC')->take(1)->get()[0]->user->name }}<span class="msg-time"> đã bình luận bài viết</span></h6>
                                                     <h6 class="msg-name">{{ Str::limit($posts_comments[$i][0]->title,32) }}</h6>
                                                 </div>

@@ -1,6 +1,8 @@
 <?php
 use Carbon\Carbon;
+use App\Models\Category;
 $now = Carbon::now('Asia/Ho_Chi_Minh')->locale('vi');
+$categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(12)->get();
 ?>
 
 <!DOCTYPE HTML>
@@ -285,123 +287,106 @@ $now = Carbon::now('Asia/Ho_Chi_Minh')->locale('vi');
 
 	</div>
 	
-	<div id="colorlib-subscribe" class="subs-img" style="background-image: url( {{ asset('blog_template/images/img_bg_2.jpg')}} );" data-stellar-background-ratio="0.5">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center colorlib-heading animate-box">
-					<h2>Theo dõi chúng tôi</h2>
-					<p>Đăng ký theo dõi chúng tôi để cập nhật bản tin mới nhất mỗi ngày</p>
-				</div>
-			</div>
-			<div class="row animate-box">
-				<div class="col-md-6 col-md-offset-3">
-					<div class="row">
-						<div class="col-md-12">
-						<form class="form-inline qbstp-header-subscribe">
-							<div class="col-three-forth">
-								<div class="form-group">
-									<input type="text" class="form-control" id="email" placeholder="Nhập email của bản">
-								</div>
-							</div>
-							<div class="col-one-third">
-								<div class="form-group">
-									<button type="submit" class="btn btn-primary">Đăng ký ngay</button>
-								</div>
-							</div>
-						</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
+
 	<footer id="colorlib-footer">
 		<div class="container">
-			<div class="row row-pb-md">
-				<div class="col-md-3 colorlib-widget">
-					<h4>Thông tin liên hệ</h4>
+			<div class="row">
+				<div class="col-md-2   colorlib-widget">
 					<ul class="colorlib-footer-links">
-						<li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
-						<li><a href="tel://1234567920"><i class="icon-phone"></i> + 0392 776 630</a></li>
-						<li><a href="mailto:info@yoursite.com"><i class="icon-envelope"></i> hutechnews.com</a></li>
-						<li><a href="http://luxehotel.com"><i class="icon-location4"></i> hutech.com</a></li>
+						<li><a href="{{ route('home') }}"></i>Trang chủ</a></li>
+						<li><a href="{{ route('about') }}"></i>Giới thiệu</a></li>
+						<li><a href="{{ route('contact.create') }}"></i>Liên hệ</a></li>
+						<li><a href="{{ route('contact.create') }}"></i>Mới nhất</a></li>
 					</ul>
 				</div>
-				<div class="col-md-2 colorlib-widget">
-					<h4>Programs</h4>
-					<p>
+				<div class="col-md-2  colorlib-widget">
 						<ul class="colorlib-footer-links">
-							<li><a href="#"><i class="icon-check"></i> Diploma Degree</a></li>
-							<li><a href="#"><i class="icon-check"></i> BS Degree</a></li>
-							<li><a href="#"><i class="icon-check"></i> Beginner</a></li>
-							<li><a href="#"><i class="icon-check"></i> Intermediate</a></li>
-							<li><a href="#"><i class="icon-check"></i> Advance</a></li>
-							<li><a href="#"><i class="icon-check"></i> Difficulty</a></li>
+							@for($i = 0; $i < 4; $i++)
+							<li><a href="{{ route('categories.show', $categoryFooter[$i] ) }}">{{ $categoryFooter[$i]->name }}</a></li>
+							@endfor
+							
 						</ul>
-					</p>
 				</div>
-				<div class="col-md-2 colorlib-widget">
-					<h4>Useful Links</h4>
-					<p>
+				<div class="col-md-2  colorlib-widget">
 						<ul class="colorlib-footer-links">
-							<li><a href="#"><i class="icon-check"></i> About Us</a></li>
-							<li><a href="#"><i class="icon-check"></i> Testimonials</a></li>
-							<li><a href="#"><i class="icon-check"></i> Courses</a></li>
-							<li><a href="#"><i class="icon-check"></i> Event</a></li>
-							<li><a href="#"><i class="icon-check"></i> News</a></li>
-							<li><a href="#"><i class="icon-check"></i> Contact</a></li>
+							@for($i = 4; $i < 8; $i++)
+							<li><a href="{{ route('categories.show', $categoryFooter[$i] ) }}">{{ $categoryFooter[$i]->name }}</a></li>
+							@endfor
+							
 						</ul>
-					</p>
 				</div>
 
-				<div class="col-md-2 colorlib-widget">
-					<h4>Support</h4>
-					<p>
+				<div class="col-md-2  colorlib-widget">
 						<ul class="colorlib-footer-links">
-							<li><a href="#"><i class="icon-check"></i> Documentation</a></li>
-							<li><a href="#"><i class="icon-check"></i> Forums</a></li>
-							<li><a href="#"><i class="icon-check"></i> Help &amp; Support</a></li>
-							<li><a href="#"><i class="icon-check"></i> Scholarship</a></li>
-							<li><a href="#"><i class="icon-check"></i> Student Transport</a></li>
-							<li><a href="#"><i class="icon-check"></i> Release Status</a></li>
+							@for($i = 8; $i < 12; $i++)
+							<li><a href="{{ route('categories.show', $categoryFooter[$i] ) }}">{{ $categoryFooter[$i]->name }}</a></li>
+							@endfor
 						</ul>
-					</p>
 				</div>
 
-				<div class="col-md-3 colorlib-widget">
-					<h4>Recent Post</h4>
-					<div class="f-blog">
-						<a href="blog.html" class="blog-img" style="background-image: url( {{ asset('blog_template/images/blog-1.jpg') }} );">
-						</a>
-						<div class="desc">
-							<h2><a href="blog.html">Creating Mobile Apps</a></h2>
-							<p class="admin"><span>18 April 2018</span></p>
-						</div>
-					</div>
-					<div class="f-blog">
-						<a href="blog.html" class="blog-img" style="background-image: url( {{  asset('blog_template/images/blog-2.jpg')}} );">
-						</a>
-						<div class="desc">
-							<h2><a href="blog.html">Creating Mobile Apps</a></h2>
-							<p class="admin"><span>18 April 2018</span></p>
+				<div class="col-md-4 ">
+					<h4>Theo dõi chúng tôi</h4>
+					<div class="row">
+						<div class="col-md-12">
+							<form  class="form-inline qbstp-header-subscribe">
+									<div class="form-group">
+										<input type="text" class="form-control" id="email" placeholder="Nhập email của bạn">
+									</div>
+									<div class="form-group ">
+										<button style="display: none" type="submit" class="btn btn-primary">Đăng ký ngay</button>
+									</div>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
+		
 		</div>
-		<div class="copy">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<p>
-							<small class="block">&copy; <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-		Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-		<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></small><br> 
-							<small class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a>, <a href="http://pexels.com/" target="_blank">Pexels</a></small>
-						</p>
-					</div>
+
+
+	
+		<div class="container">
+			<div style=" padding: 15px 0; display: flex;" class=" row">
+				<div class="col-md-4">
+					<p>
+						<a href="{{ route('home') }}">
+							<img style="border-radius: 12px; width: 120px;" src="{{ asset('kcnew/frontend/img/image_logo.png') }}" alt="logo">
+						</a>
+					</p>
+					<p>
+						<span style="font-size: 14px" class="block">Báo tiếng Việt nhiều người xem nhất</span>
+					</p>
+					<p>
+						<span style="font-size: 14px" class="block">Thuộc Bộ Khoa học Công nghệ</span>
+					</p>
+					<p>
+						<span style="font-size: 14px" class="block">Số giấy phép: 548/GP-BTTTT ngày 27/06/2022</span>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p>
+						<span style="font-size: 14px" class="block">Tổng biên tập: Nhóm TDQ Hutech</span>
+					</p>
+					<p>
+						<span style="font-size: 14px" class="block">Địa chỉ: E1, Khu Công Nghệ cao, Phường Hiệp Phú, TP.HCM</span>
+					</p>
+					<p>
+						<span style="font-size: 14px" class="block">Điện thoại: 0392766630</span>
+					</p>
+				</div>
+				<div class="col-md-4">
+					<p>
+						<small style="font-size: 14px" class="block">&copy; 2022. Toàn bộ bản quyền thuộc DTQ</small>
+					</p>
+					<p>
+						<ul style="display: flex;" class="header--topbar-social nav hidden-sm hidden-xxs">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="#"><i class="fa fa-rss"></i></a></li>
+							<li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+						</ul>
+					</p>
 				</div>
 			</div>
 		</div>

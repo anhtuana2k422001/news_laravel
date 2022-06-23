@@ -62,7 +62,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <img class="img_admn--user img-avatar" width="60" height="60" src="{{ $user->image ?  asset('storage/' . $user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" alt="">
+                                    <img class="img_admn--user img-avatar" width="60" height="60" style="margin: auto; background-size: cover ;  background-image: url({{ $user->image ?  asset('storage/' . $user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }})" alt="">
                                 </td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>

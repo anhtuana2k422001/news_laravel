@@ -36,6 +36,12 @@ class PostsController extends Controller
                     ->where('category_id','!=', $posts_new[2][0]->category->id )
                     ->take(1)->get(); 
 
+        
+        // Bài viết tương tự 
+        $postTheSame = Post::latest()->approved()->where('category_id', $post->category->id)->where('id', '!=' , $post->id)->take(5)->get(); ;
+        // Bài viết nổi bật
+        $outstanding_posts = Post::approved()->orderBy('views','DESC')->take(5)->get();
+        
         // Tăng lượt xem khi xem bài viết
         $post->views =  ($post->views) + 1;
         $post->save();
@@ -46,6 +52,8 @@ class PostsController extends Controller
             'categories' => $categories, 
             'tags' => $tags,
             'posts_new' => $posts_new,
+            'postTheSame' =>  $postTheSame, // Bài viết tương tự
+            'outstanding_posts' => $outstanding_posts, // Bài viết nỗi bật
         ]);
     }
 

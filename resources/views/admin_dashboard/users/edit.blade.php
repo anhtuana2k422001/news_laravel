@@ -78,7 +78,7 @@
 											</div>
 											<div class="col-md-4">
 												<div class="user_image">
-													<img src="{{ $user->image ?  asset('storage/' . $user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" alt="">
+													<img class="img_admn--user img-avatar" width="220px" height="220px" style="border-radius: 50%; margin: auto; background-size: cover ;  background-image: url({{ $user->image ?  asset('storage/' . $user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }})" alt="">
 												</div>
 											</div>
 										</div>

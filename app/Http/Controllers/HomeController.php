@@ -77,7 +77,7 @@ class HomeController extends Controller
 
 
         // Ý kiến người đọc, comments
-        $top_commnents = Comment::latest()->take(4)->get();
+        $top_commnents = Comment::latest()->take(5)->get();
 
         return view('home', [ 
             'posts' => $posts,
