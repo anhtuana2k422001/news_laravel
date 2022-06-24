@@ -36,9 +36,9 @@ class CategoryController extends Controller
             'categories' => $categories = Category::where('name','!=','Chưa phân loại')->orderBy('created_at','DESC')->take(10)->get(),
             'category_all' => Category::where('name','!=','Chưa phân loại')->withCount('posts')->paginate(100),
             'posts_new' => $posts_new,
+      
         ]);
     }
-
 
     public function show(Category $category){
 
@@ -67,14 +67,17 @@ class CategoryController extends Controller
                      ->where('category_id','!=', $posts_new[2][0]->category->id )
                      ->take(1)->get();
 
+        // Bài viết nổi bật
+        $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
         
         return view('categories.show', [
             'category' => $category,
-            'posts' => $category->posts()->approved()->orderBy('created_at','DESC')->paginate(8) ,
+            'posts' => $category->posts()->approved()->orderBy('created_at','DESC')->paginate(10) ,
             'recent_posts' => $recent_posts,
             'categories' => $categories, 
             'tags' => $tags,
             'posts_new' => $posts_new,
+            'outstanding_posts' => $outstanding_posts, // bài viết xu hướng
         ]);
     }
 }

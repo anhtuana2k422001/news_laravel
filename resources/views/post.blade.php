@@ -133,7 +133,7 @@
 											<div class="comment--header clearfix">
 												<p class="name">{{ $comment->user->name }}</p>
 												<p class="date">{{ $comment->created_at->locale('vi')->diffForHumans() }}</p>
-												<a href="http://127.0.0.1:8000/report3" class="reply"><i class="fa fa-flag"></i></a>
+												<a href="javascript:;" class="reply"><i class="fa fa-flag"></i></a>
 											</div>
 											<div class="comment--content">
 												<p>{{ $comment->the_comment }}</p>
@@ -255,170 +255,17 @@
                 <div class="main--sidebar col-md-4 ptop--30 pbottom--30" data-sticky-content="true">
                     <div class="sticky-content-inner">
                        
-
                         <!-- Widget Start -->
-                        <div class="widget">
-                            <div class="widget--title">
-                                <h2 class="h4">Tin tức nổi bật</h2>
-                                <i class="icon fa fa-newspaper-o"></i>
-                            </div>
-
-                            <!-- List Widgets Start -->
-                            <div class="list--widget list--widget-1">
-                                <div class="list--widget-nav" data-ajax="tab">
-                                    <ul class="nav nav-justified">
-                                        <li>
-                                            <a href="javascript:;" data-ajax-action="load_widget_hot_news">Tin nóng</a>
-                                        </li>
-                                        <li class="active">
-                                            <a href="javascript:;" data-ajax-action="load_widget_trendy_news">Xu hướng</a>
-                                        </li>
-                                        <li>
-                                            <a href="javascript:;" data-ajax-action="load_widget_most_watched">Xem nhiều nhất</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!-- Post Items Start -->
-                                <div class="post--items post--items-3" data-ajax-content="outer">
-                                    <ul class="nav" data-ajax-content="inner">
-                                        @foreach($outstanding_posts as $outstanding_post)
-                                            <li>
-                                                <!-- Post Item Start -->
-                                                <div class="post--item post--layout-3">
-                                                    <div class="post--img">
-                                                        <a href="{{ route('posts.show', $outstanding_post) }}" class="thumb"><img
-                                                                src="{{ asset($outstanding_post->image ? 'storage/' .$outstanding_post->image->path : 'storage/placeholders/placeholder-image.png')}}"
-                                                                alt=""></a>
-                                                        <div class="post--info">
-                                                            <ul class="nav meta">
-                                                                <li><a href="javascript:;">{{ $outstanding_post->created_at->locale('vi')->diffForHumans() }}</a></li>
-                                                                <li><a  href="javascript:;"><i class="fa fm fa-comments"></i>{{ count($outstanding_post->comments) }}</a></li>
-                                                            </ul>
-
-                                                            <div class="title">
-                                                                <h3 class="h4"><a href="{{ route('posts.show', $outstanding_post) }}"
-                                                                        class="btn-link">{{ $outstanding_post->title}}</a>
-                                                                </h3>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Post Item End -->
-                                            </li>
-                                            @endforeach
-                                        </ul>
-
-                                    <!-- Preloader Start -->
-                                    <div class="preloader bg--color-0--b" data-preloader="1">
-                                        <div class="preloader--inner"></div>
-                                    </div>
-                                    <!-- Preloader End -->
-                                </div>
-                                <!-- Post Items End -->
-                            </div>
-                            <!-- List Widgets End -->
-                        </div>
+                        <x-blog.side-outstanding_posts :outstanding_posts="$outstanding_posts"/>
                         <!-- Widget End -->
 
-                        	<!-- Widget Start -->
-						<div class="widget">
-							<div class="widget--title" data-ajax="tab">
-								<h2 class="h4">Bình chọn</h2>
-
-								<div class="nav">
-									<a href="#" class="prev btn-link" data-ajax-action="load_prev_poll_widget">
-										<i class="fa fa-long-arrow-left"></i>
-									</a>
-
-									<span class="divider">/</span>
-
-									<a href="#" class="next btn-link" data-ajax-action="load_next_poll_widget">
-										<i class="fa fa-long-arrow-right"></i>
-									</a>
-								</div>
-							</div>
-
-							<!-- Poll Widget Start -->
-							<div class="poll--widget" data-ajax-content="outer">
-								<ul class="nav" data-ajax-content="inner">
-									<li class="title">
-										<h3 class="h4">
-											Theo bạn thì giải đội bóng nào sẽ vô địch WoldCup 2022 ?</h3>
-									</li>
-
-									<li class="options">
-										<form action="#">
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" name="option-1">
-													<img src="{{ asset('kcnew/frontend/img/Flag_barzill.png') }}" alt="Brasil" srcset="">
-													<span>Brasil</span>
-												</label>
-
-												<p>55%<span style="width: 55%;"></span></p>
-											</div>
-
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" name="option-2">
-													<img src="{{ asset('kcnew/frontend/img/Flag_Agrennal.png') }}" alt="Brasil" srcset="">
-													<span>Argentina</span>
-												</label>
-
-												<p>28%<span style="width: 28%;"></span></p>
-											</div>
-
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" name="option-2">
-													<img src="{{ asset('kcnew/frontend/img/Flag_tay_ban_nha.png') }}" alt="Brasil" srcset="">
-													<span>Tây Ban Nha</span>
-												</label>
-
-												<p>12%<span style="width: 12%;"></span></p>
-											</div>
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" name="option-2">
-													<img src="{{ asset('kcnew/frontend/img/Flag_bo-dao-nha.png') }}" alt="Brasil" srcset="">
-													<span>Bồ Đào Nha</span>
-												</label>
-
-												<p>05%<span style="width: 05%;"></span></p>
-											</div>
-
-											<button type="submit" class="btn btn-primary">Vote Ngay</button>
-										</form>
-									</li>
-								</ul>
-
-								<!-- Preloader Start -->
-								<div class="preloader bg--color-0--b" data-preloader="1">
-									<div class="preloader--inner"></div>
-								</div>
-								<!-- Preloader End -->
-							</div>
-							<!-- Poll Widget End -->
-						</div>
-						<!-- Widget End -->
-
                         <!-- Widget Start -->
-						<div class="widget">
-							<div class="widget--title">
-								<h2 class="h4">Quảng cáo</h2>
-								<i class="icon fa fa-bullhorn"></i>
-							</div>
+                        <x-blog.side-vote />
+	                    <!-- Widget End -->
 
-							<!-- Ad Widget Start -->
-							<div class="ad--widget--banner">
-								<a href="https://mwc.com.vn/products/giay-sandal-nu-mwc-nusd--2887?c=N%C3%82U">
-									<img src="{{ asset('kcnew/frontend/img/ads-img/banner_quangcao.png') }}" alt="">
-								</a>
-							</div>
-							<!-- Ad Widget End -->
-						</div>
-						<!-- Widget End -->
+                      <!-- Widget Start -->
+                      <x-blog.side-ad_banner />
+                      <!-- Widget End -->
 
                     </div>
                 </div>
@@ -428,20 +275,17 @@
     </div>
     <!-- Main Content Section End -->
 
-
-    <!-- 
-        <x-blog.side-categories :categories="$categories"/>
-        <x-blog.side-recent_posts :recent_posts="$recent_posts"/>
-        <x-blog.side-tags :tags="$tags"/>
-    -->
-		
-
 @endsection
 
 @section('custom_js')
+
 <script>
 	setTimeout(() => {
 		$(".global-message").fadeOut();
 	}, 5000)
 </script>
+
+
+
+
 @endsection

@@ -17,6 +17,7 @@ class PostsController extends Controller
 
         /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
         $category_unclassified = Category::where('name','Chưa phân loại')->first();
+
         $posts_new[0]= Post::latest()->approved()
                     ->where('category_id','!=', $category_unclassified->id )
                     ->take(1)->get();
@@ -39,8 +40,10 @@ class PostsController extends Controller
         
         // Bài viết tương tự 
         $postTheSame = Post::latest()->approved()->where('category_id', $post->category->id)->where('id', '!=' , $post->id)->take(5)->get(); ;
+        
+
         // Bài viết nổi bật
-        $outstanding_posts = Post::approved()->orderBy('views','DESC')->take(5)->get();
+        $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
         
         // Tăng lượt xem khi xem bài viết
         $post->views =  ($post->views) + 1;
@@ -53,7 +56,7 @@ class PostsController extends Controller
             'tags' => $tags,
             'posts_new' => $posts_new,
             'postTheSame' =>  $postTheSame, // Bài viết tương tự
-            'outstanding_posts' => $outstanding_posts, // Bài viết nỗi bật
+            'outstanding_posts' => $outstanding_posts, // bài viết xu hướng
         ]);
     }
 
@@ -70,5 +73,6 @@ class PostsController extends Controller
 
     }
 
+ 
    
 }
