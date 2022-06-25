@@ -38,6 +38,9 @@ class TagController extends Controller
                     ->where('category_id','!=', $posts_new[1][0]->category->id)
                     ->where('category_id','!=', $posts_new[2][0]->category->id )
                     ->take(1)->get(); 
+
+        // Bài viết nổi bật
+        $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
         
         return view('tags.show', [
             'tag' => $tag,
@@ -46,6 +49,7 @@ class TagController extends Controller
             'categories' => $categories, 
             'tags' => $tags,
             'posts_new' => $posts_new,
+            'outstanding_posts' => $outstanding_posts,
         ]);
     }
 }

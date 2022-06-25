@@ -4695,6 +4695,7 @@ ul.header--menu-links.nav > li.open > a:focus {
 
 .post--item.post--type-video .thumb:after,
 .post--item.post--type-audio .thumb:after {
+    display: none;
     content: "\f04b";
     position: absolute;
     top: 50%;

@@ -8,8 +8,8 @@
 <div class="main--breadcrumb">
 	<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="http://127.0.0.1:8000" class="btn-link"><i class="fa fm fa-home"></i>Trang Chủ</a></li>
-				<li><a href="javascript:;" class="btn-link">{{ $posts[0]->category->name }}</a></li>
+				<li><a href="{{ route('home') }}" class="btn-link"><i class="fa fm fa-home"></i>Trang Chủ</a></li>
+				<li class="active"><span>{{ $category->name }}</span></li>
 			</ul>
 	</div>
 </div>
@@ -65,7 +65,7 @@
 
 					</div>
 				</div>
-			<!-- Main Sidebar End -->
+				<!-- Main Sidebar End -->
 
 		</div>
 	</div>

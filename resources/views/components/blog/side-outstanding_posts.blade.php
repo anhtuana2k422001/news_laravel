@@ -80,9 +80,15 @@ use App\Models\Category;
 <!-- Widget End -->
 
 @section('custom_js')
+
+<script>
+	setTimeout(() => {
+		$(".global-message").fadeOut();
+	}, 5000)
+</script>
+
 <script>
         const outstandPosts = document.querySelectorAll('.outstandPosts');
-        
         outstandPosts.forEach((item, index)=>{
             $(item).click(function(e){
 
@@ -188,6 +194,6 @@ use App\Models\Category;
 
             });
         });
-
 </script>
+
 @endsection

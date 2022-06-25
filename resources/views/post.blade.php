@@ -30,7 +30,7 @@
 <div class="main--breadcrumb">
 	<div class="container">
 			<ul class="breadcrumb">
-				<li><a href="http://127.0.0.1:8000" class="btn-link"><i class="fa fm fa-home"></i>Trang Chủ</a></li>
+				<li><a href="{{ route('home') }}" class="btn-link"><i class="fa fm fa-home"></i>Trang Chủ</a></li>
 				<li><a href="{{ route('categories.show', $post->category ) }}" class="btn-link">{{ $post->category->name }}</a></li>
 				<li class="active"><span>{{ $post->title }}</span></li>
 			</ul>
@@ -173,11 +173,11 @@
 									</div>
 
 									<div class="form-group">
-										<input type="submit" value="Bình luận" class="btn btn-primary">
+										<input id="input_comment" type="submit" value="Bình luận" class="btn btn-primary">
 									</div>
-								</form>
                                 </form>
 								@endauth
+
 								@guest
 								<p class="h4">
 									<a href="{{ route('login') }}">Đăng nhập</a> hoặc 
@@ -284,8 +284,5 @@
 		$(".global-message").fadeOut();
 	}, 5000)
 </script>
-
-
-
 
 @endsection

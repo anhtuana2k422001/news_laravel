@@ -77,7 +77,7 @@ class HomeController extends Controller
 
 
         // Ý kiến người đọc, comments
-        $top_commnents = Comment::latest()->take(5)->get();
+        $top_commnents = Comment::take(5)->get();
 
         return view('home', [ 
             'posts' => $posts,
@@ -98,7 +98,6 @@ class HomeController extends Controller
             'category_home' => $category_home, 
             'tags' => $tags,
             'top_commnents' => $top_commnents, // Lấy ý kiến người đọc mới nhất
-
         ]);
     }
 
@@ -128,7 +127,9 @@ class HomeController extends Controller
                      ->where('category_id','!=', $posts_new[2][0]->category->id )
                      ->take(1)->get(); 
 
-
+        // Bài viết nổi bật
+        $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
+        
         $key = $request->search;
         // tìm kiếm kết quả danh mục
         $cat = Category::where('name','like' , '%'.$key.'%')->first();
@@ -140,7 +141,146 @@ class HomeController extends Controller
         $title_t = 'Kết quả tìm kiếm theo';
         $time = '(0,36 giây) ';
 
-        return view('search',compact('posts','title','time','recent_posts','categories', 'key','posts_new'));
+        return view('search',compact('posts','title','time','recent_posts','categories', 'key','posts_new', 'outstanding_posts'));
+    }
+
+    public function newPost(){
+        
+        // Bài viết mới nhất
+        $recent_posts = Post::latest()->take(5)->get();
+        $categories  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();
+       
+         /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
+         $category_unclassified = Category::where('name','Chưa phân loại')->first();
+         $posts_new[0]= Post::latest()->approved()
+                      ->where('category_id','!=', $category_unclassified->id )
+                       ->take(1)->get();
+         $posts_new[1] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->take(1)->get();
+         $posts_new[2] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->where('category_id','!=', $posts_new[1][0]->category->id )
+                     ->take(1)->get();
+         $posts_new[3] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->where('category_id','!=', $posts_new[1][0]->category->id)
+                     ->where('category_id','!=', $posts_new[2][0]->category->id )
+                     ->take(1)->get(); 
+
+        // Bài viết nổi bật
+        $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
+        
+        
+        // Bài viết mới nhất
+        $newPosts_category  = Post::latest()->approved()->take(20)->get(); 
+
+        return view('newPost',compact(
+            'recent_posts',
+            'categories',
+            'posts_new',
+            'outstanding_posts',
+            'newPosts_category'
+        ));
+    }
+
+    public function hotPost(){
+        
+        // Bài viết mới nhất
+        $recent_posts = Post::latest()->take(5)->get();
+        $categories  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();
+       
+         /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
+         $category_unclassified = Category::where('name','Chưa phân loại')->first();
+         $posts_new[0]= Post::latest()->approved()
+                      ->where('category_id','!=', $category_unclassified->id )
+                       ->take(1)->get();
+         $posts_new[1] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->take(1)->get();
+         $posts_new[2] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->where('category_id','!=', $posts_new[1][0]->category->id )
+                     ->take(1)->get();
+         $posts_new[3] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->where('category_id','!=', $posts_new[1][0]->category->id)
+                     ->where('category_id','!=', $posts_new[2][0]->category->id )
+                     ->take(1)->get(); 
+
+        // Bài viết nổi bật
+        $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
+        
+        
+        // Bài viết mới nhất
+        $category_phap_luat = Category::where('name','Pháp luật')->first();
+        $category_kinh_te = Category::where('name','Kinh tế')->first();
+        $category_xa_hoi = Category::where('name','Xã hội')->first();
+        $category_khoa_hoc = Category::where('name','Khoa học')->first();
+        $category_the_gioi = Category::where('name','Thế giới')->first();
+
+        $hotPosts_category[0]  = Post::approved()->where('category_id', $category_phap_luat-> id )->orderBy('created_at','DESC')->take(4)->get();
+        $hotPosts_category[1]  = Post::approved()->where('category_id', $category_kinh_te-> id )->orderBy('created_at','DESC')->take(4)->get();
+        $hotPosts_category[2]  = Post::approved()->where('category_id', $category_xa_hoi-> id )->orderBy('created_at','DESC')->take(4)->get();
+        $hotPosts_category[3]  = Post::approved()->where('category_id', $category_khoa_hoc-> id )->orderBy('created_at','DESC')->take(4)->get();
+        $hotPosts_category[4]  = Post::approved()->where('category_id', $category_the_gioi-> id )->orderBy('created_at','DESC')->take(4)->get();
+
+        return view('hotPost',compact(
+            'recent_posts',
+            'categories',
+            'posts_new',
+            'outstanding_posts',
+            'hotPosts_category'
+        ));
+    }
+
+    public function viewPost(){
+        
+        // Bài viết mới nhất
+        $recent_posts = Post::latest()->take(5)->get();
+        $categories  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(10)->get();
+       
+         /*----- Lấy ra 4 bài viết mới nhất theo các danh mục khác nhau -----*/
+         $category_unclassified = Category::where('name','Chưa phân loại')->first();
+         $posts_new[0]= Post::latest()->approved()
+                      ->where('category_id','!=', $category_unclassified->id )
+                       ->take(1)->get();
+         $posts_new[1] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->take(1)->get();
+         $posts_new[2] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->where('category_id','!=', $posts_new[1][0]->category->id )
+                     ->take(1)->get();
+         $posts_new[3] = Post::latest()->approved()
+                     ->where('category_id','!=', $category_unclassified->id )
+                     ->where('category_id','!=', $posts_new[0][0]->category->id )
+                     ->where('category_id','!=', $posts_new[1][0]->category->id)
+                     ->where('category_id','!=', $posts_new[2][0]->category->id )
+                     ->take(1)->get(); 
+
+        // Bài viết nổi bật
+        $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
+        
+        
+        // Bài viết mới nhất
+        $viewPosts_category  = Post::approved()->orderBy('views','DESC')->take(20)->get(); 
+
+        return view('viewPost',compact(
+            'recent_posts',
+            'categories',
+            'posts_new',
+            'outstanding_posts',
+            'viewPosts_category'
+        ));
     }
 
 

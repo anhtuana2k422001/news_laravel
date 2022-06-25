@@ -3,6 +3,7 @@ use Carbon\Carbon;
 use App\Models\Category;
 $now = Carbon::now('Asia/Ho_Chi_Minh')->locale('vi');
 $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount('posts')->orderBy('created_at','DESC')->take(12)->get();
+
 ?>
 
 <!DOCTYPE HTML>
@@ -163,11 +164,11 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 	
 					<!-- Header Topbar Social Start -->
 					<ul class="header--topbar-social nav hidden-sm hidden-xxs">
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#"><i class="fa fa-rss"></i></a></li>
-						<li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+						<li><a href="https://www.facebook.com/people/Anh-Tuan/100007007238964"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-google-plus"></i></a></li>
+						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube><i class="fa fa-rss"></i></a></li>
+						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-youtube-play"></i></a></li>
 					</ul>
 					<!-- Header Topbar Social End -->
 				</div>
@@ -206,7 +207,7 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 							<ul class="dropdown-menu">
 								<li><a href="{{ route('about') }}">Giới thiệu</a></li>
 								<li><a href="{{ route('contact.create') }}">Liên hệ</a></li>
-								<li><a href="#">404</a></li>
+								<li><a href="javascript:;">404</a></li>
 							</ul>
 						</li>
 						<li>
@@ -242,20 +243,20 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 			<div class="container">
 				<ul class="nav">
 					<li>
-						<a href=".public/tintucmoinhat">
+						<a href="{{ route('newPost') }}">
 							<i class="fa fa-star-o"></i>
 							<span>Tin tức mới nhất</span>
 						</a>
 					</li>
 				
 					<li>
-						<a href=".public/tinnong">
+						<a href="{{ route('hotPost') }}">
 							<i class="fa fa-fire"></i>
 							<span>Tin nóng</span>
 						</a>
 					</li>
 					<li>
-						<a href=".public/xemnhieunhat">
+						<a href="{{ route('viewPost') }}">
 							<i class="fa fa-eye"></i>
 							<span>Xem nhiều nhất</span>
 						</a>
@@ -380,11 +381,11 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 					</p>
 					<p>
 						<ul style="display: flex;" class="header--topbar-social nav hidden-sm hidden-xxs">
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#"><i class="fa fa-rss"></i></a></li>
-							<li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+							<li><a href="https://www.facebook.com/people/Anh-Tuan/100007007238964"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-rss"></i></a></li>
+							<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-youtube-play"></i></a></li>
 						</ul>
 					</p>
 				</div>

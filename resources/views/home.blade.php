@@ -1,6 +1,6 @@
 @extends('main_layouts.master')
 
-@section('title','TDQ - Tin Tức mới')
+@section('title','TDQ - Trang Tin Tức Việt Nam')
 
 @section('content')
 
@@ -28,11 +28,11 @@
 													alt=""></a>
 											<a href="{{ route('categories.show', $posts_new[$i][0]->category) }}" class="cat">{{ $posts_new[$i][0]->category->name }}</a>
 
-											<a href="#" class="icon"><i class="fa fa-flash"></i></a>
+											<a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
 											<div class="post--info">
 												<ul class="nav meta">
-													<li><a href="#">{{ $posts_new[$i][0]->author->name }}</a></li>
-													<li><a href="#">{{ $posts_new[$i][0]->created_at->locale('vi')->diffForHumans() }}</a></li>
+													<li><a href="javascript:;">{{ $posts_new[$i][0]->author->name }}</a></li>
+													<li><a href="javascript:;">{{ $posts_new[$i][0]->created_at->locale('vi')->diffForHumans() }}</a></li>
 												</ul>
 												<div class="title">
 													<h2 class="h4"><a href="{{ route('posts.show', $posts_new[$i][0]) }}" class="btn-link">{{ $posts_new[$i][0]->title }}</a>
@@ -57,12 +57,12 @@
 
 											<a href="{{ route('categories.show', $posts_new[2][0]->category) }}" class="cat">{{ $posts_new[2][0]->category->name }}</a>
 
-											<a href="#" class="icon"><i class="fa fa-fire"></i></a>
+											<a href="javascript:;" class="icon"><i class="fa fa-fire"></i></a>
 
 											<div class="post--info">
 												<ul class="nav meta">
-													<li><a href="#">{{ $posts_new[2][0]->author->name }}</a></li>
-													<li><a href="#">{{ $posts_new[2][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+													<li><a href="javascript:;">{{ $posts_new[2][0]->author->name }}</a></li>
+													<li><a href="javascript:;">{{ $posts_new[2][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 												</ul>
 
 												<div class="title">
@@ -88,12 +88,12 @@
 
 									<a href="{{ route('categories.show', $posts_new[3][0]->category ) }}" class="cat">{{ $posts_new[3][0]->category->name }}</a>
 
-									<a href="#" class="icon"><i class="fa fa-flash"></i></a>
+									<a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
 
 									<div class="post--info">
 										<ul class="nav meta">
-											<li><a href="#">{{ $posts_new[3][0]->author->name }}</a></li>
-											<li><a href="#">{{ $posts_new[3][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+											<li><a href="javascript:;">{{ $posts_new[3][0]->author->name }}</a></li>
+											<li><a href="javascript:;">{{ $posts_new[3][0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 										</ul>
 
 										<div class="title">
@@ -140,12 +140,12 @@
 														class="thumb"><img src="{{ asset($post_category_home0[0]->image ? 'storage/' . $post_category_home0[0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 															alt=""></a>
 
-													<a href="#" class="icon"><i class="fa fa-flash"></i></a>
+													<a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home0[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home0[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home0[0]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home0[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -180,8 +180,8 @@
 
 														<div class="post--info">
 															<ul class="nav meta">
-																<li><a href="#">{{ $post_category_home0[$i]->author->name }}</a></li>
-																<li><a href="#">{{ $post_category_home0[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+																<li><a href="javascript:;">{{ $post_category_home0[$i]->author->name }}</a></li>
+																<li><a href="javascript:;">{{ $post_category_home0[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 															</ul>
 
 															<div class="title">
@@ -225,12 +225,12 @@
 															src="{{ asset($post_category_home1[0]->image ? 'storage/' . $post_category_home1[0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 															alt=""></a>
 												
-													<a href="#" class="icon"><i class="fa fa-flash"></i></a>
+													<a href="javascript:;" class="icon"><i class="fa fa-flash"></i></a>
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home1[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home1[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home1[0]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home1[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -256,8 +256,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home1[$i]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home1[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home1[$i]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home1[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -302,12 +302,12 @@
 															src="{{ asset($post_category_home2[0]->image ? 'storage/' . $post_category_home2[0]->image->path : 'storage/placeholders/placeholder-image.png'  )}}"
 															alt=""></a>
 													<a href="{{ route('categories.show', $post_category_home2[0]->category) }}" class="cat">{{ $post_category_home2[0]->category->name }}</a>
-													<a href="#" class="icon"><i class="fa fa-star-o"></i></a>
+													<a href="javascript:;" class="icon"><i class="fa fa-star-o"></i></a>
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home2[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home2[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home2[0]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home2[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -371,8 +371,8 @@
 																<div class="post--info">
 																	<ul class="nav meta">
 																		
-																		<li><a href="#">{{ $post_category_home2[$i]->author->name }}</a></li>
-																		<li><a href="#">{{ $post_category_home2[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+																		<li><a href="javascript:;">{{ $post_category_home2[$i]->author->name }}</a></li>
+																		<li><a href="javascript:;">{{ $post_category_home2[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 																	</ul>
 
 																	<div class="title">
@@ -424,8 +424,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home3[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home3[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home3[0]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home3[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -458,8 +458,8 @@
 
 														<div class="post--info">
 															<ul class="nav meta">
-																<li><a href="#">{{ $post_category_home3[$i]->author->name }}</a></li>
-																<li><a href="#">{{ $post_category_home3[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+																<li><a href="javascript:;">{{ $post_category_home3[$i]->author->name }}</a></li>
+																<li><a href="javascript:;">{{ $post_category_home3[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 															</ul>
 
 															<div class="title">
@@ -506,8 +506,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home4[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home4[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home4[0]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home4[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -534,8 +534,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home4[$i]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home4[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home4[$i]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home4[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -589,16 +589,14 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $outstanding_post->author->name }}</a>
-															</li>
-															<li><a href="#">{{ $outstanding_post->created_at->locale('vi')->diffForHumans() }}</a></li>
-			
+															<li><a href="javascript:;">{{ $outstanding_post->created_at->locale('vi')->diffForHumans() }}</a></li>
+															<li><a  href="javascript:;"><i class="fa fm fa-comments"></i>{{ count($outstanding_post->comments) }}</a></li>
+                                       						<li><span><i class="fa fm fa-eye"></i>{{ $outstanding_post->views }}</span></li>
 														</ul>
 
 														<div class="title">
 															<h3  class="h4">
 																<a href="{{ route('posts.show', $outstanding_post) }}" class="btn-link">{{ $outstanding_post->title }}</a>
-																<span><a  href="{{ route('posts.show', $outstanding_post ) }}"><i class="fa fm fa-comments"></i>{{ count($outstanding_post->comments) }}</a></span>
 															</h3>
 														</div>
 													</div>
@@ -676,7 +674,7 @@
 									</li>
 
 									<li class="col-md-12 twitter">
-										<a href="#">
+										<a href="javascript:;">
 											<span class="icon">
 												<i class="fa fa-twitter"></i>
 												<span>Tweet</span>
@@ -690,7 +688,7 @@
 									</li>
 
 									<li class="col-md-12 google-plus">
-										<a href="#">
+										<a href="javascript:;">
 											<span class="icon">
 												<i class="fa fa-google-plus"></i>
 												<span>Share</span>
@@ -789,8 +787,8 @@
 
 									<div class="post--info">
 										<ul class="nav meta">
-											<li><a href="#">{{ $post_category_home5[0]->author->name }}</a></li>
-											<li><a href="#">{{ $post_category_home5[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+											<li><a href="javascript:;">{{ $post_category_home5[0]->author->name }}</a></li>
+											<li><a href="javascript:;">{{ $post_category_home5[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 										</ul>
 
 										<div class="title">
@@ -822,8 +820,8 @@
 
 											<div class="post--info">
 												<ul class="nav meta">
-													<li><a href="#">{{ $post_category_home5[$i]->author->name }}</a></li>
-													<li><a href="#">{{ $post_category_home5[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+													<li><a href="javascript:;">{{ $post_category_home5[$i]->author->name }}</a></li>
+													<li><a href="javascript:;">{{ $post_category_home5[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 												</ul>
 
 												<div class="title">
@@ -887,8 +885,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home6[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home6[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home6[0]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home6[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -914,8 +912,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home6[$i]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home6[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home6[$i]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home6[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -966,8 +964,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home7[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home7[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home7[0]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home7[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -1001,8 +999,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home7[$i]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home7[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home7[$i]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home7[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -1048,8 +1046,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home8[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home8[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home8[0]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home8[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -1109,8 +1107,8 @@
 
 																<div class="post--info">
 																	<ul class="nav meta">
-																		<li><a href="#">{{ $post_category_home8[$i]->author->name }}</a></li>
-																		<li><a href="#">{{ $post_category_home8[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+																		<li><a href="javascript:;">{{ $post_category_home8[$i]->author->name }}</a></li>
+																		<li><a href="javascript:;">{{ $post_category_home8[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 																	</ul>
 
 																	<div class="title">
@@ -1161,8 +1159,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home9[0]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home9[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home9[0]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home9[0]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title text-xxs-ellipsis">
@@ -1187,8 +1185,8 @@
 
 													<div class="post--info">
 														<ul class="nav meta">
-															<li><a href="#">{{ $post_category_home9[$i]->author->name }}</a></li>
-															<li><a href="#">{{ $post_category_home9[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home9[$i]->author->name }}</a></li>
+															<li><a href="javascript:;">{{ $post_category_home9[$i]->created_at->locale('vi')->diffForHumans()  }}</a></li>
 														</ul>
 
 														<div class="title">
@@ -1224,13 +1222,13 @@
 								<h2 class="h4">Bình chọn</h2>
 
 								<div class="nav">
-									<a href="#" class="prev btn-link" data-ajax-action="load_prev_poll_widget">
+									<a href="javascript:;" class="prev btn-link" data-ajax-action="load_prev_poll_widget">
 										<i class="fa fa-long-arrow-left"></i>
 									</a>
 
 									<span class="divider">/</span>
 
-									<a href="#" class="next btn-link" data-ajax-action="load_next_poll_widget">
+									<a href="javascript:;" class="next btn-link" data-ajax-action="load_next_poll_widget">
 										<i class="fa fa-long-arrow-right"></i>
 									</a>
 								</div>
@@ -1245,7 +1243,7 @@
 									</li>
 
 									<li class="options">
-										<form action="#">
+										<form action="javascript:;">
 											<div class="checkbox">
 												<label>
 													<input type="checkbox" name="option-1">
@@ -1306,14 +1304,14 @@
 							<div class="ad--widget">
 								<div class="row">
 									<div class="col-sm-6">
-										<a href="https://docbao.qdnd.vn/readding">
+										<a href="javascript:;">
 											<img src="{{ asset('kcnew/frontend/img/ads-img/banner_quangcao.png') }}"
 												alt="">
 										</a>
 									</div>
 
 									<div class="col-sm-6">
-										<a href="https://baomoi.com/chu-tich-ho-chi-minh/top/114.epi">
+										<a href="javascript:;">
 											<img src="{{ asset('kcnew/frontend/img/ads-img/banner_quangcao.png') }}"
 												alt="">
 										</a>
@@ -1344,7 +1342,7 @@
 
 													<div class="post--info">
 														<div class="title">
-															<h3 class="h4">{{ $top_commnent->the_comment }}</h3>
+															<h3 class="h4"><a href="{{ route('posts.show', $top_commnent->post ) }}">{{ $top_commnent->the_comment }}</a> </h3>
 														</div>
 
 														<ul class="nav meta">
@@ -1396,9 +1394,9 @@
 					<h3 class="heading"><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h3>
 					<p class="excerpt">{{ $post->excerpt }}</p></p>
 					<div class="meta">
-						<div><a class="date" href="#"><span class="icon-calendar"></span>{{ $post->created_at->locale('vi')->diffForHumans()  }}</a></div>
-						<div><a href="#"><span class="icon-user2"></span>{{ $post->author->name }} </a></div>
-						<div class="comments-count"><a href="{{ route('posts.show', $post) }}#post-comments"><span class="icon-chat"></span> {{$post->comments_count}}</a></div>
+						<div><a class="date" href="javascript:;"><span class="icon-calendar"></span>{{ $post->created_at->locale('vi')->diffForHumans()  }}</a></div>
+						<div><a href="javascript:;"><span class="icon-user2"></span>{{ $post->author->name }} </a></div>
+						<div class="comments-count"><a href="{{ route('posts.show', $post) }}javascript:;post-comments"><span class="icon-chat"></span> {{$post->comments_count}}</a></div>
 					</div>
 				</div>
 				</div>
