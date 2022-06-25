@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Validator;
 
 class PostsController extends Controller
 {
@@ -72,8 +73,45 @@ class PostsController extends Controller
 
         return redirect('/posts/' . $post->slug . '#comment_' . $comment->id)->with('success', 'Bạn vừa bình luận thành công.');
 
+
+    }
+
+    public function addCommentUser(){
+        $data = array();
+        $data['success'] = 0;
+        $data['errors'] = [];
+
+        $rules = [
+            'the_comment' => 'required|min:5|max:300',
+            'post_title' => 'required',
+        ];
+
+        $validated = Validator::make( request()->all(), $rules);
+
+        if($validated->fails()){
+            $data['errors'] = $validated->errors()->first('the_comment');
+      
+            $data['message'] = "Khổng thể bình luận";
+
+        }else{
+            $attributes = $validated->validated();
+            $post = Post::where('title', $attributes['post_title'])->first();
+
+            $comment['the_comment'] = $attributes['the_comment']; 
+            $comment['post_id'] = $post->id ; 
+            $comment['user_id'] = auth()->id();
+
+            $post->comments()->create($comment);
+
+            $data['success'] = 1;
+            $data['message'] = "Bạn đã bình luận thành công !";
+            $data['result'] = $comment;
+        }
+  
+        return response()->json($data);
     }
 
     
+
    
 }

@@ -26,6 +26,8 @@
 
 @section('content')
 
+<div class="global-message info d-none"></div>
+
 <!-- Main Breadcrumb Start -->
 <div class="main--breadcrumb">
 	<div class="container">
@@ -65,7 +67,7 @@
                                 </ul>
 
                                 <div class="title">
-                                    <h2 class="h4">{{ $post->title }}</h2>
+                                    <h2 class="post_title h4">{{ $post->title }}</h2>
                                 </div>
                             </div>
                             <div class="post--body post--content">
@@ -99,12 +101,12 @@
                             <!-- Social Widget Start -->
                             <div class="social--widget style--4">
                                 <ul class="nav">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                                    <li><a href="javascript:"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="javascript:"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="javascript:"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="javascript:"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="javascript:"><i class="fa fa-rss"></i></a></li>
+                                    <li><a href="javascript:"><i class="fa fa-youtube-play"></i></a></li>
                                 </ul>
                             </div>
                             <!-- Social Widget End -->
@@ -116,7 +118,7 @@
                         <div class="comment--list pd--30-0">
                             <!-- Post Items Title Start -->
                             <div class="post--items-title">
-                                <h2 class="h4">{{ count($post->comments) }} bình luận</h2>
+                                <h2 class="h4"><span class="post_count_comment h4" >{{ count($post->comments) }} </span> bình luận</h2>
                                 <i class="icon fa fa-comments-o"></i>
                             </div>
                             <!-- Post Items Title End -->
@@ -155,7 +157,6 @@
                             <!-- Post Items Title Start -->
                             <div class="post--items-title">
 								<h2 class="h4">Viết bình luận</h2>
-								
                                 <i class="icon fa fa-pencil-square-o"></i>
                             </div>
                             <!-- Post Items Title End -->
@@ -163,7 +164,8 @@
                             <div class="comment-respond">
 								<x-blog.message :status="'success'"/>
 								@auth	
-								<form method="POST" action="{{ route('posts.add_comment', $post )}}">
+								<!-- <form method="POST" action="{{ route('posts.add_comment', $post )}}"> -->
+                                <form onsubmit="return false;" autocomplete="off" method="POST" >
 									@csrf
 
 									<div class="row form-group">
@@ -171,9 +173,9 @@
 											<textarea name="the_comment" id="message" cols="30" rows="5" class="form-control" placeholder="Đánh giá bài viết này"></textarea>
 										</div>
 									</div>
-
+                                    <small style="color: red; font-size: 14px;" class="comment_error"> </small>
 									<div class="form-group">
-										<input id="input_comment" type="submit" value="Bình luận" class="btn btn-primary">
+										<input id="input_comment" type="submit" value="Bình luận" class="send-comment-btn btn btn-primary">
 									</div>
                                 </form>
 								@endauth
@@ -284,5 +286,7 @@
 		$(".global-message").fadeOut();
 	}, 5000)
 </script>
+
+
 
 @endsection

@@ -4,12 +4,12 @@
     right: 10px;
     min-width: 500px;
     border-radius: 50px;
-    color: #fff;
+    color: #fff !important;
     z-index: 2;
 }
 
 .global-message.info{
-    background-color: #4586ff;
+    background-color: #0fa04b;
 }
 
 .global-message.error{

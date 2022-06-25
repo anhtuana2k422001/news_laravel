@@ -25,13 +25,14 @@ use App\Http\Controllers\AdminControllers\AdminContactsController;
 use App\Http\Controllers\AdminControllers\AdminSettingController;
 
 
-
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\NewsletterController;
+
 
 // Điều hướng cho User
 
@@ -44,6 +45,8 @@ Route::get('/xem-nhieu-nhat', [HomeController::class,'viewPost'])->name('viewPos
 
 Route::get('/posts/{post:slug}', [PostsController::class, 'show'])->name('posts.show');
 Route::post('/posts/{post:slug}', [PostsController::class, 'addComment'])->name('posts.add_comment');
+Route::post('/Comment', [PostsController::class, 'addCommentUser'])->name('posts.addCommentUser');
+
 
 Route::get('/gioi-thieu', AboutController::class)->name('about');
 
@@ -54,6 +57,8 @@ Route::get('/chuyen-muc/{category:slug}', [CategoryController::class, 'show'])->
 Route::get('/tat-ca-chuyen-muc', [CategoryController::class, 'index'])->name('categories.index');
 
 Route::get('/tu-khoa/{tag:name}', [TagController::class, 'show'])->name('tags.show');
+
+Route::post('newsletter',[NewsletterController::class, 'store'])->name('newsletter_store');
 require __DIR__.'/auth.php';
 
 

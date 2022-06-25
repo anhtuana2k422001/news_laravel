@@ -16,6 +16,8 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<meta name="author" content="" />
+	<meta name="_token" content="{{ csrf_token()}}" />
+
 
   <!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
@@ -331,10 +333,10 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 						<div class="col-md-12">
 							<form  class="form-inline qbstp-header-subscribe">
 									<div class="form-group">
-										<input type="text" class="form-control" id="email" placeholder="Nhập email của bạn">
+										<input name='subscribe-email' type="email" required class="form-control" id="email" placeholder="Nhập email của bạn">
 									</div>
 									<div class="form-group ">
-										<button style="display: none" type="submit" class="btn btn-primary">Đăng ký ngay</button>
+										<button id='subscibe-btn'   type="submit" class="btn btn-primary">Đăng ký ngay</button>
 									</div>
 							</form>
 						</div>
@@ -466,6 +468,64 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 	<!-- ==== Main JavaScript ==== -->
 	<script src="{{ asset('kcnew/frontend/js/main.js') }}"></script>
 	
+
+	<script >
+		$(function(){
+
+			function isEmail(email) {
+				var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				return regex.test(email);
+			}
+			$(document).on("click", "#subscibe-btn", (e) => {
+				e.preventDefault();
+				let _this = $(e.target);
+		
+				let email = _this.parents("form").find("input[name='subscribe-email']").val();
+				if( ! isEmail( email))
+				{
+					$("body").append("<div class='global-message alert alert-danger subscribe-error'>Không đúng định dạng email.</div>");
+				}
+				else
+				{
+					//send email
+					//1 using ajax
+					let formData = new FormData();
+					let _token = $("meta[name='_token']").attr("content");
+					 
+					formData.append('_token', _token);
+					formData.append('email', email);
+
+					$.ajax({
+						url: "{{ route('newsletter_store') }}",
+						type: "POST",
+						dataType: "JSON",
+						processData: false,
+						contentType: false,
+						data: formData,
+						success: (respond) => {
+							let message = respond.message;
+							$("body").append("<div class='global-message alert alert-danger subscribe-success'>"+ message +"</div>");
+						
+							_this.parents("form").find("input[name='subscribe-email']").val('');
+						},
+						statusCode: {
+							500: ( ) => {
+								 
+								$("body").append("<div class='global-message alert alert-danger subscribe-success'>Email này đã subscribe website chúng tôi</div>");
+
+							}
+						} 
+					});
+					//2 email
+				}
+				setTimeout( () => {
+	 
+					$(".global-message.subscribe-error, .global-message.subscribe-success").remove();
+
+				}, 5000 );
+			});
+		});
+	</script>
 
 	@yield('custom_js')
 

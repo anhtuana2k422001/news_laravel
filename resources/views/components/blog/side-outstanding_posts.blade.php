@@ -196,4 +196,87 @@ use App\Models\Category;
         });
 </script>
 
+<script>
+	$(document).on('click', '.send-comment-btn', (e) => {
+		e.preventDefault();
+		let $this = e.target;
+
+		let csrf_token = $($this).parents("form").find("input[name='_token']").val();
+		let the_comment =  $($this).parents("form").find("textarea[name='the_comment']").val();
+		let post_title =  $('.post_title').text() ; 
+
+		let count_comment =  $('.post_count_comment').text() ; 
+        let ListComment = $('.comment--items');
+
+		let formData = new FormData();
+		formData.append('_token', csrf_token);
+		formData.append('the_comment', the_comment);
+		formData.append('post_title', post_title);
+	
+
+
+		$.ajax({
+			url: "{{ route('posts.addCommentUser') }}",
+			data: formData,
+			type: 'POST',
+			dataType: 'JSON',
+			processData: false,
+			contentType: false,
+			success: function (data) {
+				if(data.success){
+
+                    console.log(data.result);
+                  
+                    // Xử lý thêm comment vào bài viết tạm thời
+                    count_comment = Number(count_comment) + 1;
+                    $('.comment_error').text('');
+
+                    $('.post_count_comment').text(count_comment);
+                    const htmls  = (() =>{
+                    return `
+                            <li>
+                                <div class="comment--item clearfix">
+                                    <div class="comment--img float--left">
+                                        <img src="{{  auth()->user()->image ?  asset('storage/' .  auth()->user()->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" alt="">
+                                    </div>
+                                    <div class="comment--info">
+                                        <div class="comment--header clearfix">
+                                           <p class="name">{{ auth()->user()->name }}</p> 
+                                            <p class="date">vừa xong</p>
+                                            <a href="javascript:;" class="reply"><i class="fa fa-flag"></i></a>
+                                        </div>
+                                        <div class="comment--content">
+                                            <p>${data.result['the_comment']}</p>
+                                            <p class="star">
+                                                <span class="text-left"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        `
+                        });
+                    ListComment.append(htmls);
+
+
+					$('.global-message').addClass('alert alert-info');
+					$('.global-message').fadeIn();
+					$('.global-message').text(data.message);
+
+					clearData( $($this).parents("form"), [
+						'the_comment',
+					]);
+
+					setTimeout(() => {
+						$(".global-message").fadeOut();
+					}, 5000)
+
+				}else{
+                    $('.comment_error').text(data.errors);
+				}
+			}
+		})
+	})
+</script>
+
 @endsection
