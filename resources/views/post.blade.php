@@ -97,7 +97,7 @@
                         <!-- Post Social Start -->
                         <div class="post--social pbottom--30">
                             <span class="title"><i class="fa fa-share-alt"></i> Chia sẻ </span>
-
+                             
                             <!-- Social Widget Start -->
                             <div class="social--widget style--4">
                                 <ul class="nav">
@@ -129,7 +129,7 @@
                                     <!-- Comment Item Start -->
                                    <div class="comment--item clearfix">
 										<div class="comment--img float--left">
-											<img src="{{ $comment->user->image ?  asset('storage/' . $comment->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" alt="">
+                                            <img style="border-radius: 50%; margin: auto; background-size: cover ;  width: 68px; height: 68px;   background-image: url({{ $comment->user->image ?  asset('storage/' . $comment->user->image->path) : asset('storage/placeholders/user_placeholder.jpg') }})"  alt="">
 										</div>
 										<div class="comment--info">
 											<div class="comment--header clearfix">

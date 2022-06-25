@@ -1630,9 +1630,9 @@ body.boxed > .wrapper {
 }
 
 .comment--img {
-    max-width: 60px;
+    max-width: 80px;
     margin-right: 20px;
-    border: 2px solid #ccc;
+    /* border: 2px solid #ccc; */
 }
 
 .comment--info {

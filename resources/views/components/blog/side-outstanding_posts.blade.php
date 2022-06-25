@@ -9,7 +9,7 @@ use App\Models\Category;
             ->orderBy('created_at','DESC')
             ->take(5)->get();
     $outstanding_posts_views =  Post::approved()->orderBy('views','DESC')->take(5)->get();
-
+    
  ?>
 
 @props(['outstanding_posts'] )
@@ -234,26 +234,28 @@ use App\Models\Category;
                     $('.post_count_comment').text(count_comment);
                     const htmls  = (() =>{
                     return `
-                            <li>
-                                <div class="comment--item clearfix">
-                                    <div class="comment--img float--left">
-                                        <img src="{{  auth()->user()->image ?  asset('storage/' .  auth()->user()->image->path) : asset('storage/placeholders/user_placeholder.jpg') }}" alt="">
-                                    </div>
-                                    <div class="comment--info">
-                                        <div class="comment--header clearfix">
-                                           <p class="name">{{ auth()->user()->name }}</p> 
-                                            <p class="date">vừa xong</p>
-                                            <a href="javascript:;" class="reply"><i class="fa fa-flag"></i></a>
+                            @auth
+                                <li>
+                                    <div class="comment--item clearfix">
+                                        <div class="comment--img float--left">
+                                            <img style="border-radius: 50%; margin: auto; background-size: cover ;  width: 68px; height: 68px;   background-image: url({{ auth()->user()->image ?  asset('storage/' . auth()->user()->image->path) : asset('storage/placeholders/user_placeholder.jpg') }})"  alt="">
                                         </div>
-                                        <div class="comment--content">
-                                            <p>${data.result['the_comment']}</p>
-                                            <p class="star">
-                                                <span class="text-left"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
-                                            </p>
+                                        <div class="comment--info">
+                                            <div class="comment--header clearfix">
+                                            <p class="name">{{ auth()->user()->name }}</p> 
+                                                <p class="date">vừa xong</p>
+                                                <a href="javascript:;" class="reply"><i class="fa fa-flag"></i></a>
+                                            </div>
+                                            <div class="comment--content">
+                                                <p>${data.result['the_comment']}</p>
+                                                <p class="star">
+                                                    <span class="text-left"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
+                                </li>
+                            @endauth
                         `
                         });
                     ListComment.append(htmls);

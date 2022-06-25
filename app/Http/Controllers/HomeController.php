@@ -176,7 +176,7 @@ class HomeController extends Controller
         
         
         // Bài viết mới nhất
-        $newPosts_category  = Post::latest()->approved()->take(20)->get(); 
+        $newPosts_category  = Post::latest()->approved()->where('category_id', '!=',  $category_unclassified->id )->take(20)->get(); 
 
         return view('newPost',compact(
             'recent_posts',
@@ -272,7 +272,7 @@ class HomeController extends Controller
         
         
         // Bài viết mới nhất
-        $viewPosts_category  = Post::approved()->orderBy('views','DESC')->take(20)->get(); 
+        $viewPosts_category  = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->orderBy('views','DESC')->take(20)->get(); 
 
         return view('viewPost',compact(
             'recent_posts',
