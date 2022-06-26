@@ -509,14 +509,13 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 							_this.parents("form").find("input[name='subscribe-email']").val('');
 						},
 						statusCode: {
-							500: ( ) => {
-								 
-								$("body").append("<div class='global-message alert alert-danger subscribe-success'>Email này đã subscribe website chúng tôi</div>");
+							500: () => {								 
+								$("body").append("<div class='global-message alert alert-danger subscribe-error'>Email này đã subscribe website chúng tôi</div>");
 
 							}
 						} 
 					});
-					//2 email
+					 
 				}
 				setTimeout( () => {
 	 

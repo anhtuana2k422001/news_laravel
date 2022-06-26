@@ -660,7 +660,7 @@
 							<div class="social--widget style--2">
 								<ul class="nav row gutter--20">
 									<li class="col-md-12 facebook">
-										<a href="https://www.facebook.com/ngoccam651">
+										<a href="https://www.facebook.com/people/Anh-Tuan/100007007238964">
 											<span class="icon">
 												<i class="fa fa-facebook"></i>
 												<span>Share</span>
@@ -674,7 +674,7 @@
 									</li>
 
 									<li class="col-md-12 twitter">
-										<a href="javascript:;">
+										<a href="https://www.facebook.com/people/Anh-Tuan/100007007238964">
 											<span class="icon">
 												<i class="fa fa-twitter"></i>
 												<span>Tweet</span>
@@ -688,7 +688,7 @@
 									</li>
 
 									<li class="col-md-12 google-plus">
-										<a href="javascript:;">
+										<a href="https://www.facebook.com/people/Anh-Tuan/100007007238964">
 											<span class="icon">
 												<i class="fa fa-google-plus"></i>
 												<span>Share</span>

@@ -20,3 +20,13 @@
 .categories_col .block-21 .text{
     width: 100%;
 }
+
+.global-message.alert.alert-danger.subscribe-error{
+    background-color: #dc3545 ;
+    width: 200px;
+}
+
+
+.global-message.alert.alert-danger.subscribe-success{
+    background-color: #0fa04b ;
+}

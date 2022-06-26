@@ -32,7 +32,6 @@ class AdminRolesController extends Controller
     public function store(Request $request)
     {
 
-        dd($request) ;
 
         $validated = $request->validate($this->rules);
         $permissions = $request->input('permissions');
