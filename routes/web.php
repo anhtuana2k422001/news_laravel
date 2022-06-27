@@ -37,6 +37,10 @@ use App\Http\Controllers\NewsletterController;
 // Điều hướng cho User
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/tai-khoan', [HomeController::class, 'profile'])->name('profile');
+Route::post('/tai-khoan', [HomeController::class, 'update'])->name('update');
+
 Route::get('/404', [HomeController::class, 'erorr404'])->name('erorrs.404');
 
 Route::post('/tim-kiem', [HomeController::class,'search'])->name('search');
@@ -44,22 +48,22 @@ Route::get('/tin-tuc-moi-nhat', [HomeController::class,'newPost'])->name('newPos
 Route::get('/tin-nong', [HomeController::class,'hotPost'])->name('hotPost');
 Route::get('/xem-nhieu-nhat', [HomeController::class,'viewPost'])->name('viewPost');
 
-Route::get('/posts/{post:slug}', [PostsController::class, 'show'])->name('posts.show');
-Route::post('/posts/{post:slug}', [PostsController::class, 'addComment'])->name('posts.add_comment');
-Route::post('/Comment', [PostsController::class, 'addCommentUser'])->name('posts.addCommentUser');
+Route::get('/bai-vet/{post:slug}', [PostsController::class, 'show'])->name('posts.show');
+Route::post('/bai-viet/{post:slug}', [PostsController::class, 'addComment'])->name('posts.add_comment');
+Route::post('/binh-luan', [PostsController::class, 'addCommentUser'])->name('posts.addCommentUser');
 
 
 Route::get('/gioi-thieu', AboutController::class)->name('about');
 
-Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
-Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/lien-he', [ContactController::class, 'create'])->name('contact.create');
+Route::post('/lien-he', [ContactController::class, 'store'])->name('contact.store');
 
 Route::get('/chuyen-muc/{category:slug}', [CategoryController::class, 'show'])->name('categories.show');
 Route::get('/tat-ca-chuyen-muc', [CategoryController::class, 'index'])->name('categories.index');
 
 Route::get('/tu-khoa/{tag:name}', [TagController::class, 'show'])->name('tags.show');
 
-Route::post('newsletter',[NewsletterController::class, 'store'])->name('newsletter_store');
+Route::post('email',[NewsletterController::class, 'store'])->name('newsletter_store');
 require __DIR__.'/auth.php';
 
 

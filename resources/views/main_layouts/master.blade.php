@@ -144,7 +144,7 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 										</li>
 										@endif
 										<li>
-											<a href="#">Tài khoản của tôi</a>
+											<a href="{{ route('profile') }}">Tài khoản của tôi</a>
 										</li>
 										<li>
 											<a onclick="event.preventDefault(); document.getElementById('nav-logout-form').submit();"

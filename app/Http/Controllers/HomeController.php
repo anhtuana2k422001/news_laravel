@@ -6,7 +6,12 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\Comment;
+use App\Models\User;
+use App\Models\Image;
+
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -132,8 +137,8 @@ class HomeController extends Controller
         
         $key = $request->search;
         // tìm kiếm kết quả danh mục
-        $cat = Category::where('name','like' , '%'.$key.'%')->first();
-        $pro = Category::where('name','like' , '%'.$key.'%')->first();
+        // $cat = Category::where('name','like' , '%'.$key.'%')->first();
+        // $pro = Category::where('name','like' , '%'.$key.'%')->first();
 
         $posts = Post::latest()->withCount('comments')->approved()->where('title','like' , '%'.$key.'%')->paginate(30);
         
@@ -270,7 +275,6 @@ class HomeController extends Controller
         // Bài viết nổi bật
         $outstanding_posts = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->take(5)->get();
         
-        
         // Bài viết mới nhất
         $viewPosts_category  = Post::approved()->where('category_id', '!=',  $category_unclassified->id )->orderBy('views','DESC')->take(20)->get(); 
 
@@ -285,6 +289,50 @@ class HomeController extends Controller
 
     public function erorr404(){
         return view('errors.404');
+    }
+
+    public function profile(){
+        return view('profile');
+    }
+
+    private $rules = [
+        'name' => 'required|min:3',
+        'email' => 'required|email|unique:users,email',
+        'image' => 'nullable|file|mimes:jpg,png,webp,svg,jpeg|dimensions:max-width:300,max-height:300',
+    ];
+
+    public function update(Request $request)
+    {
+        $user = auth()->user();
+        
+        if($request->email !== $user->email){
+            $this->rules['email'] = ['required','email', Rule::unique('users')->ignore($user)];
+        }else{
+            $this->rules['email'] = '';
+        }
+        
+        $validated = $request->validate($this->rules);
+        $user->update($validated);
+
+        if($request->has('image'))
+        {
+            $image_user = Image::where('imageable_id',  $user->id)->first();
+            if($image_user)
+                $image_user->delete();
+
+            $image = $request->file('image');
+            $filename = $image->getClientOriginalName();
+            $file_extension = $image->getClientOriginalExtension();
+            $path   = $image->store('images', 'public');
+            
+            $user->image()->create([
+                'name' => $filename,
+                'extension' => $file_extension,
+                'path' => $path,
+            ]);
+        }
+        
+        return redirect()->route('profile')->with('success', 'Sửa tài khoản thành công.');
     }
 
 }
