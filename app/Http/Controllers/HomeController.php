@@ -283,6 +283,9 @@ class HomeController extends Controller
         ));
     }
 
+    public function erorr404(){
+        return view('errors.404');
+    }
 
 }
  

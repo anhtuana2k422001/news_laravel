@@ -37,6 +37,7 @@ use App\Http\Controllers\NewsletterController;
 // Điều hướng cho User
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/404', [HomeController::class, 'erorr404'])->name('erorrs.404');
 
 Route::post('/tim-kiem', [HomeController::class,'search'])->name('search');
 Route::get('/tin-tuc-moi-nhat', [HomeController::class,'newPost'])->name('newPost');
