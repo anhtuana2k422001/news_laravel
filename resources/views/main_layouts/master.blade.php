@@ -126,11 +126,11 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 								<a href="{{ route('login') }}">
 									<i class="fa fm fa-user-o"></i>
 									<span>Đăng Nhập</span>
-								</a></li>
+								</a>
+							</li>
 							@endguest
 
 							@auth
-								</span></a></li>
 								<li class="has-dropdown">
 									<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 										<i class="fa fm fa-user-o"></i>
@@ -169,7 +169,7 @@ $categoryFooter  = Category::where('name','!=','Chưa phân loại')->withCount(
 						<li><a href="https://www.facebook.com/people/Anh-Tuan/100007007238964"><i class="fa fa-facebook"></i></a></li>
 						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-twitter"></i></a></li>
 						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube><i class="fa fa-rss"></i></a></li>
+						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-rss"></i></a></li>
 						<li><a href="https://www.youtube.com/c/H%E1%BB%93AnhTu%E1%BA%A5nYoutube"><i class="fa fa-youtube-play"></i></a></li>
 					</ul>
 					<!-- Header Topbar Social End -->

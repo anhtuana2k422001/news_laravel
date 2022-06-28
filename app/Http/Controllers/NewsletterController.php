@@ -12,6 +12,5 @@ class NewsletterController extends Controller
     public function store(NewsletterRequest $request)
     {
         return Newsletter::store( $request ); 
-        
     }
 }
